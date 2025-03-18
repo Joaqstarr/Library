@@ -7,10 +7,15 @@ namespace Level.Pipe
     {
         [SerializeField]
         private MeshRenderer _meshRenderer;
+
+        private MeshFilter _meshFilter;
         private PipeLump _pipeLump;
         private void Start()
         {
-            _pipeLump = transform.parent.GetComponent<PipeLump>();
+            _pipeLump = transform.GetComponentInParent<PipeLump>();
+            
+            if(_meshRenderer)
+                _meshFilter = _meshRenderer.gameObject.GetComponent<MeshFilter>();
         }
 
         private void Update()

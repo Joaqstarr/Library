@@ -21,7 +21,7 @@ namespace Level.Pipe
         {
             Vector3 pos = _splineContainer.Spline.EvaluatePosition(_lumpPosition);
 
-            LumpPosition = transform.TransformPoint(pos);
+            LumpPosition = pos;
             
             
         }
