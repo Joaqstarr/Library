@@ -23,6 +23,7 @@ namespace Level.Pipe
             if (_pipeLump && _meshRenderer)
             {
                 _meshRenderer.material.SetVector("_LumpPosition", _pipeLump.LumpPosition);
+                _meshRenderer.material.SetFloat("_LumpStrength", _pipeLump.LumpStrength);
             }
         }
     }

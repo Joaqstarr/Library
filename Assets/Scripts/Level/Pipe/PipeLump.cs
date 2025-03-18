@@ -8,7 +8,11 @@ namespace Level.Pipe
     public class PipeLump : MonoBehaviour
     {
         [SerializeField, Range(0,1)] 
-        public float _lumpPosition = 0;
+        private float _lumpPosition = 0;
+        
+        [field: SerializeField, Range(0,1)]
+        public float LumpStrength { get; private set; }
+        
         public Vector3 LumpPosition { get; private set; }
         private SplineContainer _splineContainer;
         
