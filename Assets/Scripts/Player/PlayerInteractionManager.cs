@@ -7,14 +7,16 @@ namespace Player
 {
     public class PlayerInteractionManager : MonoBehaviour
     {
-        public event Action<Interactable> OnClosestInteractableChanged;
+        public static event Action<Interactable> OnClosestInteractableChanged;
 
         private List<Interactable> _interactablesInRange = new List<Interactable>();
         private Interactable _closestInteractable;
         private PlayerControls _playerControls;
+        private PlayerStateManager _player;
 
         private void Awake()
         {
+            _player = GetComponent<PlayerStateManager>();
             _playerControls = GetComponentInParent<PlayerControls>();
         }
 
@@ -73,7 +75,7 @@ namespace Player
             if (_closestInteractable != null)
             {
                 // Implement interaction logic here
-                Debug.Log("Interacting with " + _closestInteractable.name);
+                _closestInteractable.OnInteracted(_player);
             }
         }
 

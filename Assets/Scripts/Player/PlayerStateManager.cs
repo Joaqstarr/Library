@@ -1,6 +1,8 @@
 ﻿using System;
+using Level.Pipe;
 using Player.States;
 using UnityEngine;
+using UnityEngine.Splines;
 using Utility.StateMachine;
 
 namespace Player
@@ -11,6 +13,7 @@ namespace Player
         
         public PlayerControls PlayerControlsInstance{get; private set;}
         public PlayerMovement PlayerMovementInstance{get; private set;}
+        public PlayerCloudAttractionHandler PlayerCloudAttractionHandlerInstance{get; private set;}
 
         #region States
         
@@ -21,6 +24,7 @@ namespace Player
         
         private void Awake()
         {
+            PlayerCloudAttractionHandlerInstance = GetComponent<PlayerCloudAttractionHandler>();
             PlayerMovementInstance = GetComponent<PlayerMovement>();
             PlayerControlsInstance = GetComponent<PlayerControls>();
             
@@ -40,6 +44,13 @@ namespace Player
         public void SwitchToLocomotionState()
         {
             SwitchState(_locomotionState);
+        }
+
+        public void SwitchToPipeState(Pipe pipe, float entrancePosition)
+        {
+            _pipeState.SetPositionInPipe(entrancePosition);
+            _pipeState.SetPipe(pipe);
+            SwitchState(_pipeState);
         }
 
         private void Update()

@@ -1,4 +1,6 @@
 ﻿using System;
+using DG.Tweening;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -19,6 +21,23 @@ namespace Level.Pipe
         private void Awake()
         {
             _splineContainer = GetComponent<SplineContainer>();
+        }
+
+        private void OnEnable()
+        {
+            DOVirtual.Float(0, 1, 0.3f, value =>
+            {
+                LumpStrength = value;
+            });
+        }
+        
+
+        private void OnDisable()
+        {
+            DOVirtual.Float(1, 0, 0.3f, value =>
+            {
+                LumpStrength = value;
+            });
         }
 
         private void Update()
@@ -44,6 +63,11 @@ namespace Level.Pipe
             
             Gizmos.color = Color.red;
             Gizmos.DrawSphere(pos, 0.2f);
+        }
+
+        public void SetLumpPosition(float newInterp)
+        {
+            _lumpPosition = newInterp;
         }
     }
 }
