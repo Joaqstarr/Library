@@ -109,7 +109,11 @@ namespace Player
         {
             _fullyAttracting = true;
         }
-        
+
+        public void DisableFullAttraction()
+        {
+            _fullyAttracting = false;
+        }
         public void DisableLowAttraction()
         {
             _attracting = false;
@@ -127,19 +131,19 @@ namespace Player
             _attracting = true;
         }
 
-        protected Vector3 AttractionPoint
+        public Vector3 AttractionPoint
         {
             get => _playerCloudMat.GetVector(AttractionPointId);
             set => _playerCloudMat.SetVector(AttractionPointId, value);
         }
 
-        protected float AttractionStrength
+        public float AttractionStrength
         {
             get => _playerCloudMat.GetFloat(AttractionStrengthId);
             set => _playerCloudMat.SetFloat(AttractionStrengthId, value);
         }
 
-        protected float AttractionFilter
+        public float AttractionFilter
         {
             get => _playerCloudMat.GetFloat(AttractionFilterId);
             set => _playerCloudMat.SetFloat(AttractionFilterId, value);

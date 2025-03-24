@@ -11,6 +11,7 @@
             base.OnEnterState();
 
             _playerMovement.enabled = true;
+            _playerStateManager.PlayerInteractionManagerInstance.enabled = true;
         }
 
 
@@ -19,6 +20,8 @@
             base.OnExitState();
             
             _playerMovement.enabled = false;
+            _playerStateManager.PlayerInteractionManagerInstance.enabled = false;
+
         }
     }
 }

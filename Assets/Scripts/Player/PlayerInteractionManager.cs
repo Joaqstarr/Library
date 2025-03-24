@@ -87,6 +87,7 @@ namespace Player
         private void OnDisable()
         {
             _playerControls.OnInteractPressed -= InteractWithClosest;
+            OnClosestInteractableChanged?.Invoke(null);
         }
     }
 }

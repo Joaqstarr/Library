@@ -11,6 +11,8 @@ namespace Player
         public delegate void InputDelegate();
 
         public InputDelegate OnInteractPressed;
+        public InputDelegate OnJumpPressed;
+
         public void OnMove(InputValue value)
         {
             MoveInput = value.Get<Vector2>();
@@ -27,6 +29,14 @@ namespace Player
             if (value.isPressed)
             {
                 OnInteractPressed?.Invoke();
+            }
+        }
+        
+        public void OnJump(InputValue value)
+        {
+            if (value.isPressed)
+            {
+                OnJumpPressed?.Invoke();
             }
         }
     }

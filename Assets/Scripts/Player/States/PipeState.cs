@@ -22,6 +22,8 @@ namespace Player.States
         protected override void OnEnterState()
         {
             base.OnEnterState();
+            _playerStateManager.PlayerInteractionManagerInstance.enabled = false;
+
             _playerMovement.enabled = false;
             
             _playerStateManager.PlayerCloudAttractionHandlerInstance.FullyAttract();
@@ -43,9 +45,9 @@ namespace Player.States
         protected override void OnExitState()
         {
             base.OnExitState();
-            
+            _playerStateManager.PlayerCloudAttractionHandlerInstance.AttractionPoint = _playerStateManager.transform.position;
             _pipe.DisablePipeLump();
-            
+            _playerStateManager.PlayerCloudAttractionHandlerInstance.DisableFullAttraction();
             _spline = null;
             _pipe = null;
             _playerMovement.enabled = true;
@@ -79,13 +81,18 @@ namespace Player.States
 
             // Calculate the dot product to determine the movement direction
             float direction = Vector3.Dot(cameraForward, tangent) * input.y + Vector3.Dot(cameraForward, Vector3.Cross(Vector3.up, tangent)) * -input.x;
-
+        
             // Calculate the distance to move based on speed, time, and input direction
             float distance = _speed * Time.deltaTime * direction;
 
             // Update the spline position based on the distance
             SplineUtility.GetPointAtLinearDistance(_spline, _splinePosition, distance, out _splinePosition);
 
+            if ((_splinePosition == 0 || _splinePosition == 1) && input.sqrMagnitude > 0)
+            {
+                _playerStateManager.SwitchToLocomotionState();
+                return;
+            }
             // Get the new position on the spline
             Vector3 newPosition = _spline.EvaluatePosition(_splinePosition);
 

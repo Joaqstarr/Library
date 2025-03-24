@@ -14,7 +14,7 @@ namespace Player
         public PlayerControls PlayerControlsInstance{get; private set;}
         public PlayerMovement PlayerMovementInstance{get; private set;}
         public PlayerCloudAttractionHandler PlayerCloudAttractionHandlerInstance{get; private set;}
-
+        public PlayerInteractionManager PlayerInteractionManagerInstance{get; private set;}
         #region States
         
         private LocomotionState _locomotionState;
@@ -27,7 +27,7 @@ namespace Player
             PlayerCloudAttractionHandlerInstance = GetComponent<PlayerCloudAttractionHandler>();
             PlayerMovementInstance = GetComponent<PlayerMovement>();
             PlayerControlsInstance = GetComponent<PlayerControls>();
-            
+            PlayerInteractionManagerInstance = GetComponent<PlayerInteractionManager>();
             
             //state setup
             _locomotionState = new LocomotionState(this);

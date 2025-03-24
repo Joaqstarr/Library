@@ -1076,7 +1076,7 @@ MonoBehaviour:
   m_UpdateColliders: 1
   m_Sides: 8
   m_SegmentsPerUnit: 4
-  m_Capped: 1
+  m_Capped: 0
   m_Radius: 0.25
   m_Range: {x: 0, y: 1}
 --- !u!23 &1324783345
@@ -1718,38 +1718,6 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   _pipeInteractablePos: 1
---- !u!1 &1972492929 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7163690925482534642, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
-  m_PrefabInstance: {fileID: 4161615426753464025}
-  m_PrefabAsset: {fileID: 0}
---- !u!54 &1972492939
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1972492929}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!1 &2013410473
 GameObject:
   m_ObjectHideFlags: 1
@@ -1945,19 +1913,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5249642832164457288, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.3701177
+      value: -0.3701176
       objectReference: {fileID: 0}
     - target: {fileID: 5249642832164457288, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.1415893
+      value: -0.14158924
       objectReference: {fileID: 0}
     - target: {fileID: 5249642832164457288, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.8097886
+      value: 0.8097887
       objectReference: {fileID: 0}
     - target: {fileID: 5249642832164457288, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.43267527
+      value: -0.43267527
       objectReference: {fileID: 0}
     - target: {fileID: 5722624380409710085, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
       propertyPath: m_FollowOffset.y
@@ -2035,21 +2003,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0.4113308
       objectReference: {fileID: 0}
-    - target: {fileID: 8522537729739631717, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
-      propertyPath: m_Radius
-      value: 1.47
-      objectReference: {fileID: 0}
-    - target: {fileID: 8522537729739631717, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
-      propertyPath: m_ExcludeLayers.m_Bits
-      value: 55
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7163690925482534642, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1972492939}
     - targetCorrespondingSourceObject: {fileID: 4314569096102657643, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1629763266}
