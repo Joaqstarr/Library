@@ -11,9 +11,20 @@ namespace Level.Pipe
         public Spline PipeSpline { get; private set; }
         [SerializeField]
         private PipeLump _pipeLump;
+
+        [SerializeField] private PipeInteractable _pipeEntrancePrefab;
         private void Awake()
         {
             PipeSpline = GetComponent<SplineContainer>().Spline;
+            
+            PipeInteractable entrance1 = Instantiate(_pipeEntrancePrefab, transform);
+            entrance1.transform.localPosition = PipeSpline.EvaluatePosition(0);
+            entrance1.SetPipeInteractablePos(0);
+            
+            PipeInteractable entrance2 = Instantiate(_pipeEntrancePrefab, transform);
+            entrance2.transform.localPosition = PipeSpline.EvaluatePosition(1);
+            entrance2.SetPipeInteractablePos(1);
+
         }
 
         public void OnInteracted(PlayerStateManager player, float pos)

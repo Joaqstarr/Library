@@ -21,5 +21,10 @@ namespace Level.Pipe
             
             _pipe.OnInteracted(player, _pipeInteractablePos);
         }
+        
+        public void SetPipeInteractablePos(float pos)
+        {
+            _pipeInteractablePos = pos;
+        }
     }
 }
