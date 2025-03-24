@@ -1,6 +1,7 @@
 ﻿using System;
 using Player;
 using Systems.Interaction;
+using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
 
@@ -17,14 +18,24 @@ namespace Level.Pipe
         {
             PipeSpline = GetComponent<SplineContainer>().Spline;
             
-            PipeInteractable entrance1 = Instantiate(_pipeEntrancePrefab, transform);
-            entrance1.transform.localPosition = PipeSpline.EvaluatePosition(0);
-            entrance1.SetPipeInteractablePos(0);
             
-            PipeInteractable entrance2 = Instantiate(_pipeEntrancePrefab, transform);
-            entrance2.transform.localPosition = PipeSpline.EvaluatePosition(1);
-            entrance2.SetPipeInteractablePos(1);
+            SpawnPipeEntrance(0);
 
+            SpawnPipeEntrance(1);
+
+        }
+
+        private void SpawnPipeEntrance(float interp)
+        {
+            PipeInteractable entrance = Instantiate(_pipeEntrancePrefab, transform);
+
+            float3 pos;
+            float3 tan;
+            float3 up;
+            PipeSpline.Evaluate(interp, out pos, out tan, out up);
+            entrance.transform.localPosition = pos;
+            entrance.transform.forward = tan;
+            entrance.SetPipeInteractablePos(interp);
         }
 
         public void OnInteracted(PlayerStateManager player, float pos)
