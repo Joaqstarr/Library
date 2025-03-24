@@ -39,6 +39,7 @@ namespace Player
         private float _lerpSpeed = 5;
         private void Update()
         {
+            _state = AttractionStates.None;
             if (_attracting)
             {
                 _state = AttractionStates.Attracting;
@@ -47,6 +48,7 @@ namespace Player
             {
                 _state = AttractionStates.FullyAttracted;
             }
+            
             switch (_state)
             {
                 case AttractionStates.None:
