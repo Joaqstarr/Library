@@ -155,8 +155,11 @@ Material:
     - _AlphaRemapMin: 0
     - _AlphaSrcBlend: 1
     - _Anisotropy: 0
+    - _AttractionFilter: 0
+    - _AttractionPulseSpeed: 4
+    - _AttractionStrength: 0
     - _Base_Scale: 1
-    - _Base_Strength: 0.461
+    - _Base_Strength: 0.5
     - _BlendMode: 0
     - _CoatMask: 0
     - _ConservativeDepthOffsetEnable: 0
@@ -206,9 +209,11 @@ Material:
     - _IridescenceThickness: 1
     - _LinkDetailsWithBase: 1
     - _MaterialID: 1
+    - _MaxHeight: -0.23
     - _Metallic: 0
     - _MetallicRemapMax: 1
     - _MetallicRemapMin: 0
+    - _Min_Height: 0.62
     - _NoiseScale: 8.08
     - _Noise_Edge_1: 0
     - _Noise_Edge_2: 1
@@ -271,6 +276,7 @@ Material:
     - _ZTestTransparent: 4
     - _ZWrite: 0
     m_Colors:
+    - _AttractionPoint: {r: 0, g: 0, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _BaseColorMap_MipInfo: {r: 0, g: 0, b: 0, a: 0}
     - _Base_Speed: {r: -0.2, g: -0.1, b: 0, a: 0}
