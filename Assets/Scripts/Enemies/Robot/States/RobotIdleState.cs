@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Player;
+using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.AI;
 
 namespace Enemies.Robot
@@ -7,8 +9,7 @@ namespace Enemies.Robot
     {
         private Vector3 _originalPosition;
         private Vector3 _targetPosition;
-        private float _wanderRadius = 5f;
-        private float _reachedThreshold = 0.1f;
+
 
         public RobotIdleState(RobotStateManager robotStateManager) : base(robotStateManager)
         {
@@ -23,6 +24,7 @@ namespace Enemies.Robot
         public override void OnUpdateState()
         {
             CheckIfReachedDestination();
+            SearchForPlayer();
         }
 
         protected override void OnExitState()
@@ -31,16 +33,30 @@ namespace Enemies.Robot
 
         private void SetNewTargetPosition()
         {
-            Vector2 randomDirection = Random.insideUnitCircle * _wanderRadius;
+            Vector2 randomDirection = Random.insideUnitCircle * Data.WanderRadius;
             _targetPosition = _originalPosition + new Vector3(randomDirection.x, 0, randomDirection.y);
             Agent.SetDestination(_targetPosition);
         }
 
         private void CheckIfReachedDestination()
         {
-            if (Vector3.Distance(_robotStateManager.transform.position, _targetPosition) < _reachedThreshold)
+            if (Vector3.Distance(_robotStateManager.transform.position, _targetPosition) < Data.ReachedThreshold)
             {
                 SetNewTargetPosition();
+            }
+        }
+
+        private void SearchForPlayer()
+        {
+            Collider[] hitColliders = Physics.OverlapSphere(_robotStateManager.transform.position, Data.SearchRadius, Data.SearchMask);
+            foreach (var hitCollider in hitColliders)
+            {
+                PlayerStateManager player = hitCollider.GetComponent<PlayerStateManager>();
+                if (player != null)
+                {
+                    _robotStateManager.SwitchToAggroState(player);
+                    break;
+                }
             }
         }
     }

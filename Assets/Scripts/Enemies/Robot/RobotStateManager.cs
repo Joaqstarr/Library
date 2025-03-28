@@ -8,7 +8,7 @@ namespace Enemies.Robot
     public class RobotStateManager : MonoBehaviour
     {
 
-        
+        [field: SerializeField] public RobotData Data { get; private set; }
         public NavMeshAgent Agent { get; private set; }
         
         
@@ -25,8 +25,11 @@ namespace Enemies.Robot
             Agent = GetComponent<NavMeshAgent>();
             
             // Initialize with a default state
+            _stateMachine = new HierarchalStateMachine();
             _idleState = new RobotIdleState(this);
             _aggroState = new RobotAggroState(this);
+            
+            SwitchToIdleState();
         }
 
         private void Update()
