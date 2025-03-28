@@ -7,7 +7,9 @@ namespace Player
     {
         public Vector2 MoveInput { get; private set; }
         public Vector2 LookInput { get; private set; }
-
+        
+        public bool SuckPressed { get; private set; }
+        public bool BlowPressed { get; private set; }
         public delegate void InputDelegate();
 
         public InputDelegate OnInteractPressed;
@@ -38,6 +40,16 @@ namespace Player
             {
                 OnJumpPressed?.Invoke();
             }
+        }
+        
+        public void OnSuck(InputValue value)
+        {
+            SuckPressed = value.isPressed;
+        }
+        
+        public void OnBlow(InputValue value)
+        {
+            BlowPressed = value.isPressed;
         }
     }
 }

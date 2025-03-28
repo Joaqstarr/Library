@@ -1,4 +1,5 @@
 ﻿using System;
+using Cinemachine;
 using Level.Pipe;
 using Player.States;
 using UnityEngine;
@@ -15,6 +16,9 @@ namespace Player
         public PlayerMovement PlayerMovementInstance{get; private set;}
         public PlayerCloudAttractionHandler PlayerCloudAttractionHandlerInstance{get; private set;}
         public PlayerInteractionManager PlayerInteractionManagerInstance{get; private set;}
+        
+        [field: SerializeField] public CinemachineVirtualCameraBase ThirdPersonCamera { get; private set; }
+        [field: SerializeField] public CinemachineVirtualCameraBase AimCamera { get; private set; }
         #region States
         
         private LocomotionState _locomotionState;

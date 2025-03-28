@@ -2,7 +2,7 @@ namespace Utility.StateMachine
 {
     public class HierarchalStateMachine
     {
-        private HierarchalStateMachine _currentState = null;
+        protected HierarchalStateMachine _currentState { get; private set; } = null;
 
         
         /*
@@ -61,7 +61,7 @@ namespace Utility.StateMachine
         public void SwitchState(HierarchalStateMachine newState)
         {
             if (_currentState == newState) return;
-            if (_currentState != null && newState != null)
+            if (_currentState != null)
             {
                 _currentState.OnExitState();
             }
@@ -73,10 +73,20 @@ namespace Utility.StateMachine
                 _currentState.OnEnterState();
             }
         }
+        
+        private void CleanUp()
+        {
+            if (_currentState != null)
+            {
+                _currentState.CleanUp();
+            }
+            
+            _currentState = null;
+        }
 
         ~HierarchalStateMachine()
         {
-            SwitchState(null);
+            CleanUp();
         }
     }
 }
