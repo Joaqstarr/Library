@@ -95,5 +95,10 @@ namespace Player
         {
             _jumpBufferTimer = _jumpInputBuffer;
         }
+
+        public bool IsGrounded()
+        {
+            return _isGrounded;
+        }
     }
 }

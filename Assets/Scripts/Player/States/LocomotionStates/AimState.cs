@@ -42,7 +42,7 @@ namespace Player.States.LocomotionStates
             base.OnUpdateState();
 
             
-            if (!_playerControls.AimPressed && !_playerControls.BlowPressed)
+            if ((!_playerControls.AimPressed && !_playerControls.BlowPressed) || !_playerMovement.IsGrounded())
             {
                 DisableAimState();
             }

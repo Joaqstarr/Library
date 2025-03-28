@@ -41,7 +41,7 @@ namespace Player.States
 
             if (_currentState == null)
             {
-                if (_playerControls.AimPressed)
+                if (_playerControls.AimPressed && _playerMovement.IsGrounded())
                 {
                     SwitchToAimState();
                 }
