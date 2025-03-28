@@ -26,17 +26,21 @@ namespace Player.Attack
         
         private void Suck()
         {
+            int count = _attackHitbox.SteamHoldersInRange.Count;
+
             foreach (var holder in _attackHitbox.SteamHoldersInRange)
             {
-                holder.BeginSteamTransferTo(_playerSteamResource, Time.deltaTime * _resourceTransferRate);
+                holder.BeginSteamTransferTo(_playerSteamResource, Time.deltaTime * _resourceTransferRate/count);
             }
         }
         
         private void Blow()
         {
+            int count = _attackHitbox.SteamHoldersInRange.Count;
+            
             foreach (var holder in _attackHitbox.SteamHoldersInRange)
             {
-                holder.BeginSteamTransferFrom(_playerSteamResource, Time.deltaTime * _resourceTransferRate);
+                holder.BeginSteamTransferFrom(_playerSteamResource, Time.deltaTime * _resourceTransferRate/count);
             }
         }
 

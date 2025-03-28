@@ -22,6 +22,8 @@ namespace Player
 
         private void OnTriggerEnter(Collider other)
         {
+            if (!enabled) return;
+            
             Interactable interactable = other.GetComponent<Interactable>();
             if (interactable != null && interactable.IsInteractable)
             {
