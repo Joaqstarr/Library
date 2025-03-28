@@ -17,8 +17,11 @@ namespace Player
         public PlayerCloudAttractionHandler PlayerCloudAttractionHandlerInstance{get; private set;}
         public PlayerInteractionManager PlayerInteractionManagerInstance{get; private set;}
         
+        public PlayerCameraStateManager PlayerCameraStateManagerInstance{get; private set;}
+        [field: Header("Camera and Aim Settings")]
         [field: SerializeField] public CinemachineVirtualCameraBase ThirdPersonCamera { get; private set; }
         [field: SerializeField] public CinemachineVirtualCameraBase AimCamera { get; private set; }
+        [field: SerializeField] public Transform AimTransform { get; private set; }
         #region States
         
         private LocomotionState _locomotionState;
@@ -32,6 +35,7 @@ namespace Player
             PlayerMovementInstance = GetComponent<PlayerMovement>();
             PlayerControlsInstance = GetComponent<PlayerControls>();
             PlayerInteractionManagerInstance = GetComponent<PlayerInteractionManager>();
+            PlayerCameraStateManagerInstance = GetComponentInChildren<PlayerCameraStateManager>();
             
             //state setup
             _locomotionState = new LocomotionState(this);

@@ -21,6 +21,7 @@ namespace Player.States
             base.OnEnterState();
 
             _playerMovement.enabled = true;
+            _playerMovement.RotateCharacterToMovement = true;
             _playerStateManager.PlayerInteractionManagerInstance.enabled = true;
         }
 
@@ -40,7 +41,7 @@ namespace Player.States
 
             if (_currentState == null)
             {
-                if (_playerControls.SuckPressed)
+                if (_playerControls.AimPressed)
                 {
                     SwitchToAimState();
                 }
