@@ -24,6 +24,8 @@ namespace Systems.Steam
 
         private void Update()
         {
+            transform.forward =  transform.position - Camera.main.transform.position;
+            
             if(_holder == null)
                 return;
             

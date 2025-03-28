@@ -18,6 +18,8 @@ namespace Player
         public PlayerInteractionManager PlayerInteractionManagerInstance{get; private set;}
         
         public PlayerCameraStateManager PlayerCameraStateManagerInstance{get; private set;}
+        [field: SerializeField] public Transform PlayerArt { get; private set; }
+
         [field: Header("Camera and Aim Settings")]
         [field: SerializeField] public CinemachineVirtualCameraBase ThirdPersonCamera { get; private set; }
         [field: SerializeField] public CinemachineVirtualCameraBase AimCamera { get; private set; }

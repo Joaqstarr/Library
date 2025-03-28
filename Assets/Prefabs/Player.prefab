@@ -152,7 +152,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893256370118052104}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.18277657, y: -0.38301027, z: -0.07854701, w: 0.90206784}
+  m_LocalRotation: {x: -0.030313578, y: 0.00000015503478, z: 0.000000061683025, w: 0.9995405}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -464,8 +464,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4314569096102657643}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0011802235, y: 0, z: 0, w: 0.99999934}
-  m_LocalPosition: {x: -0.13123894, y: -4.488832, z: -0.81980324}
+  m_LocalRotation: {x: -0.1564183, y: -0.38529396, z: -0.06644583, w: 0.9070099}
+  m_LocalPosition: {x: -0.13123989, y: -4.488832, z: -0.81980324}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -943,7 +943,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5334083795213922328}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.15534763, y: -0.38521516, z: -0.066900454, w: 0.9071939}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1148,7 +1148,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6184417817863886270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.21418878, y: -0.38003138, z: -0.0918838, w: 0.89512944}
+  m_LocalRotation: {x: -0.06522522, y: 0.00000015387735, z: 0.000000069055936, w: 0.9978706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1421,6 +1421,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e739ec4f399241cd8b3c6b47a87afbbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <PlayerArt>k__BackingField: {fileID: 4291403306858268707}
   <ThirdPersonCamera>k__BackingField: {fileID: 2221384756876207357}
   <AimCamera>k__BackingField: {fileID: 2534822114865394132}
   <AimTransform>k__BackingField: {fileID: 2795777675073812809}
@@ -1512,6 +1513,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   <MaxSteamAmount>k__BackingField: 10
   <SteamRegenRate>k__BackingField: 0
+  _postTransferRegenCooldown: 1
 --- !u!114 &4527392315745387795
 MonoBehaviour:
   m_ObjectHideFlags: 0

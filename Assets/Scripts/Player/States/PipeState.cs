@@ -45,6 +45,9 @@ namespace Player.States
         protected override void OnExitState()
         {
             base.OnExitState();
+
+            _playerStateManager.PlayerArt.forward = _playerStateManager.transform.forward;
+
             _playerStateManager.PlayerCloudAttractionHandlerInstance.AttractionPoint = _playerStateManager.transform.position;
             _pipe.DisablePipeLump();
             _playerStateManager.PlayerCloudAttractionHandlerInstance.DisableFullAttraction();
@@ -101,6 +104,9 @@ namespace Player.States
 
             // Update the player's position
             _playerStateManager.transform.position = newPosition;
+
+            _playerStateManager.PlayerArt.forward =
+                Camera.main.transform.position - _playerStateManager.transform.position;
         }
 
         public override void OnFixedUpdateState()
