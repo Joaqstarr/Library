@@ -57,9 +57,13 @@ namespace Systems.Steam
         
         public float SteamFillPercent{get => SteamAmount / MaxSteamAmount;}
         private List<SteamTransferContext> _activeTransfers = new List<SteamTransferContext>();
+        [SerializeField] private float _postTransferRegenCooldown = 1;
+        private float _regenCooldownTimer = 0;
 
         public void BeginSteamTransferTo(SteamResourceHolder receiver, float amount, float time = 0)
         {
+            _regenCooldownTimer = _postTransferRegenCooldown;
+
             if (time == 0)
             {
                 float giverAmount = SteamAmount;
@@ -103,7 +107,37 @@ namespace Systems.Steam
         
         private void Update()
         {
+
             HandleAllTransfers();
+
+            if (_activeTransfers.Count > 0)
+            {
+                _regenCooldownTimer = _postTransferRegenCooldown;
+            }
+
+            if (_regenCooldownTimer > 0)
+            {
+                _regenCooldownTimer -= Time.deltaTime;
+            }
+            
+            HandleRegeneration();
+        }
+
+        private void HandleRegeneration()
+        {
+            if(_regenCooldownTimer > 0)
+            {
+                return;
+            }
+            
+            if (SteamRegenRate > 0)
+            {
+                AddSteam(SteamRegenRate * Time.deltaTime);
+            }
+            else if (SteamRegenRate < 0)
+            {
+                RemoveSteam(-SteamRegenRate * Time.deltaTime);
+            }
         }
 
         private void HandleAllTransfers()

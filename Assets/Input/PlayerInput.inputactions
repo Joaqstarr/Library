@@ -51,13 +51,22 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Blow",
+                    "name": "Attack",
                     "type": "Value",
                     "id": "88f6ba1e-fdcd-4e44-9675-51b366aa5fb7",
                     "expectedControlType": "Axis",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "ToggleAttackType",
+                    "type": "Button",
+                    "id": "be660e1c-eaf4-4929-838d-235b76ebecd7",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -222,7 +231,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "KBM",
-                    "action": "Blow",
+                    "action": "Attack",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -233,7 +242,29 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
-                    "action": "Blow",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "91fc594b-c388-41a8-81e6-9907dfb2803b",
+                    "path": "<Gamepad>/rightShoulder",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Gamepad",
+                    "action": "ToggleAttackType",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "dbcf591f-d096-4cc2-bded-c5e81c172720",
+                    "path": "<Keyboard>/leftShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KBM",
+                    "action": "ToggleAttackType",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

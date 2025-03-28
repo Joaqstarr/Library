@@ -9,11 +9,12 @@ namespace Player
         public Vector2 LookInput { get; private set; }
         
         public bool AimPressed { get; private set; }
-        public bool BlowPressed { get; private set; }
+        public bool AttackPressed { get; private set; }
         public delegate void InputDelegate();
 
         public InputDelegate OnInteractPressed;
         public InputDelegate OnJumpPressed;
+        public InputDelegate OnTogglePressed;
 
         public void OnMove(InputValue value)
         {
@@ -47,9 +48,17 @@ namespace Player
             AimPressed = value.isPressed;
         }
         
-        public void OnBlow(InputValue value)
+        public void OnAttack(InputValue value)
         {
-            BlowPressed = value.isPressed;
+            AttackPressed = value.isPressed;
+        }
+        
+        public void OnToggleAttackType(InputValue value)
+        {
+            if (value.isPressed)
+            {
+                OnTogglePressed?.Invoke();
+            }
         }
     }
 }
