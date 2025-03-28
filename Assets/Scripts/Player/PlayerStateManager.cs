@@ -1,6 +1,7 @@
 ﻿using System;
 using Cinemachine;
 using Level.Pipe;
+using Player.Attack;
 using Player.States;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -18,6 +19,8 @@ namespace Player
         public PlayerInteractionManager PlayerInteractionManagerInstance{get; private set;}
         
         public PlayerCameraStateManager PlayerCameraStateManagerInstance{get; private set;}
+        public PlayerAttackManager PlayerAttackManagerInstance{get; private set;}
+
         [field: SerializeField] public Transform PlayerArt { get; private set; }
 
         [field: Header("Camera and Aim Settings")]
@@ -33,6 +36,7 @@ namespace Player
         
         private void Awake()
         {
+            PlayerAttackManagerInstance = GetComponent<PlayerAttackManager>();
             PlayerCloudAttractionHandlerInstance = GetComponent<PlayerCloudAttractionHandler>();
             PlayerMovementInstance = GetComponent<PlayerMovement>();
             PlayerControlsInstance = GetComponent<PlayerControls>();

@@ -24,6 +24,7 @@ namespace Player.States.LocomotionStates
             _playerStateManager.PlayerInteractionManagerInstance.enabled = false;
             _playerMovement.enabled = true;
             _playerMovement.RotateCharacterToMovement = false;
+            _playerStateManager.PlayerAttackManagerInstance.enabled = true;
 
         }
 

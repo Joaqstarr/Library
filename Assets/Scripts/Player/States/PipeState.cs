@@ -23,6 +23,7 @@ namespace Player.States
         {
             base.OnEnterState();
             _playerStateManager.PlayerInteractionManagerInstance.enabled = false;
+            _playerStateManager.PlayerAttackManagerInstance.enabled = false;
 
             _playerMovement.enabled = false;
             
@@ -105,8 +106,7 @@ namespace Player.States
             // Update the player's position
             _playerStateManager.transform.position = newPosition;
 
-            _playerStateManager.PlayerArt.forward =
-                Camera.main.transform.position - _playerStateManager.transform.position;
+            _playerStateManager.PlayerArt.forward = _playerStateManager.transform.position - Camera.main.transform.position;
         }
 
         public override void OnFixedUpdateState()

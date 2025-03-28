@@ -20,6 +20,7 @@ namespace Player.States
         {
             base.OnEnterState();
 
+            _playerStateManager.PlayerAttackManagerInstance.enabled = true;
             _playerMovement.enabled = true;
             _playerMovement.RotateCharacterToMovement = true;
             _playerStateManager.PlayerInteractionManagerInstance.enabled = true;
