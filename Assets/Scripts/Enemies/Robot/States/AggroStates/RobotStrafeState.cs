@@ -1,4 +1,5 @@
 ﻿using Player;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,15 +11,26 @@ namespace Enemies.Robot
         private float _strafeSpeed = 2f;
 
 
+        private float _attackTimer = 0;
         public RobotStrafeState(RobotStateManager robot, RobotAggroState aggroState) : base(robot, aggroState)
         {
         }
         protected override void OnEnterState()
         {
+            _attackTimer = 0;
         }
 
         public override void OnUpdateState()
         {
+            if (_attackTimer > 3)
+            {
+                _aggroState.StartStompAttack();
+                return;
+            }
+            else
+            {
+                _attackTimer += Time.deltaTime;
+            }
             if (Vector3.Distance(_robotStateManager.transform.position, _aggroState.Player.transform.position) >
                 Data.StrafeDistance * 1.2f)
             {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Enemies.Robot.Attacks;
+using UnityEngine;
 
 namespace Enemies.Robot
 {
@@ -12,5 +13,10 @@ namespace Enemies.Robot
 
         [field: Header("Aggro")] [field: SerializeField]
         public float StrafeDistance { get; private set; }= 5;
+
+        
+        [field: Header("Stomp Attack")]
+        [field: SerializeField] public StompRing StompRingPrefab { get; private set; }
+
     }
 }

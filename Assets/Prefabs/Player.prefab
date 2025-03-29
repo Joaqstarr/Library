@@ -1405,8 +1405,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _speed: 6
   _turnSmoothTime: 0.1
-  _gravity: -9.8
-  _jumpHeight: 1.5
+  _gravity: -35
+  _jumpHeight: 3
   _jumpInputBuffer: 0.2
   RotateCharacterToMovement: 1
 --- !u!114 &1088623530776141252
@@ -1511,6 +1511,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1456fef465b440578e4f9adba676ea43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  <SteamAmount>k__BackingField: -1
   <MaxSteamAmount>k__BackingField: 10
   <SteamRegenRate>k__BackingField: 0
   _postTransferRegenCooldown: 1

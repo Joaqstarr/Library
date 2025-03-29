@@ -11,13 +11,15 @@ namespace Enemies.Robot
 
         private RobotApproachState _approachState;
         private RobotStrafeState _strafeState;
-        
+        private StompAttackState _stompState;
+
 
         #endregion
         public RobotAggroState(RobotStateManager robot) : base(robot)
         {
             _approachState = new RobotApproachState(robot, this);
             _strafeState = new RobotStrafeState(robot, this);
+            _stompState = new StompAttackState(robot, this);
         }
         
         public void SetPlayerTarget(PlayerStateManager player)
@@ -47,7 +49,11 @@ namespace Enemies.Robot
         {
             SwitchState(_strafeState);
         }
-        
+
+        public void StartStompAttack()
+        {
+            SwitchState(_stompState);
+        }
     }
 
 }
