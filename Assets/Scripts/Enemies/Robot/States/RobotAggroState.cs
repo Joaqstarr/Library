@@ -32,6 +32,13 @@ namespace Enemies.Robot
 
         }
 
+        public override void OnUpdateState()
+        {
+            base.OnUpdateState();
+
+            CheckIfFuelEmpty();
+        }
+
         public void SwitchToApproachState()
         {
             SwitchState(_approachState);

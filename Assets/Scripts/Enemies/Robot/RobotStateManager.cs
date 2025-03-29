@@ -1,4 +1,5 @@
 ﻿using Player;
+using Systems.Steam;
 using UnityEngine;
 using UnityEngine.AI;
 using Utility.StateMachine;
@@ -10,25 +11,27 @@ namespace Enemies.Robot
 
         [field: SerializeField] public RobotData Data { get; private set; }
         public NavMeshAgent Agent { get; private set; }
-        
+        public SteamResourceHolder SteamTank { get; private set; }
+
         
         #region States
         private HierarchalStateMachine _stateMachine;
 
         private RobotBaseState _idleState;
         private RobotAggroState _aggroState;
+        private RobotNoFuelState _noFuelState;
 
         #endregion
         
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
-            
+            SteamTank = GetComponentInChildren<SteamResourceHolder>();
             // Initialize with a default state
             _stateMachine = new HierarchalStateMachine();
             _idleState = new RobotIdleState(this);
             _aggroState = new RobotAggroState(this);
-            
+            _noFuelState = new RobotNoFuelState(this);
             SwitchToIdleState();
         }
 
@@ -57,5 +60,12 @@ namespace Enemies.Robot
             _aggroState.SetPlayerTarget(player);
             SwitchState(_aggroState);
         }
+
+        public void SwitchToNoFuelState()
+        {
+            SwitchState(_noFuelState);
+        }
+        
+
     }
 }

@@ -17,5 +17,12 @@ namespace Enemies.Robot
             Data = robotStateManager.Data;
         }
         
+        protected void CheckIfFuelEmpty()
+        {
+            if (_robotStateManager.SteamTank.SteamFillPercent <= 0)
+            {
+                _robotStateManager.SwitchToNoFuelState();
+            }
+        }
     }
 }

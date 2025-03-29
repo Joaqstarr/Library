@@ -23,9 +23,13 @@ namespace Enemies.Robot
 
         public override void OnUpdateState()
         {
+            CheckIfFuelEmpty();
+            
             CheckIfReachedDestination();
             SearchForPlayer();
         }
+
+
 
         protected override void OnExitState()
         {

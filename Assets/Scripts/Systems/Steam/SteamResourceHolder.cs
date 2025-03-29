@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
@@ -51,7 +52,8 @@ namespace Systems.Steam
             
         }
 
-        public float SteamAmount { get; private set; } = 10;
+        //if less than 0, defaults to max
+        [field: SerializeField] public float SteamAmount { get; private set; } = -1;
         [field: SerializeField] public float MaxSteamAmount { get; private set; } = 10;
         [field: SerializeField] public float SteamRegenRate { get; private set; } = 0;
         
@@ -59,6 +61,14 @@ namespace Systems.Steam
         private List<SteamTransferContext> _activeTransfers = new List<SteamTransferContext>();
         [SerializeField] private float _postTransferRegenCooldown = 1;
         private float _regenCooldownTimer = 0;
+
+        private void Awake()
+        {
+            if (SteamAmount < 1)
+            {
+                SteamAmount = MaxSteamAmount;
+            }
+        }
 
         public void BeginSteamTransferTo(SteamResourceHolder receiver, float amount, float time = 0)
         {
