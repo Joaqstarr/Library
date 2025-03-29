@@ -30,7 +30,10 @@ namespace Player.Attack
 
             foreach (var holder in _attackHitbox.SteamHoldersInRange)
             {
-                holder.BeginSteamTransferTo(_playerSteamResource, Time.deltaTime * _resourceTransferRate/count);
+                if (holder && holder != _playerSteamResource)
+                {
+                    holder.BeginSteamTransferTo(_playerSteamResource, Time.deltaTime * _resourceTransferRate/count, 0 , true);
+                }
             }
         }
         
@@ -40,7 +43,11 @@ namespace Player.Attack
             
             foreach (var holder in _attackHitbox.SteamHoldersInRange)
             {
-                holder.BeginSteamTransferFrom(_playerSteamResource, Time.deltaTime * _resourceTransferRate/count);
+                if (holder && holder != _playerSteamResource)
+                {
+                    holder.BeginSteamTransferFrom(_playerSteamResource, Time.deltaTime * _resourceTransferRate / count,
+                        0, true);
+                }
             }
         }
 

@@ -8,6 +8,12 @@ namespace Systems.Steam
 {
     public class SteamResourceHolder : MonoBehaviour
     {
+        public delegate void SteamResourceDelegate(float amount,bool visuals, SteamResourceHolder holder);
+
+        public SteamResourceDelegate OnInstantTransferToBegin;
+        public SteamResourceDelegate OnInstantTransferFromBegin;
+            
+        
         private class SteamTransferContext
         {
             private SteamResourceHolder _giver;
@@ -70,7 +76,7 @@ namespace Systems.Steam
             }
         }
 
-        public void BeginSteamTransferTo(SteamResourceHolder receiver, float amount, float time = 0)
+        public void BeginSteamTransferTo(SteamResourceHolder receiver, float amount, float time = 0, bool visuals = false)
         {
             _regenCooldownTimer = _postTransferRegenCooldown;
 
@@ -85,6 +91,9 @@ namespace Systems.Steam
                 
                 RemoveSteam(amount);
                 receiver.AddSteam(amount);
+                
+                OnInstantTransferToBegin?.Invoke(amount, visuals, receiver);
+                receiver.OnInstantTransferFromBegin?.Invoke(amount, visuals, this);
                 return;
             }
 
@@ -92,9 +101,9 @@ namespace Systems.Steam
             AddTransfer(newTransfer);
         }
 
-        public void BeginSteamTransferFrom(SteamResourceHolder giver, float amount, float time = 0)
+        public void BeginSteamTransferFrom(SteamResourceHolder giver, float amount, float time = 0, bool visuals = false)
         {
-            giver.BeginSteamTransferTo(this, amount, time);
+            giver.BeginSteamTransferTo(this, amount, time, visuals);
         }
 
         private void RemoveSteam(float amount)
