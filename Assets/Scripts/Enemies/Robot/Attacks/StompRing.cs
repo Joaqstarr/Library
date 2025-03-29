@@ -23,7 +23,6 @@ namespace Enemies.Robot.Attacks
 
         private void Awake()
         {
-            _startingParent = transform.parent;
         }
 
         public void StartStompRing(Vector3 position)
@@ -31,6 +30,11 @@ namespace Enemies.Robot.Attacks
             
             transform.position = position;
             transform.localScale = _startSize;//new Vector3(0.01f, 1f, 0.01f);
+            
+            if(_startingParent == null)
+                _startingParent = transform.parent;
+
+            transform.parent = null;
             gameObject.SetActive(true);
             
             
@@ -38,7 +42,6 @@ namespace Enemies.Robot.Attacks
 
         private void OnEnable()
         {
-            transform.parent = null;
             
             _dealingDamage = true;
             transform.localScale = _startSize; //new Vector3(0.01f, 1f, 0.01f);
@@ -49,15 +52,19 @@ namespace Enemies.Robot.Attacks
                 fizzleSize.y = 0.01f;
                 transform.DOScale(fizzleSize, 0.5f).onComplete += () =>
                 {
-                    gameObject.SetActive(false);
+                    DisableRing();
                 };
             };
         }
 
+        private void DisableRing()
+        {
+            transform.parent = _startingParent;
+            gameObject.SetActive(false);
+        }
         private void OnDisable()
         {
             transform.localScale = new Vector3(0.01f, 1f, 0.01f);
-            transform.parent = _startingParent;
         }
 
         private void OnTriggerEnter(Collider other)
