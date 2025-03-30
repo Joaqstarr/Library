@@ -9,14 +9,17 @@ namespace Enemies.Robot
         
         public StompAttackState(RobotStateManager robotStateManager, RobotAggroState aggroState) : base(robotStateManager, aggroState)
         {
-            _stompRing = GameObject.Instantiate(Data.StompRingPrefab, _robotStateManager.transform);
-            _stompRing.gameObject.SetActive(false);
+
         }
 
         protected override void OnEnterState()
         {
             base.OnEnterState();
-            
+            if (_stompRing == null)
+            {
+                _stompRing = GameObject.Instantiate(Data.StompRingPrefab, _robotStateManager.transform);
+                _stompRing.gameObject.SetActive(false);
+            }
             Agent.isStopped = true;
             
             //play stomp animation
