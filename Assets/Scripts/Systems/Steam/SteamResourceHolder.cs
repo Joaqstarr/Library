@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Systems.Steam
 {
@@ -12,7 +13,9 @@ namespace Systems.Steam
 
         public SteamResourceDelegate OnInstantTransferToBegin;
         public SteamResourceDelegate OnInstantTransferFromBegin;
-            
+        
+        [SerializeField]
+        private UnityEvent OnSteamFull;
         
         private class SteamTransferContext
         {
@@ -70,7 +73,7 @@ namespace Systems.Steam
 
         private void Awake()
         {
-            if (SteamAmount < 1)
+            if (SteamAmount < 0)
             {
                 SteamAmount = MaxSteamAmount;
             }
@@ -117,10 +120,19 @@ namespace Systems.Steam
 
         private void AddSteam(float amount)
         {
+            float oldSteam = SteamAmount;
             SteamAmount += amount;
+            
+            
+            
             if (SteamAmount > MaxSteamAmount)
             {
                 SteamAmount = MaxSteamAmount;
+            }
+
+            if (Mathf.Approximately(SteamAmount, MaxSteamAmount) && oldSteam < MaxSteamAmount)
+            {
+                OnSteamFull?.Invoke();
             }
         }
         
