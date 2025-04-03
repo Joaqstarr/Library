@@ -41,7 +41,6 @@ namespace Player.States.LocomotionStates
         public override void OnUpdateState()
         {
             base.OnUpdateState();
-
             
             if ((!_playerControls.AimPressed && !_playerControls.AttackPressed) || !_playerMovement.IsGrounded())
             {
@@ -49,7 +48,6 @@ namespace Player.States.LocomotionStates
             }
 
             HandleRotation();
-
         }
 
         private void HandleRotation()
