@@ -1,5 +1,7 @@
 ﻿using System;
+using DG.Tweening;
 using Level.MovingPlatform;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Player
@@ -16,6 +18,9 @@ namespace Player
         private float _verticalVelocity;
 
         [SerializeField] private LayerMask _groundLayers;
+
+        [SerializeField] private Transform _art;
+        
         private bool _isGrounded
         {
             get
@@ -52,36 +57,10 @@ namespace Player
             {
                 _verticalVelocity = -2f; // Small negative value to keep the player grounded
             }
-
-            Vector2 moveInput = _playerControls.MoveInput;
-            Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
-
-            if (direction.magnitude >= 0.1f)
-            {
-                if (RotateCharacterToMovement)
-                {
-                    // Calculate the direction relative to the camera
-                    float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
-                                        _cameraTransform.eulerAngles.y;
-                    float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref _turnSmoothVelocity,
-                        _turnSmoothTime);
-                    transform.rotation = Quaternion.Euler(0f, angle, 0f);
-                    
-                    Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                    _characterController.Move(moveDirection * _speed * Time.deltaTime);
-                }
-                else
-                {
-                    Vector3 forwardMovement = transform.forward * _speed * moveInput.y;
-                    Vector3 rightMovement = transform.right * _speed * moveInput.x;
-
-                    Vector3 moveVector = forwardMovement + rightMovement;
-                    _characterController.Move(moveVector * Time.deltaTime);
-                }
-
-
-            }
             
+            
+            HandleMovementAndRotation();
+
 
             // Handle jumping
             if (_isGrounded && _jumpBufferTimer > 0)
@@ -97,15 +76,64 @@ namespace Player
             _jumpBufferTimer -= Time.deltaTime;
         }
 
+        private void HandleMovementAndRotation()
+        {
+            if(!_isLaunching){
+
+                Vector2 moveInput = _playerControls.MoveInput;
+                Vector3 direction = new Vector3(moveInput.x, 0f, moveInput.y).normalized;
+
+                if (direction.magnitude >= 0.1f)
+                {
+                    if (RotateCharacterToMovement)
+                    {
+                        // Calculate the direction relative to the camera
+                        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg +
+                                            _cameraTransform.eulerAngles.y;
+                        float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle,
+                            ref _turnSmoothVelocity,
+                            _turnSmoothTime);
+                        transform.rotation = Quaternion.Euler(0f, angle, 0f);
+
+                        Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+                        _characterController.Move(moveDirection * _speed * Time.deltaTime);
+                    }
+                    else
+                    {
+                        Vector3 forwardMovement = transform.forward * _speed * moveInput.y;
+                        Vector3 rightMovement = transform.right * _speed * moveInput.x;
+
+                        Vector3 moveVector = forwardMovement + rightMovement;
+                        _characterController.Move(moveVector * Time.deltaTime);
+                    }
+
+
+                }
+            }
+        }
+
         private void CheckIfLaunchEnded()
         {
-            if(_isLaunching && !_launchStarted && _rigidbody.velocity.magnitude > 3)
+
+            if (!_isLaunching) return;
+            
+            if(_rigidbody.velocity.magnitude != 0)
+                _art.transform.forward = _rigidbody.velocity;
+            
+            if(!_launchStarted && _rigidbody.velocity.magnitude > 3)
             {
                 _launchStarted = true;
             }
 
-            if (_isLaunching && _launchStarted && _rigidbody.velocity.magnitude < 3)
+            if (_launchStarted && _rigidbody.velocity.magnitude < 3)
             {
+
+                Vector3 right = _art.right;
+                Vector3 newForward = Vector3.Cross(right, Vector3.up);
+
+                transform.forward = newForward;
+                _art.localEulerAngles = Vector3.zero;
+                
                 _isLaunching = false;
                 _characterController.enabled = true;
                 _rigidbody.isKinematic = true;
