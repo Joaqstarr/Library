@@ -37,8 +37,14 @@ namespace Player
 
         [SerializeField]
         private float _lerpSpeed = 5;
+        
+        private Interactable _closestInteractable;
         private void Update()
         {
+            
+            SetCloudAttractionPoint();
+            
+            
             _state = AttractionStates.None;
             if (_attracting)
             {
@@ -70,6 +76,14 @@ namespace Player
             AttractionFilter = Mathf.Lerp(AttractionFilter, _targetFilter, Time.deltaTime * _lerpSpeed);
         }
 
+        private void SetCloudAttractionPoint()
+        {
+            if (_closestInteractable && _closestInteractable.IsCloudAttractor)
+            {
+                SetAttractionPoint(_closestInteractable.GetCloudAttractorPoint());
+            }
+        }
+
         private void Awake()
         {
             
@@ -91,6 +105,8 @@ namespace Player
         
         private void PlayerInteractionManagerOnOnClosestInteractableChanged(Interactable obj)
         {
+
+            _closestInteractable = obj;
             if (!obj)
             {
                 DisableLowAttraction();
