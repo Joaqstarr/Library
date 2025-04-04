@@ -15,7 +15,7 @@ namespace Level.Pipe
             _pipe = GetComponentInParent<Pipe>();
         }
 
-        public override void OnInteracted(PlayerStateManager player)
+        protected override void InteractionTriggered(PlayerStateManager player)
         {
             base.OnInteracted(player);
             

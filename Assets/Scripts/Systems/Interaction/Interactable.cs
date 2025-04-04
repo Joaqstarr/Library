@@ -11,6 +11,8 @@ namespace Systems.Interaction
     {
         [field: SerializeField] public bool IsInteractable { get; protected set; } = true;
 
+        [SerializeField] private float _debounceTime = 0.5f;
+        private float _debounceTimer;
         [field: SerializeField]
         public bool IsCloudAttractor { get; protected set; } = true;
 
@@ -29,9 +31,23 @@ namespace Systems.Interaction
             Gizmos.DrawWireSphere(GetCloudAttractorPoint(), 0.1f);
         }
 
-        public virtual void OnInteracted(PlayerStateManager player)
+        public void OnInteracted(PlayerStateManager player)
+        {
+            if(_debounceTimer > 0)return;
+            _debounceTimer = _debounceTime;
+
+            InteractionTriggered(player);
+
+        }
+
+        protected virtual void InteractionTriggered(PlayerStateManager player)
         {
             OnInteractedEvent?.Invoke();
+        }
+
+        private void Update()
+        {
+            _debounceTimer -= Time.deltaTime;
         }
     }
 }

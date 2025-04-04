@@ -19,7 +19,7 @@ namespace Level.Launchpad
         }
         
 
-        public override void OnInteracted(PlayerStateManager player)
+        protected override void InteractionTriggered(PlayerStateManager player)
         {
             base.OnInteracted(player);
             
