@@ -1,4 +1,5 @@
 ﻿using System;
+using Level.MovingPlatform;
 using UnityEngine;
 
 namespace Player
@@ -13,7 +14,15 @@ namespace Player
         [SerializeField] private float _jumpInputBuffer = 0.2f;
         private float _turnSmoothVelocity;
         private float _verticalVelocity;
-        private bool _isGrounded;
+
+        [SerializeField] private LayerMask _groundLayers;
+        private bool _isGrounded
+        {
+            get
+            {
+                return _characterController.isGrounded || Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, 1.1f, _groundLayers);
+            }
+        }
 
         private CharacterController _characterController;
         private Rigidbody _rigidbody;
@@ -38,7 +47,6 @@ namespace Player
         private void Update()
         {
             CheckIfLaunchEnded();
-            _isGrounded = _characterController.isGrounded;
 
             if (_isGrounded && _verticalVelocity < 0)
             {
@@ -138,6 +146,7 @@ namespace Player
             _characterController.transform.position = position;
             _characterController.enabled = true;
         }
+
 
     }
 }
