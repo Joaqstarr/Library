@@ -16,14 +16,20 @@ namespace Player
         private bool _isGrounded;
 
         private CharacterController _characterController;
+        private Rigidbody _rigidbody;
         private PlayerControls _playerControls;
         private Transform _cameraTransform;
 
         private float _jumpBufferTimer = 0;
 
         public bool RotateCharacterToMovement = true;
+
+        private bool _isLaunching = false;
+        private bool _launchStarted = false;
+        
         private void Awake()
         {
+            _rigidbody = GetComponent<Rigidbody>();
             _characterController = GetComponent<CharacterController>();
             _playerControls = GetComponent<PlayerControls>();
             _cameraTransform = Camera.main.transform;
@@ -31,6 +37,7 @@ namespace Player
 
         private void Update()
         {
+            CheckIfLaunchEnded();
             _isGrounded = _characterController.isGrounded;
 
             if (_isGrounded && _verticalVelocity < 0)
@@ -82,6 +89,21 @@ namespace Player
             _jumpBufferTimer -= Time.deltaTime;
         }
 
+        private void CheckIfLaunchEnded()
+        {
+            if(_isLaunching && !_launchStarted && _rigidbody.velocity.magnitude > 3)
+            {
+                _launchStarted = true;
+            }
+
+            if (_isLaunching && _launchStarted && _rigidbody.velocity.magnitude < 3)
+            {
+                _isLaunching = false;
+                _characterController.enabled = true;
+                _rigidbody.isKinematic = true;
+            }
+        }
+
 
         private void OnEnable()
         {
@@ -100,5 +122,22 @@ namespace Player
         {
             return _isGrounded;
         }
+
+        public void LaunchCharacter(Vector3 launchVector)
+        {
+            _characterController.enabled = false;
+            _launchStarted = false;
+            _rigidbody.isKinematic = false;
+            _isLaunching = true;
+            _rigidbody.AddForce(launchVector, ForceMode.Impulse);
+        }
+
+        public void Teleport(Vector3 position)
+        {
+            _characterController.enabled = false;
+            _characterController.transform.position = position;
+            _characterController.enabled = true;
+        }
+
     }
 }
