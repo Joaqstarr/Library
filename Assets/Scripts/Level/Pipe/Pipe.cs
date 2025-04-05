@@ -33,8 +33,17 @@ namespace Level.Pipe
             float3 tan;
             float3 up;
             PipeSpline.Evaluate(interp, out pos, out tan, out up);
+            
+            float dif = (interp > 0.5f) ? -0.4f : 0.4f;
+            float result;
+            PipeSpline.GetPointAtLinearDistance(interp, dif, out result);
+            
+            float3 prePos = PipeSpline.EvaluatePosition(result);
+
+            Vector3 dir = ((Vector3)pos - (Vector3)prePos).normalized;
+
             entrance.transform.localPosition = pos;
-            entrance.transform.forward = tan;
+            entrance.transform.forward = transform.TransformDirection(dir);
             entrance.SetPipeInteractablePos(interp);
         }
 
