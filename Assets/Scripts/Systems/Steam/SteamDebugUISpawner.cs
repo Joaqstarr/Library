@@ -7,7 +7,12 @@ namespace Systems.Steam
     {
         [SerializeField] private SteamDebugUI _uiPrefab;
         [SerializeField] private float _verticalOffset = 3;
-        private void Awake()
+        private void Start()
+        {
+            Invoke(nameof(SpawnDebugUI), 0.1f);
+        }
+
+        private void SpawnDebugUI()
         {
             foreach (SteamResourceHolder o in FindObjectsByType<SteamResourceHolder>(FindObjectsInactive.Exclude,
                          FindObjectsSortMode.None))

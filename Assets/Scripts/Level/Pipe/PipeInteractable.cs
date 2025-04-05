@@ -17,7 +17,7 @@ namespace Level.Pipe
 
         protected override void InteractionTriggered(PlayerStateManager player)
         {
-            base.OnInteracted(player);
+            base.InteractionTriggered(player);
             
             _pipe.OnInteracted(player, _pipeInteractablePos);
         }

@@ -21,7 +21,7 @@ namespace Level.Launchpad
 
         protected override void InteractionTriggered(PlayerStateManager player)
         {
-            base.OnInteracted(player);
+            base.InteractionTriggered(player);
             
             LaunchPlayer(player);
         }

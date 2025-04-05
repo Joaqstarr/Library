@@ -14,6 +14,8 @@ namespace Player
         [SerializeField] private float _gravity = -9.8f;
         [SerializeField] private float _jumpHeight = 1.5f;
         [SerializeField] private float _jumpInputBuffer = 0.2f;
+        [SerializeField] private float _coyoteTime = 0.5f;
+        private float _coyoteTimer = 0;
         private float _turnSmoothVelocity;
         private float _verticalVelocity;
 
@@ -60,10 +62,15 @@ namespace Player
             
             
             HandleMovementAndRotation();
-
-
+    
+            if(_isGrounded)
+                _coyoteTimer = _coyoteTime;
+            else
+                _coyoteTimer -= Time.deltaTime;
+            
+            
             // Handle jumping
-            if (_isGrounded && _jumpBufferTimer > 0)
+            if (_coyoteTimer > 0 && _jumpBufferTimer > 0)
             {
                 _jumpBufferTimer = 0;
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);

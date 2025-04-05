@@ -16,7 +16,8 @@ namespace Systems.Steam
         
         [SerializeField]
         private UnityEvent OnSteamFull;
-        
+        [SerializeField]
+        private UnityEvent OnSteamEmpty;
         private class SteamTransferContext
         {
             private SteamResourceHolder _giver;
@@ -111,10 +112,17 @@ namespace Systems.Steam
 
         private void RemoveSteam(float amount)
         {
+            float oldSteam = SteamAmount;
+
             SteamAmount -= amount;
             if (SteamAmount < 0)
             {
                 SteamAmount = 0;
+            }
+            
+            if (Mathf.Approximately(SteamAmount, 0) && oldSteam > 0)
+            {
+                OnSteamEmpty?.Invoke();
             }
         }
 
