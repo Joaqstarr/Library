@@ -73,6 +73,7 @@ namespace Player.States
             // Get the player's directional input
             Vector2 input = _playerStateManager.PlayerControlsInstance.MoveInput;
 
+
             // Get the camera's forward vector
             Vector3 cameraForward = Camera.main.transform.forward;
             cameraForward.y = 0; // Ignore the vertical component
@@ -85,7 +86,14 @@ namespace Player.States
 
             // Calculate the dot product to determine the movement direction
             float direction = Vector3.Dot(cameraForward, tangent) * input.y + Vector3.Dot(cameraForward, Vector3.Cross(Vector3.up, tangent)) * -input.x;
-        
+
+            if (direction < 0)
+            {
+                direction = -1;
+            }else if (direction > 0)
+            {
+                direction = 1;
+            }
             // Calculate the distance to move based on speed, time, and input direction
             float distance = _speed * Time.deltaTime * direction;
 
