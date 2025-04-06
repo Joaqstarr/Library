@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using Cinemachine;
 using DG.Tweening;
 using Level.MovingPlatform;
 using Player.Animation;
@@ -24,12 +26,14 @@ namespace Player
         [SerializeField] private LayerMask _groundLayers;
 
         [SerializeField] private Transform _art;
-        
+
+        private CinemachineStateDrivenCamera _cinemachineStateDrivenCamera;
         private bool _isGrounded
         {
             get
             {
-                return _characterController.isGrounded || Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, 1.1f, _groundLayers);
+                RaycastHit hit;
+                return _characterController.isGrounded || GroundedRaycast(out hit);
             }
         }
 
@@ -49,6 +53,8 @@ namespace Player
         
         private void Awake()
         {
+
+            _cinemachineStateDrivenCamera = GetComponentInChildren<CinemachineStateDrivenCamera>();
             _animationManager = GetComponent<PlayerAnimationManager>();
             _rigidbody = GetComponent<Rigidbody>();
             _characterController = GetComponent<CharacterController>();
@@ -211,10 +217,26 @@ namespace Player
         public void Teleport(Vector3 position)
         {
             _characterController.enabled = false;
+
+
             _characterController.transform.position = position;
             _characterController.enabled = true;
+
+            _cinemachineStateDrivenCamera.enabled = true;
+        }
+        
+        
+        public void ResetVelocity()
+        {
+            _verticalVelocity = 0;
+            _rigidbody.velocity = Vector3.zero;
+
+            _characterController.SimpleMove(Vector3.zero);
         }
 
-
+        public bool GroundedRaycast(out RaycastHit hit)
+        {
+            return Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 1.1f, _groundLayers);
+        }
     }
 }
