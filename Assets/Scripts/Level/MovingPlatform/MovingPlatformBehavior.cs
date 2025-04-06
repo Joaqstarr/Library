@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Level.MovingPlatform
 {
+    [RequireComponent(typeof(MovingPlatformVelocityTransfer))]
     public class MovingPlatformBehavior : MonoBehaviour
     {
         public Vector3[] localWaypoints;
@@ -19,18 +20,13 @@ namespace Level.MovingPlatform
         private Vector3 CurrentTarget => transform.parent.TransformPoint(localWaypoints[targetIndex]);
 
         
-        private Vector3 _previousPosition;
 
         [SerializeField]
         private bool _playOnStart = true;
-        public Vector3 CurrentDelta { get; private set; }
 
         private bool _isPlaying = false;
         private void Start()
         {
-            _previousPosition = transform.position;
-
-
             _isPlaying = _playOnStart;
         }
 
@@ -41,8 +37,7 @@ namespace Level.MovingPlatform
 
             Vector3 target = CurrentTarget;
             
-            CurrentDelta = transform.position - _previousPosition;
-            _previousPosition = transform.position;
+
             
             transform.position = Vector3.MoveTowards(transform.position, target, speed * Time.deltaTime);
             
