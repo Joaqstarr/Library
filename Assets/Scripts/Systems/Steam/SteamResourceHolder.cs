@@ -195,5 +195,10 @@ namespace Systems.Steam
         {
             _activeTransfers.Add(context);
         }
+
+        public void SetSteamAmount(float amount)
+        {
+            SteamAmount = amount;
+        }
     }
 }

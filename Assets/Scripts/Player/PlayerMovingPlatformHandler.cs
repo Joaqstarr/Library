@@ -6,7 +6,7 @@ namespace Player
     public class PlayerMovingPlatformHandler : MonoBehaviour
     {
         private CharacterController _characterController;
-        private MovingPlatformBehavior _currentPlatform;
+        private MovingPlatformVelocityTransfer _currentPlatform;
         private float _platformTimer = 0f;
 
         [Tooltip("How long to stay attached to the platform after contact is lost.")]
@@ -39,7 +39,7 @@ namespace Player
         {
             if (hit.gameObject.CompareTag("MovingPlatform"))
             {
-                _currentPlatform = hit.gameObject.GetComponent<MovingPlatformBehavior>();
+                _currentPlatform = hit.gameObject.GetComponent<MovingPlatformVelocityTransfer>();
                 _platformTimer = graceTime;
             }
         }
