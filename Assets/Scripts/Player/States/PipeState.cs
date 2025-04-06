@@ -89,12 +89,6 @@ namespace Player.States
 
             float direction = Vector3.Dot(cameraForward, transformedTangent) * input.y + Vector3.Dot(cameraForward, Vector3.Cross(Vector3.up, tangent)) * -input.x;
 
-            Debug.DrawRay(_playerStateManager.transform.position, cameraForward * 4f, Color.red);
-
-            Debug.DrawRay(_playerStateManager.transform.position,  transformedTangent * 4f, Color.green);
-            Debug.DrawRay(_playerStateManager.transform.position,  tangent * 2, Color.blue);
-
-
             if (direction < 0)
             {
                 direction = -1;
