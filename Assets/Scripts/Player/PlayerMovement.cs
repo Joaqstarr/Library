@@ -49,7 +49,7 @@ namespace Player
         private bool _isLaunching = false;
         private bool _launchStarted = false;
         
-        
+        private float _postJumpTimer = 0;
         
         private void Awake()
         {
@@ -102,17 +102,22 @@ namespace Player
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
                 
                 _animationManager.SetJumpTrigger();
+                _postJumpTimer = 0.2f;
             }
             
+            _postJumpTimer -= Time.deltaTime;
             _jumpBufferTimer -= Time.deltaTime;
         }
 
         private void HandleCoyoteTime()
         {
-            if(_isGrounded)
+            if(_isGrounded )
                 _coyoteTimer = _coyoteTime;
             else
                 _coyoteTimer -= Time.deltaTime;
+            
+            if(_postJumpTimer > 0)
+                _coyoteTimer = 0;
         }
 
         private void HandleMovementAndRotation()
@@ -236,7 +241,7 @@ namespace Player
 
         public bool GroundedRaycast(out RaycastHit hit)
         {
-            return Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 1.1f, _groundLayers);
+            return Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 0.6f, _groundLayers);
         }
     }
 }
