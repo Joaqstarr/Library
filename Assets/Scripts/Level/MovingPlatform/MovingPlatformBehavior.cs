@@ -25,6 +25,12 @@ namespace Level.MovingPlatform
         private bool _playOnStart = true;
 
         private bool _isPlaying = false;
+        
+        
+        [SerializeField]
+        private bool _shouldLoop = true;
+
+        private bool _hasStarted = false;
         private void Start()
         {
             _isPlaying = _playOnStart;
@@ -44,6 +50,15 @@ namespace Level.MovingPlatform
 
             if (Vector3.Distance(transform.position, target) < 0.1f)
             {
+                if(targetIndex == 0 || targetIndex == localWaypoints.Length - 1)
+                {
+                    if (!_shouldLoop && _hasStarted)
+                    {
+                        _isPlaying = false;
+                        return;
+                    }
+                }
+                
                 if (forward)
                 {
                     targetIndex++;
@@ -62,12 +77,15 @@ namespace Level.MovingPlatform
                         forward = true;
                     }
                 }
+
+                _hasStarted = true;
             }
         }
 
         public void StartMovement()
         {
             _isPlaying = true;
+            _hasStarted = false;
         }
         
         public void StopMovement()
