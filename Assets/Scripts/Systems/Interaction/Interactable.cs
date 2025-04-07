@@ -20,6 +20,8 @@ namespace Systems.Interaction
 
         [SerializeField]
         protected UnityEvent OnInteractedEvent;
+        [SerializeField]
+        public string InteractableName = "Interactable";
         public Vector3 GetCloudAttractorPoint()
         {
             return transform.TransformPoint(_cloudAttractionPoint);

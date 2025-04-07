@@ -31,7 +31,7 @@ namespace UI
                 _text.text = "";
                 return;
             }
-            _text.text = "Interact with " + obj.gameObject.name;
+            _text.text = "Interact with " + obj.InteractableName;
         }
     }
 }
