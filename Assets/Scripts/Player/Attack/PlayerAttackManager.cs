@@ -45,7 +45,7 @@ namespace Player.Attack
             {
                 if (holder && holder != _playerSteamResource)
                 {
-                    holder.BeginSteamTransferFrom(_playerSteamResource, Time.deltaTime * _resourceTransferRate / count,
+                    holder.BeginSteamTransferFrom(_playerSteamResource, Time.deltaTime * (_resourceTransferRate / count),
                         0, true);
                 }
             }
@@ -53,6 +53,7 @@ namespace Player.Attack
 
         private void Update()
         {
+            Debug.Log(_attackHitbox.SteamHoldersInRange.Count);
             if(_playerControls.AttackPressed)
             {
                 switch (AttackState)
