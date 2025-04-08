@@ -38897,19 +38897,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.5904938
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 1.7462297e-10
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: -0.8070422
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 2.3283062e-10
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -38917,7 +38917,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -107.616
       objectReference: {fileID: 0}
     - target: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -38930,6 +38930,10 @@ PrefabInstance:
     - target: {fileID: 4324650503542080154, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+      propertyPath: <SteamAmount>k__BackingField
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.size
@@ -38965,11 +38969,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StopMovement
+      value: StartMovement
       objectReference: {fileID: 0}
     - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: OnSteamEmpty.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartMovement
+      value: StopMovement
       objectReference: {fileID: 0}
     - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
