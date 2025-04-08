@@ -8795,7 +8795,7 @@ MonoBehaviour:
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
-    textureOffset: {x: -2.2346215, y: -0, z: -2.2346215}
+    textureOffset: {x: -51.09816, y: -0, z: -51.09816}
     falloffMode: 0
     maskMode: 0
     materialMask: {fileID: 0}
@@ -10336,7 +10336,7 @@ MonoBehaviour:
     invertFade: 0
     distanceFadeStart: 10000
     distanceFadeEnd: 10000
-    textureOffset: {x: -2.2346215, y: -0, z: -2.2346215}
+    textureOffset: {x: -51.09816, y: -0, z: -51.09816}
     falloffMode: 0
     maskMode: 0
     materialMask: {fileID: 0}
@@ -10841,7 +10841,7 @@ Transform:
   m_GameObject: {fileID: 1530016941}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.79, y: 28.36, z: -32.94}
+  m_LocalPosition: {x: -10.52, y: 31.63, z: -32.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -11838,6 +11838,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 413598333}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1896259754
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1896259755}
+  m_Layer: 0
+  m_Name: WinArea
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1896259755
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1896259754}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1956090489
@@ -18472,3 +18503,4 @@ SceneRoots:
   - {fileID: 679670664}
   - {fileID: 709674706}
   - {fileID: 150505221}
+  - {fileID: 1896259755}
