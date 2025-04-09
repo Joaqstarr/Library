@@ -18,7 +18,7 @@ public class OptionsPause : MonoBehaviour
 
     // Button that's hidden if on the main menu.
     public GameObject mainMenuButton;
-    
+
 
     private void Start()
     {

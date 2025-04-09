@@ -16,6 +16,7 @@ namespace Player
         public InputDelegate OnJumpPressed;
         public InputDelegate OnTogglePressed;
 
+        static public float LookSensitivity = 1;
         public void OnMove(InputValue value)
         {
             MoveInput = value.Get<Vector2>();
@@ -23,7 +24,7 @@ namespace Player
 
         public void OnLook(InputValue value)
         {
-            LookInput = value.Get<Vector2>();
+            LookInput = value.Get<Vector2>() * LookSensitivity;
         }
 
 
