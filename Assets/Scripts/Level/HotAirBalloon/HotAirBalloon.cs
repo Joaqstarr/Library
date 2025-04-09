@@ -1,6 +1,7 @@
 ﻿using System;
 using Systems.Steam;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Level.HotAirBalloon
 {
@@ -18,8 +19,11 @@ namespace Level.HotAirBalloon
 
         
         private float _targHeight = 0;
+
+        private VisualEffect _flame;
         private void Awake()
         {
+            _flame = GetComponentInChildren<VisualEffect>();
             _resourceHolder = GetComponentInChildren<SteamResourceHolder>();
             
             _minWorldHeight = transform.position.y + _minHeightLocal;
@@ -37,6 +41,7 @@ namespace Level.HotAirBalloon
         {
             _targHeight = _resourceHolder.SteamFillPercent;
 
+            _flame.SetFloat("flameDistance", Mathf.Lerp(0, -1.29f, _targHeight));
 
             Vector3 targPos = transform.position;
             targPos.y = Mathf.Lerp(_minWorldHeight, _maxWorldHeight, _targHeight);
