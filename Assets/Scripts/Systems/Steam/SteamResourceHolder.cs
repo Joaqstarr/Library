@@ -93,11 +93,12 @@ namespace Systems.Steam
                     amount = giverAmount;
                 }
                 
-                RemoveSteam(amount);
-                receiver.AddSteam(amount);
+                float amountAdded = receiver.AddSteam(amount);
+                RemoveSteam(amountAdded);
                 
-                OnInstantTransferToBegin?.Invoke(amount, visuals, receiver);
-                receiver.OnInstantTransferFromBegin?.Invoke(amount, visuals, this);
+                
+                OnInstantTransferToBegin?.Invoke(amountAdded, visuals, receiver);
+                receiver.OnInstantTransferFromBegin?.Invoke(amountAdded, visuals, this);
                 return;
             }
 
@@ -110,13 +111,18 @@ namespace Systems.Steam
             giver.BeginSteamTransferTo(this, amount, time, visuals);
         }
 
-        private void RemoveSteam(float amount)
+        private float RemoveSteam(float amount)
         {
             float oldSteam = SteamAmount;
 
             SteamAmount -= amount;
+            
+            float amountTransferred = amount;
+
             if (SteamAmount < 0)
             {
+                amountTransferred += SteamAmount;
+
                 SteamAmount = 0;
             }
             
@@ -124,17 +130,21 @@ namespace Systems.Steam
             {
                 OnSteamEmpty?.Invoke();
             }
+
+            return amountTransferred;
         }
 
-        private void AddSteam(float amount)
+        private float AddSteam(float amount)
         {
             float oldSteam = SteamAmount;
             SteamAmount += amount;
-            
-            
-            
+
+
+            float amountTransferred = amount;
             if (SteamAmount > MaxSteamAmount)
             {
+                amountTransferred -= SteamAmount - MaxSteamAmount;
+                
                 SteamAmount = MaxSteamAmount;
             }
 
@@ -142,6 +152,8 @@ namespace Systems.Steam
             {
                 OnSteamFull?.Invoke();
             }
+
+            return amountTransferred;
         }
         
         private void Update()
@@ -194,6 +206,11 @@ namespace Systems.Steam
         private void AddTransfer(SteamTransferContext context)
         {
             _activeTransfers.Add(context);
+        }
+
+        public void SetSteamAmount(float amount)
+        {
+            SteamAmount = amount;
         }
     }
 }

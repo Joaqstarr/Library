@@ -85,7 +85,9 @@ namespace Player.States
             tangent.Normalize();
 
             // Calculate the dot product to determine the movement direction
-            float direction = Vector3.Dot(cameraForward, tangent) * input.y + Vector3.Dot(cameraForward, Vector3.Cross(Vector3.up, tangent)) * -input.x;
+            Vector3 transformedTangent = _pipe.transform.TransformDirection(tangent);
+
+            float direction = Vector3.Dot(cameraForward, transformedTangent) * input.y + Vector3.Dot(cameraForward, Vector3.Cross(Vector3.up, tangent)) * -input.x;
 
             if (direction < 0)
             {

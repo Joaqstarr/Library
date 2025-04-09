@@ -7,10 +7,12 @@ namespace Systems.Steam
 {
     public class SteamDebugUI : MonoBehaviour
     {
+        [SerializeField]
         private SteamResourceHolder _holder;
         private TMP_Text _text;
         private Image _bgMeter;
 
+        [SerializeField] private bool _shouldFaceCamera = true;
         private void Awake()
         {
             _text = GetComponentInChildren<TMP_Text>();
@@ -24,7 +26,8 @@ namespace Systems.Steam
 
         private void Update()
         {
-            transform.forward =  transform.position - Camera.main.transform.position;
+            if(_shouldFaceCamera)
+                transform.forward =  transform.position - Camera.main.transform.position;
             
             if(_holder == null)
                 return;

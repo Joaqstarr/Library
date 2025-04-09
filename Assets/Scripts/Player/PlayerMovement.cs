@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections;
+using Cinemachine;
 using DG.Tweening;
 using Level.MovingPlatform;
+using Player.Animation;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -15,6 +18,7 @@ namespace Player
         [SerializeField] private float _jumpHeight = 1.5f;
         [SerializeField] private float _jumpInputBuffer = 0.2f;
         [SerializeField] private float _coyoteTime = 0.5f;
+        [SerializeField] private PlayerAnimationManager _animationManager;
         private float _coyoteTimer = 0;
         private float _turnSmoothVelocity;
         private float _verticalVelocity;
@@ -22,12 +26,14 @@ namespace Player
         [SerializeField] private LayerMask _groundLayers;
 
         [SerializeField] private Transform _art;
-        
+
+        private CinemachineStateDrivenCamera _cinemachineStateDrivenCamera;
         private bool _isGrounded
         {
             get
             {
-                return _characterController.isGrounded || Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, 1.1f, _groundLayers);
+                RaycastHit hit;
+                return _characterController.isGrounded || GroundedRaycast(out hit);
             }
         }
 
@@ -43,8 +49,13 @@ namespace Player
         private bool _isLaunching = false;
         private bool _launchStarted = false;
         
+        private float _postJumpTimer = 0;
+        
         private void Awake()
         {
+
+            _cinemachineStateDrivenCamera = GetComponentInChildren<CinemachineStateDrivenCamera>();
+            _animationManager = GetComponent<PlayerAnimationManager>();
             _rigidbody = GetComponent<Rigidbody>();
             _characterController = GetComponent<CharacterController>();
             _playerControls = GetComponent<PlayerControls>();
@@ -53,34 +64,60 @@ namespace Player
 
         private void Update()
         {
+            _animationManager.Grounded = _isGrounded;
+            
             CheckIfLaunchEnded();
 
+            ApplyGroundedGravity();
+            
+            HandleMovementAndRotation();
+            
+            HandleCoyoteTime();
+            HandleJumping();
+
+            HandleGravity();
+        }
+
+        private void ApplyGroundedGravity()
+        {
             if (_isGrounded && _verticalVelocity < 0)
             {
                 _verticalVelocity = -2f; // Small negative value to keep the player grounded
             }
-            
-            
-            HandleMovementAndRotation();
-    
-            if(_isGrounded)
-                _coyoteTimer = _coyoteTime;
-            else
-                _coyoteTimer -= Time.deltaTime;
-            
-            
+        }
+
+        private void HandleGravity()
+        {
+            // Apply gravity
+            _verticalVelocity += _gravity * Time.deltaTime;
+            _characterController.Move(new Vector3(0, _verticalVelocity, 0) * Time.deltaTime);
+        }
+
+        private void HandleJumping()
+        {
             // Handle jumping
             if (_coyoteTimer > 0 && _jumpBufferTimer > 0)
             {
                 _jumpBufferTimer = 0;
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
+                
+                _animationManager.SetJumpTrigger();
+                _postJumpTimer = 0.2f;
             }
-
-            // Apply gravity
-            _verticalVelocity += _gravity * Time.deltaTime;
-            _characterController.Move(new Vector3(0, _verticalVelocity, 0) * Time.deltaTime);
             
+            _postJumpTimer -= Time.deltaTime;
             _jumpBufferTimer -= Time.deltaTime;
+        }
+
+        private void HandleCoyoteTime()
+        {
+            if(_isGrounded )
+                _coyoteTimer = _coyoteTime;
+            else
+                _coyoteTimer -= Time.deltaTime;
+            
+            if(_postJumpTimer > 0)
+                _coyoteTimer = 0;
         }
 
         private void HandleMovementAndRotation()
@@ -92,6 +129,7 @@ namespace Player
 
                 if (direction.magnitude >= 0.1f)
                 {
+                    Vector3 moveVector = Vector3.zero;
                     if (RotateCharacterToMovement)
                     {
                         // Calculate the direction relative to the camera
@@ -103,18 +141,23 @@ namespace Player
                         transform.rotation = Quaternion.Euler(0f, angle, 0f);
 
                         Vector3 moveDirection = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-                        _characterController.Move(moveDirection * _speed * Time.deltaTime);
+                        
+                        moveVector = moveDirection * _speed;
                     }
                     else
                     {
                         Vector3 forwardMovement = transform.forward * _speed * moveInput.y;
                         Vector3 rightMovement = transform.right * _speed * moveInput.x;
 
-                        Vector3 moveVector = forwardMovement + rightMovement;
-                        _characterController.Move(moveVector * Time.deltaTime);
+                        moveVector = forwardMovement + rightMovement;
                     }
 
-
+                    _characterController.Move(moveVector * Time.deltaTime);
+                    _animationManager.MoveSpeed = moveVector.magnitude;
+                }
+                else
+                {
+                    _animationManager.MoveSpeed = 0;
                 }
             }
         }
@@ -168,6 +211,7 @@ namespace Player
 
         public void LaunchCharacter(Vector3 launchVector)
         {
+            _animationManager.SetLaunchTrigger();
             _characterController.enabled = false;
             _launchStarted = false;
             _rigidbody.isKinematic = false;
@@ -178,10 +222,26 @@ namespace Player
         public void Teleport(Vector3 position)
         {
             _characterController.enabled = false;
+
+
             _characterController.transform.position = position;
             _characterController.enabled = true;
+
+            _cinemachineStateDrivenCamera.enabled = true;
+        }
+        
+        
+        public void ResetVelocity()
+        {
+            _verticalVelocity = 0;
+            _rigidbody.velocity = Vector3.zero;
+
+            _characterController.SimpleMove(Vector3.zero);
         }
 
-
+        public bool GroundedRaycast(out RaycastHit hit)
+        {
+            return Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 0.6f, _groundLayers);
+        }
     }
 }

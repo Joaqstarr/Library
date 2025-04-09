@@ -68,11 +68,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <IsInteractable>k__BackingField: 1
+  _debounceTime: 0.5
   <IsCloudAttractor>k__BackingField: 1
   _cloudAttractionPoint: {x: 0, y: 0, z: 0}
   OnInteractedEvent:
     m_PersistentCalls:
       m_Calls: []
+  InteractableName: Pipe
   _pipeInteractablePos: 1
 --- !u!1 &8500070193506324968
 GameObject:
@@ -136,7 +138,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: dbc6041808b2bc3439da885521400d3b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
