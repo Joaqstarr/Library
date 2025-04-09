@@ -36,7 +36,7 @@ namespace UI
             //transform.DOShakePosition(0.2f, 50, 5, 70);
 
             transform.DOPunchScale(Vector3.one * 0.3f, 0.15f, 6, 0f);
-            _text.text = "E to Interact with " + obj.InteractableName;
+            _text.text = "Interact with " + obj.InteractableName;
         }
     }
 }
