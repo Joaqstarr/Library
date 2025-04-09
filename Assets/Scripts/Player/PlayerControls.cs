@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player
@@ -15,8 +16,15 @@ namespace Player
         public InputDelegate OnInteractPressed;
         public InputDelegate OnJumpPressed;
         public InputDelegate OnTogglePressed;
+        public static InputDelegate OnPausePressed;
 
-        static public float LookSensitivity = 1;
+
+        private void Start()
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+
+        }
+
         public void OnMove(InputValue value)
         {
             MoveInput = value.Get<Vector2>();
@@ -24,7 +32,7 @@ namespace Player
 
         public void OnLook(InputValue value)
         {
-            LookInput = value.Get<Vector2>() * LookSensitivity;
+            LookInput = value.Get<Vector2>();
         }
 
 
@@ -59,6 +67,14 @@ namespace Player
             if (value.isPressed)
             {
                 OnTogglePressed?.Invoke();
+            }
+        }
+
+        public void OnPause(InputValue value)
+        {
+            if(value.isPressed)
+            {
+                OnPausePressed?.Invoke();
             }
         }
     }

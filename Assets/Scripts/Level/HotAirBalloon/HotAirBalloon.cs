@@ -41,7 +41,7 @@ namespace Level.HotAirBalloon
         {
             _targHeight = _resourceHolder.SteamFillPercent;
 
-            _flame.SetFloat("flameDistance", Mathf.Lerp(0, -1.29f, _targHeight));
+//            _flame.SetFloat("flameDistance", Mathf.Lerp(0, -1.29f, _targHeight));
 
             Vector3 targPos = transform.position;
             targPos.y = Mathf.Lerp(_minWorldHeight, _maxWorldHeight, _targHeight);

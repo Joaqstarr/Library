@@ -17,6 +17,7 @@ namespace Level.MovingPlatform
 
         private void Update()
         {
+            if(Time.deltaTime <= 0)return;
             float vel = _movingPlatformBehavior.CurrentDelta.magnitude / Time.deltaTime;
             
             

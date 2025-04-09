@@ -1,8 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using Unity.VisualScripting.InputSystem;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class OptionsPause : MonoBehaviour
@@ -38,6 +41,7 @@ public class OptionsPause : MonoBehaviour
             }
             if (isMainMenu) { mainMenuButton.SetActive(false); }
             isOptionsOpen = true;
+
         }
         else {
             for (int i = 0; i < transform.childCount; i++)
@@ -46,7 +50,43 @@ public class OptionsPause : MonoBehaviour
             }
             if (isMainMenu) { optionsButton.Select(); }
             isOptionsOpen = false;
+            
+
         }
     }
-    
+
+    private void OnEnable()
+    {
+        PlayerControls.OnPausePressed += ToggleGamePaused;
+    }
+
+    private void OnDisable()
+    {
+        PlayerControls.OnPausePressed -= ToggleGamePaused;
+        
+    }
+
+    public void ToggleGamePaused()
+    {
+        changeMenuState();
+
+        if (isOptionsOpen)
+        {
+            Time.timeScale = 0;
+
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        else
+        {
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+
+        }
+    }
+
+    public void ReturnToMenu()
+    {
+        Time.timeScale = 1;
+        SceneManager.LoadScene("Main Menu");
+    }
 }

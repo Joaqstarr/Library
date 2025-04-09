@@ -55,13 +55,13 @@ namespace Player.States.LocomotionStates
             Vector2 lookInput = _playerControls.LookInput;
 
             // Rotate character around the y-axis
-            float targetAngleY = _playerStateManager.transform.eulerAngles.y + lookInput.x;
+            float targetAngleY = _playerStateManager.transform.eulerAngles.y + lookInput.x * FreelookSensSetter.Sens;
             _playerStateManager.transform.rotation = Quaternion.Euler(0f, targetAngleY, 0f);
 
             // Rotate aim transform around the x-axis
             if (_playerStateManager.AimTransform != null)
             {
-                float targetAngleX = _playerStateManager.AimTransform.eulerAngles.x - lookInput.y;
+                float targetAngleX = _playerStateManager.AimTransform.eulerAngles.x - (lookInput.y  * FreelookSensSetter.Sens);
                 targetAngleX = (targetAngleX > 180) ? targetAngleX - 360 : targetAngleX; // Convert to -180 to 180 range
                 targetAngleX = Mathf.Clamp(targetAngleX, -45f, 45f); // Adjust the min and max values as needed
                 targetAngleX = (targetAngleX < 0) ? targetAngleX + 360 : targetAngleX; // Convert back to 0 to 360 range
