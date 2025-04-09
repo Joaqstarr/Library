@@ -126,7 +126,7 @@ namespace Systems.Steam
                 SteamAmount = 0;
             }
             
-            if (SteamAmount < 0.01 && oldSteam > 0.01)
+            if (Mathf.Approximately(SteamAmount, 0) && oldSteam > 0)
             {
                 OnSteamEmpty?.Invoke();
             }
