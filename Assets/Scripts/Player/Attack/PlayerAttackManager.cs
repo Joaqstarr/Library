@@ -6,6 +6,9 @@ namespace Player.Attack
 {
     public class PlayerAttackManager : MonoBehaviour
     {
+
+        public delegate void AttackStateDel(bool isInhaling);
+        public static AttackStateDel OnAttackStateChange;
         public enum AttackTypes
         {
             Suck,
@@ -23,7 +26,12 @@ namespace Player.Attack
             _playerSteamResource = GetComponent<SteamResourceHolder>();
             _attackHitbox = GetComponentInChildren<Hitbox>();
         }
-        
+
+        private void Start()
+        {
+            OnAttackStateChange?.Invoke(true);
+        }
+
         private void Suck()
         {
             int count = _attackHitbox.SteamHoldersInRange.Count;
@@ -82,10 +90,13 @@ namespace Player.Attack
             if (AttackState == AttackTypes.Blow)
             {
                 AttackState = AttackTypes.Suck;
+                OnAttackStateChange?.Invoke(true);
             }
             else
             {
                 AttackState = AttackTypes.Blow;
+                OnAttackStateChange?.Invoke(false);
+
             }
         }
     }
