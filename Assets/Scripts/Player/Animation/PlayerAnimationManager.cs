@@ -11,6 +11,7 @@ namespace Player.Animation
         private static readonly int LaunchTrigger = Animator.StringToHash("Launch");
 
 
+        private AnimationSyncer _animationSyncer;
         private Animator _animator;
         [SerializeField] private float _smoothSpeed = 2f;
 
@@ -35,6 +36,7 @@ namespace Player.Animation
         private void Awake()
         {
             _animator = GetComponent<Animator>();
+            _animationSyncer = GetComponent<AnimationSyncer>();
         }
 
 
@@ -43,14 +45,15 @@ namespace Player.Animation
             MoveSpeedAnimator = Mathf.Lerp(MoveSpeedAnimator, MoveSpeed, Time.deltaTime * _smoothSpeed);
         }
 
+        //sets triggers using animation syncer to ensure it is propogated to all models
         public void SetJumpTrigger()
         {
-            _animator.SetTrigger(JumpTrigger);
+            _animationSyncer.SetTrigger(JumpTrigger);
         }
 
         public void SetLaunchTrigger()
         {
-            _animator.SetTrigger(LaunchTrigger);
+            _animationSyncer.SetTrigger(LaunchTrigger);
         }
     }
 }
