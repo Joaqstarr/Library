@@ -27,7 +27,7 @@ namespace Player.Animation
 
             SyncParameters();
             
-            SyncState();
+            //SyncState();
         }
 
         void SyncParameters()
@@ -61,7 +61,7 @@ namespace Player.Animation
 
             foreach (var follower in _followerAnimators)
             {
-                follower.Play(leaderState.fullPathHash, 0, leaderState.normalizedTime);
+                follower.Play(leaderState.fullPathHash);
             }
         }
 

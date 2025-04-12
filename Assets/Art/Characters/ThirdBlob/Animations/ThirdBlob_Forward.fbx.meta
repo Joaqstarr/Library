@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2e85d8c6d311e184ba5df0b74daa6737
+guid: c99316c5071546c46a898999abda54ed
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -17,15 +17,19 @@ ModelImporter:
     removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'thigh_l'
+      : position error = 3.041447 mm\n\t'thigh_r' : position error = 3.041287 mm\n"
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'ThirdBlob_Idle' has import animation warnings
+    animationImportWarnings: "\nClip 'ThirdBlob_Forward' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'spine_01' has translation animation that
       will be discarded.\n\t'spine_02' has translation animation that will be discarded.\n\t'spine_03'
       has translation animation that will be discarded.\n\t'neck_01' has translation
-      animation that will be discarded.\n\t'thigh_l' has translation animation that
-      will be discarded.\n\t'thigh_r' has translation animation that will be discarded.\n"
+      animation that will be discarded.\n\t'clavicle_l' has translation animation
+      that will be discarded.\n\t'clavicle_r' has translation animation that will
+      be discarded.\n\t'thigh_l' has translation animation that will be discarded.\n\t'thigh_r'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -39,11 +43,11 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ThirdBlob_Idle
-      takeName: ThirdBlob_Idle
-      internalID: 7300714734521554070
+      name: ThirdBlob_Forward
+      takeName: ThirdBlob_Forward
+      internalID: -849976544093260546
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 39
       wrapMode: 0
       orientationOffsetY: 0
       level: 0

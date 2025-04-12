@@ -29,7 +29,7 @@ namespace Player
         private bool _fullyAttracting = false;
         
         [SerializeField]
-        private Renderer _meshRenderer;
+        private Renderer[] _meshRenderers;
 
 
         private float _targetStrength = 0;
@@ -87,7 +87,12 @@ namespace Player
         private void Awake()
         {
             
-            _playerCloudMat = _meshRenderer.material;
+            _playerCloudMat = _meshRenderers[0].material;
+
+            foreach (var renderer in _meshRenderers)
+            {
+                renderer.material = _playerCloudMat;
+            }
             _playerInteractionManager = GetComponent<PlayerInteractionManager>();
         }
 

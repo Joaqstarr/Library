@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 2e85d8c6d311e184ba5df0b74daa6737
+guid: 9df080d28bf1a6643b9ebf4a8bc0c9d6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -19,13 +19,15 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: 
     animationImportErrors: 
-    animationImportWarnings: "\nClip 'ThirdBlob_Idle' has import animation warnings
+    animationImportWarnings: "\nClip 'ThirdBlob_Jump' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'spine_01' has translation animation that
       will be discarded.\n\t'spine_02' has translation animation that will be discarded.\n\t'spine_03'
       has translation animation that will be discarded.\n\t'neck_01' has translation
-      animation that will be discarded.\n\t'thigh_l' has translation animation that
-      will be discarded.\n\t'thigh_r' has translation animation that will be discarded.\n"
+      animation that will be discarded.\n\t'clavicle_l' has translation animation
+      that will be discarded.\n\t'clavicle_r' has translation animation that will
+      be discarded.\n\t'thigh_l' has translation animation that will be discarded.\n\t'thigh_r'
+      has translation animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -39,19 +41,19 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: ThirdBlob_Idle
-      takeName: ThirdBlob_Idle
-      internalID: 7300714734521554070
+      name: ThirdBlob_Jump
+      takeName: ThirdBlob_Jump
+      internalID: 1981007614466215927
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 10
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
