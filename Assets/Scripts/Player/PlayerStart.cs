@@ -14,7 +14,7 @@ namespace Player
             if(Gamemanager.Instance == null)
             {
                 var player = Instantiate(_playerPrefab, transform.position, transform.rotation);
-
+                player.transform.parent = transform.parent;
             }
             else
             {

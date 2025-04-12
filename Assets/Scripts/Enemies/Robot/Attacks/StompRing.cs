@@ -34,7 +34,7 @@ namespace Enemies.Robot.Attacks
             if(_startingParent == null)
                 _startingParent = transform.parent;
 
-            transform.parent = null;
+            transform.parent = _startingParent.parent;
             gameObject.SetActive(true);
             
             
