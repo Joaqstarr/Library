@@ -16,14 +16,21 @@ namespace Player
 
         private void Update()
         {
-            if (_cam != null)
+            if (_cam == null) return;
+            
+            
+            if (Time.deltaTime == 0)
             {
-                _cam.m_XAxis.m_MaxSpeed = Sens * 100;
-                _cam.m_YAxis.m_MaxSpeed = Sens * 2;
+                _cam.enabled = false;
             }
             else
             {
-                Debug.LogError("CinemachineFreeLook component not found on the object.");
+                if (_cam.enabled == false)
+                {
+                    _cam.enabled = true;
+                }
+                _cam.m_XAxis.m_MaxSpeed = Sens * 2;
+                _cam.m_YAxis.m_MaxSpeed = Sens * 0.02f;
             }
         }
     }
