@@ -9,7 +9,9 @@ namespace Level.Camera
         [SerializeField] private int _priority = 11;
         
         //if true sets look and follow target to player on entering collision, and sets to null when exits
-        [SerializeField]private bool _setLookAndFollowTarget = true;
+        [SerializeField]private bool _setLookTarget = true;
+        [SerializeField]private bool _setFollowTarget = true;
+
         [SerializeField]
         private CinemachineVirtualCamera _virtualCamera;
 
@@ -29,10 +31,14 @@ namespace Level.Camera
             if (other.CompareTag("Player"))
             {
                 _virtualCamera.Priority = 11;
-                if (_setLookAndFollowTarget)
+                if (_setLookTarget)
+                {
+                    _virtualCamera.LookAt = other.transform;
+                }
+
+                if (_setFollowTarget)
                 {
                     _virtualCamera.Follow = other.transform;
-                    _virtualCamera.LookAt = other.transform;
                 }
             }
         }
@@ -43,10 +49,14 @@ namespace Level.Camera
             {
                 _virtualCamera.Priority = -1;
                 
-                if (_setLookAndFollowTarget)
+                if (_setLookTarget)
+                {
+                    _virtualCamera.LookAt = null;
+                }
+
+                if (_setFollowTarget)
                 {
                     _virtualCamera.Follow = null;
-                    _virtualCamera.LookAt = null;
                 }
             }
         }
