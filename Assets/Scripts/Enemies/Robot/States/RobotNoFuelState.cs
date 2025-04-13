@@ -11,6 +11,7 @@
             base.OnEnterState();
 
             Agent.isStopped = true;
+            Agent.enabled = false;
             //play shut down animation
         }
 
@@ -27,6 +28,8 @@
         protected override void OnExitState()
         {
             Agent.isStopped = false;
+            Agent.enabled = true;
+
             base.OnExitState();
         }
     }

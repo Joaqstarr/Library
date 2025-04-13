@@ -20,7 +20,7 @@ namespace Enemies.Robot
         private RobotBaseState _idleState;
         private RobotAggroState _aggroState;
         private RobotNoFuelState _noFuelState;
-
+        private SpawnState _spawnState;
         #endregion
         
         private void Awake()
@@ -32,6 +32,7 @@ namespace Enemies.Robot
             _idleState = new RobotIdleState(this);
             _aggroState = new RobotAggroState(this);
             _noFuelState = new RobotNoFuelState(this);
+            _spawnState = new SpawnState(this);
             SwitchToIdleState();
         }
 
@@ -65,7 +66,11 @@ namespace Enemies.Robot
         {
             SwitchState(_noFuelState);
         }
-        
 
+
+        public void PlaySpawnAnimation()
+        {
+            SwitchState(_spawnState);
+        }
     }
 }

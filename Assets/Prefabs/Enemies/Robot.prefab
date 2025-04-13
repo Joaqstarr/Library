@@ -255,10 +255,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1456fef465b440578e4f9adba676ea43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnSteamFull:
+    m_PersistentCalls:
+      m_Calls: []
+  OnSteamEmpty:
+    m_PersistentCalls:
+      m_Calls: []
   <SteamAmount>k__BackingField: -1
   <MaxSteamAmount>k__BackingField: 5
   <SteamRegenRate>k__BackingField: 0
   _postTransferRegenCooldown: 1
+  _allowOverfilling: 1
 --- !u!135 &4762570980189424815
 SphereCollider:
   m_ObjectHideFlags: 0

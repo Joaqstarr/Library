@@ -18,6 +18,7 @@ namespace Systems.Steam
         private UnityEvent OnSteamFull;
         [SerializeField]
         private UnityEvent OnSteamEmpty;
+
         private class SteamTransferContext
         {
             private SteamResourceHolder _giver;
@@ -71,6 +72,9 @@ namespace Systems.Steam
         private List<SteamTransferContext> _activeTransfers = new List<SteamTransferContext>();
         [SerializeField] private float _postTransferRegenCooldown = 1;
         private float _regenCooldownTimer = 0;
+        
+        [SerializeField] private bool _allowOverfilling = false;
+
 
         private void Awake()
         {
@@ -93,7 +97,7 @@ namespace Systems.Steam
                     amount = giverAmount;
                 }
                 
-                float amountAdded = receiver.AddSteam(amount);
+                float amountAdded = receiver.AddSteam(amount, receiver._allowOverfilling || _allowOverfilling);
                 RemoveSteam(amountAdded);
                 
                 
@@ -134,14 +138,14 @@ namespace Systems.Steam
             return amountTransferred;
         }
 
-        private float AddSteam(float amount)
+        private float AddSteam(float amount, bool allowOverfilling = false)
         {
             float oldSteam = SteamAmount;
             SteamAmount += amount;
 
 
             float amountTransferred = amount;
-            if (SteamAmount > MaxSteamAmount)
+            if (!allowOverfilling && SteamAmount > MaxSteamAmount)
             {
                 amountTransferred -= SteamAmount - MaxSteamAmount;
                 
