@@ -5,6 +5,7 @@ namespace Enemies.Robot
 {
     public class StompAttackState : BaseAggroState
     {
+        private static readonly int Stomp = Animator.StringToHash("Stomp");
         private StompRing _stompRing;
         
         public StompAttackState(RobotStateManager robotStateManager, RobotAggroState aggroState) : base(robotStateManager, aggroState)
@@ -22,17 +23,26 @@ namespace Enemies.Robot
             }
             Agent.isStopped = true;
             
+            AnimationEventHandler.OnAnimationEnded += AnimationEventHandlerOnOnAnimationEnded;
+            AnimationEventHandler.OnAttackHit += OnStompAnimationEvent;
+
             //play stomp animation
             //subscribe to animation event
+            RobotAnimator.SetTrigger(Stomp);
             
-            //debug just call stomp
-            OnStompAnimationEvent();
+        }
+
+        private void AnimationEventHandlerOnOnAnimationEnded()
+        {
+            _aggroState.SwitchToApproachState();
         }
 
         protected override void OnExitState()
         {
             base.OnExitState();
-        
+            AnimationEventHandler.OnAnimationEnded -= AnimationEventHandlerOnOnAnimationEnded;
+            AnimationEventHandler.OnAttackHit -= OnStompAnimationEvent;
+
             Agent.isStopped = false;
             //unsubscribe from animation event
         }
@@ -42,7 +52,6 @@ namespace Enemies.Robot
         {
             //set to foot position
             _stompRing.StartStompRing(_robotStateManager.transform.position);
-            _aggroState.SwitchToApproachState();
         }
         
         

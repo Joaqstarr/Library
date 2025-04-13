@@ -11,12 +11,14 @@ namespace Enemies.Robot
         protected NavMeshAgent Agent;
         protected RobotData Data;
         protected Animator RobotAnimator;
+        protected RobotAnimationEventHandler AnimationEventHandler;
         protected RobotBaseState(RobotStateManager robotStateManager)
         {
             _robotStateManager = robotStateManager;
             Agent = robotStateManager.Agent;
             Data = robotStateManager.Data;
             RobotAnimator = robotStateManager.RobotAnimator;
+            AnimationEventHandler = robotStateManager.AnimationEventHandler;
         }
         
         protected void CheckIfFuelEmpty()

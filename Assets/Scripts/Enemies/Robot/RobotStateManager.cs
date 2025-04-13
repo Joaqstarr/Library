@@ -12,6 +12,7 @@ namespace Enemies.Robot
         [field: SerializeField] public RobotData Data { get; private set; }
         public NavMeshAgent Agent { get; private set; }
         public Animator RobotAnimator { get; private set; }
+        public RobotAnimationEventHandler AnimationEventHandler { get; private set; }
         public SteamResourceHolder SteamTank { get; private set; }
 
         
@@ -28,6 +29,7 @@ namespace Enemies.Robot
         {
             Agent = GetComponent<NavMeshAgent>();
             RobotAnimator = GetComponent<Animator>();
+            AnimationEventHandler = GetComponent<RobotAnimationEventHandler>();
             SteamTank = GetComponentInChildren<SteamResourceHolder>();
             // Initialize with a default state
             _stateMachine = new HierarchalStateMachine();
