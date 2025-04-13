@@ -11,6 +11,7 @@ namespace Enemies.Robot
 
         [field: SerializeField] public RobotData Data { get; private set; }
         public NavMeshAgent Agent { get; private set; }
+        public Animator RobotAnimator { get; private set; }
         public SteamResourceHolder SteamTank { get; private set; }
 
         
@@ -26,6 +27,7 @@ namespace Enemies.Robot
         private void Awake()
         {
             Agent = GetComponent<NavMeshAgent>();
+            RobotAnimator = GetComponent<Animator>();
             SteamTank = GetComponentInChildren<SteamResourceHolder>();
             // Initialize with a default state
             _stateMachine = new HierarchalStateMachine();
@@ -72,5 +74,7 @@ namespace Enemies.Robot
         {
             SwitchState(_spawnState);
         }
+        
+        
     }
 }

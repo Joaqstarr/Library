@@ -145,9 +145,10 @@ namespace Systems.Steam
 
 
             float amountTransferred = amount;
-            if (!allowOverfilling && SteamAmount > MaxSteamAmount)
+            if ( SteamAmount > MaxSteamAmount)
             {
-                amountTransferred -= SteamAmount - MaxSteamAmount;
+                if(!allowOverfilling)
+                    amountTransferred -= SteamAmount - MaxSteamAmount;
                 
                 SteamAmount = MaxSteamAmount;
             }

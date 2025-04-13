@@ -13,6 +13,8 @@ namespace Enemies.Robot
 
         protected override void OnEnterState()
         {
+            Agent.isStopped = false;
+
             Agent.SetDestination(_aggroState.Player.transform.position);
         }
 

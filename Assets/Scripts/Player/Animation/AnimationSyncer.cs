@@ -34,6 +34,8 @@ namespace Player.Animation
         {
             foreach (var follower in _followerAnimators)
             {
+                if(!follower.enabled || !follower.gameObject.activeInHierarchy) continue;
+                
                 foreach (AnimatorControllerParameter param in _leaderAnimator.parameters)
                 {
                     switch (param.type)
@@ -72,6 +74,8 @@ namespace Player.Animation
             
             foreach (var follower in _followerAnimators)
             {
+                if(!follower.enabled || !follower.gameObject.activeInHierarchy) continue;
+
                 follower.SetTrigger(triggerHash);
             }
         }
