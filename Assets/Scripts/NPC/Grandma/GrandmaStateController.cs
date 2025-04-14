@@ -14,6 +14,12 @@ namespace NPC.Grandma
         private int _currentPointIndex = 0;
 
 
+        private void Awake()
+        {
+            _agent = GetComponent<NavMeshAgent>();
+
+        }
+
         private void Start()
         {
             if (_points.Length > 0)
