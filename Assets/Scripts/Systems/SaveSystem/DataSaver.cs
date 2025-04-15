@@ -21,7 +21,9 @@ namespace Systems.SaveSystem
                 try
                 {
                     string json = File.ReadAllText(_path);
-                    return JsonUtility.FromJson<SaveData>(json);
+                    SaveSystem.SaveData data = JsonUtility.FromJson<SaveData>(json);
+                    data.RestoreAfterLoad();
+                    return data;
                 }
                 catch (IOException e)
                 {
@@ -40,6 +42,7 @@ namespace Systems.SaveSystem
         {
             try
             {
+                data.PrepareForSave();
                 string json = JsonUtility.ToJson(data, true);
 
                 if (_path == null || _path == "")
