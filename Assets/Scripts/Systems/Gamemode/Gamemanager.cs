@@ -16,12 +16,13 @@ namespace Systems.Gamemode
             if (Instance == null)
             {
                 Instance = this;
-                DontDestroyOnLoad(gameObject);
             }
             else
             {
                 Destroy(gameObject);
             }
+
+            Application.backgroundLoadingPriority = ThreadPriority.Low;
         }
 
         private void Start()

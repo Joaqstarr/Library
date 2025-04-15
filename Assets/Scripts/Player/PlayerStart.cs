@@ -11,6 +11,7 @@ namespace Player
 
         private void Start()
         {
+            Debug.Log(Gamemanager.Instance);
             if(Gamemanager.Instance == null)
             {
                 var player = Instantiate(_playerPrefab, transform.position, transform.rotation);
