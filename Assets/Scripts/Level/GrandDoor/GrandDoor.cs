@@ -23,10 +23,11 @@ namespace Level.GrandDoor
         private enum LevelState
         {
             Hub,
-            Game
+            Game,
+            Both
         }
-        
-        
+
+        private LevelState _currentLevelLoadedState;
         
         private bool _doorOpen = false;
         private bool _awaitingPlayerEnter = true;
@@ -42,7 +43,9 @@ namespace Level.GrandDoor
             {
                 _gameLevel.Level.LoadScene();
             }
-            
+
+            _currentLevelLoadedState = LevelState.Both;
+
             //play open animation
 
             _awaitingPlayerEnter = true;
@@ -51,6 +54,16 @@ namespace Level.GrandDoor
         public void CloseDoor()
         {
             //unload level
+
+            switch (_currentLevelLoadedState)
+            {
+                case LevelState.Game:
+                    _hubLevel.Level.UnloadScene();
+                    break;
+                case LevelState.Hub:
+                    _gameLevel.Level.UnloadScene();
+                    break;
+            }
         }
 
         private void OnEnable()
@@ -60,11 +73,7 @@ namespace Level.GrandDoor
             _insideDoorTrigger.OnPlayerEnter.AddListener(PlayerEnteredDoor);
         }
 
-        private void PlayerEnteredDoor()
-        {
-            _awaitingPlayerEnter = false;
 
-        }
 
 
         private void OnDisable()
@@ -72,21 +81,28 @@ namespace Level.GrandDoor
             _hubLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredHub);
         }
         
+        private void PlayerEnteredDoor()
+        {
+            if (_currentLevelLoadedState == LevelState.Both)
+            {
+                _awaitingPlayerEnter = false;
+            }
+
+        }
         private void EnteredHub()
         {
-            if (_awaitingPlayerEnter) return;
+            if (_currentLevelLoadedState != LevelState.Both || _awaitingPlayerEnter) return;
+            
+            _currentLevelLoadedState = LevelState.Hub;
             CloseDoor();
-
-            _gameLevel.Level.UnloadScene();
         }
         
         private void EnteredGameLevel()
         {
-            if (_awaitingPlayerEnter) return;
-
+            if (_currentLevelLoadedState != LevelState.Both || _awaitingPlayerEnter) return;
+            
+            _currentLevelLoadedState = LevelState.Game;
             CloseDoor();
-            _hubLevel.Level.UnloadScene();
-
         }
     }
 }
