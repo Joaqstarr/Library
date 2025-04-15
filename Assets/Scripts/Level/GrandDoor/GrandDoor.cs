@@ -29,7 +29,7 @@ namespace Level.GrandDoor
         
         
         private bool _doorOpen = false;
-        private bool _awaitingPlayerEnter = false;
+        private bool _awaitingPlayerEnter = true;
 
         public void OpenDoor()
         {
@@ -57,9 +57,16 @@ namespace Level.GrandDoor
         {
             _hubLevel.Trigger.OnPlayerEnter.AddListener(EnteredHub);
             _gameLevel.Trigger.OnPlayerEnter.AddListener(EnteredGameLevel);
+            _insideDoorTrigger.OnPlayerEnter.AddListener(PlayerEnteredDoor);
         }
 
-        
+        private void PlayerEnteredDoor()
+        {
+            _awaitingPlayerEnter = false;
+
+        }
+
+
         private void OnDisable()
         {
             _hubLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredHub);
@@ -67,11 +74,17 @@ namespace Level.GrandDoor
         
         private void EnteredHub()
         {
+            if (_awaitingPlayerEnter) return;
+            CloseDoor();
+
             _gameLevel.Level.UnloadScene();
         }
         
         private void EnteredGameLevel()
         {
+            if (_awaitingPlayerEnter) return;
+
+            CloseDoor();
             _hubLevel.Level.UnloadScene();
 
         }
