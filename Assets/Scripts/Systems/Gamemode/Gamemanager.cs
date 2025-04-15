@@ -1,6 +1,8 @@
 ﻿using Player;
 using Player.Attack;
 using UnityEngine;
+using Systems.SaveSystem;
+using Utility.SceneManagement;
 
 namespace Systems.Gamemode
 {
@@ -11,6 +13,12 @@ namespace Systems.Gamemode
         [SerializeField] private PlayerStateManager _playerPrefab;
 
         private PlayerStateManager _player;
+
+        private DataSaver _dataSaver;
+        private SaveData _saveData;
+
+        [SerializeField]
+        private SceneReference _defaultLevel;
         private void Awake()
         {
             if (Instance == null)
@@ -23,6 +31,18 @@ namespace Systems.Gamemode
             }
 
             Application.backgroundLoadingPriority = ThreadPriority.Low;
+
+
+            _dataSaver = new DataSaver("save.boogers");
+
+            _saveData = _dataSaver.LoadData();
+        }
+        
+        
+
+        public void SaveData()
+        {
+            _dataSaver.SaveData(_saveData);
         }
 
         private void Start()
@@ -37,8 +57,19 @@ namespace Systems.Gamemode
                 _player = Instantiate(_playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
                 
             }*/
+
             
-            
+            if (_saveData.CurrentLevel == null  )
+            {
+                _saveData.CurrentLevel = _defaultLevel;
+            }
+
+            if (_saveData.CurrentLevel)
+            {
+                _saveData.CurrentLevel.LoadScene();
+            }
+
+            SaveData();
         }
         
         public void TrySpawnPlayer(PlayerStart playerStart)
