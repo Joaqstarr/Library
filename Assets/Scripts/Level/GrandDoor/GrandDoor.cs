@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Utility;
 using Utility.SceneManagement;
 
@@ -7,6 +8,8 @@ namespace Level.GrandDoor
 {
     public class GrandDoor : MonoBehaviour
     {
+        private static readonly int IsDoorOpen = Animator.StringToHash("IsDoorOpen");
+
         [Serializable]
         public struct DoorLevelData
         {
@@ -20,6 +23,7 @@ namespace Level.GrandDoor
         [SerializeField]
         private PlayerDetectingTrigger _insideDoorTrigger;
 
+        private Animator _animator;
         private enum LevelState
         {
             Hub,
@@ -31,6 +35,12 @@ namespace Level.GrandDoor
         
         private bool _doorOpen = false;
         private bool _awaitingPlayerEnter = true;
+
+        private void Awake()
+        {
+            _animator = GetComponent<Animator>();
+            _currentLevelLoadedState = LevelState.Hub;
+        }
 
         public void OpenDoor()
         {
@@ -47,23 +57,28 @@ namespace Level.GrandDoor
             _currentLevelLoadedState = LevelState.Both;
 
             //play open animation
+            SceneManager.sceneLoaded += SceneLoaded;
 
-            _awaitingPlayerEnter = true;
+        }
+
+        private void SceneLoaded(Scene arg0, LoadSceneMode arg1)
+        {
+            if (arg0.name == _hubLevel.Level.ScenePath || arg0.name == _gameLevel.Level.ScenePath)
+            {
+                _animator.SetBool(IsDoorOpen, true);
+                _doorOpen = true;
+                _awaitingPlayerEnter = true;
+            }
+            SceneManager.sceneLoaded -= SceneLoaded;
         }
 
         public void CloseDoor()
         {
             //unload level
 
-            switch (_currentLevelLoadedState)
-            {
-                case LevelState.Game:
-                    _hubLevel.Level.UnloadScene();
-                    break;
-                case LevelState.Hub:
-                    _gameLevel.Level.UnloadScene();
-                    break;
-            }
+            _animator.SetBool(IsDoorOpen, false);
+            _doorOpen = false;
+
         }
 
         private void OnEnable()
@@ -103,6 +118,19 @@ namespace Level.GrandDoor
             
             _currentLevelLoadedState = LevelState.Game;
             CloseDoor();
+        }
+
+        public void OnDoorClosed()
+        {
+            switch (_currentLevelLoadedState)
+            {
+                case LevelState.Game:
+                    _hubLevel.Level.UnloadScene();
+                    break;
+                case LevelState.Hub:
+                    _gameLevel.Level.UnloadScene();
+                    break;
+            }
         }
     }
 }

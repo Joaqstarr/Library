@@ -11,18 +11,27 @@ namespace Utility.SceneManagement
     {
         [field: SerializeField]
         public string ScenePath { get; private set; }
-
-        private bool _isLoaded = false;
+ 
+        
         public bool IsLoaded()
         {
-            return _isLoaded;
+            for (int i = 0; i < SceneManager.sceneCount; i++)
+            {
+                Scene scene = SceneManager.GetSceneAt(i);
+                if (ScenePath.Contains(scene.name) && scene.isLoaded)
+                {
+                    return true;
+                }
+            }
+            return false;
         }
-        
+
+
+
         public void LoadScene()
         {
             if (!IsLoaded())
             {
-                _isLoaded = true;
                 SceneManager.LoadSceneAsync(ScenePath, LoadSceneMode.Additive);
             }
         }
@@ -31,7 +40,6 @@ namespace Utility.SceneManagement
         {
             if (IsLoaded())
             {
-                _isLoaded = false;
                 SceneManager.UnloadSceneAsync(ScenePath, UnloadSceneOptions.None);
             }
         }
