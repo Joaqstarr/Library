@@ -11,24 +11,53 @@ namespace Enemies.Robot
         private Vector3 _targetPosition;
 
 
+        bool _originalPositionSet = false;
         public RobotIdleState(RobotStateManager robotStateManager) : base(robotStateManager)
         {
+            _originalPositionSet = false;
             _originalPosition = _robotStateManager.transform.position;
         }
 
         protected override void OnEnterState()
         {
-            SetNewTargetPosition();
         }
 
         public override void OnUpdateState()
         {
             CheckIfFuelEmpty();
+
+            CheckIfOriginalPositionSet();
             
-            CheckIfReachedDestination();
+            if (_originalPositionSet)
+            {
+                CheckIfReachedDestination();
+            }
+
+            Vector3 target = _targetPosition;
+            if (_robotStateManager.transform.parent != null)
+            {
+                target = _robotStateManager.transform.parent.TransformPoint(target);
+            }
+
+            Agent.SetDestination(target);
+         
+
             SearchForPlayer();
         }
 
+        private void CheckIfOriginalPositionSet()
+        {
+            if (!_originalPositionSet)
+            {
+                if (Agent.isOnNavMesh)
+                {
+                    _originalPositionSet = true;
+                    _originalPosition = _robotStateManager.transform.localPosition;
+                    
+                    SetNewTargetPosition();
+                }
+            }
+        }
 
 
         protected override void OnExitState()
@@ -39,12 +68,12 @@ namespace Enemies.Robot
         {
             Vector2 randomDirection = Random.insideUnitCircle * Data.WanderRadius;
             _targetPosition = _originalPosition + new Vector3(randomDirection.x, 0, randomDirection.y);
-            Agent.SetDestination(_targetPosition);
         }
 
         private void CheckIfReachedDestination()
         {
-            if (Vector3.Distance(_robotStateManager.transform.position, _targetPosition) < Data.ReachedThreshold)
+            float distance = Vector3.Distance(_robotStateManager.transform.localPosition, _targetPosition);
+            if (distance < Data.ReachedThreshold)
             {
                 SetNewTargetPosition();
             }

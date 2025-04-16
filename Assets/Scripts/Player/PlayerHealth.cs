@@ -1,4 +1,5 @@
 ﻿using System;
+using Cinemachine;
 using Systems.Gamemode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -17,7 +18,15 @@ namespace Player
         [SerializeField]
         private float _invincibilityTime = 1f;
         private float _invincibilityTimer = 0f;
-        
+
+
+        private CinemachineImpulseSource _cinemachineImpulseSource;
+
+        private void Awake()
+        {
+            _cinemachineImpulseSource = GetComponent<CinemachineImpulseSource>();
+        }
+
         public void Damage(int damage)
         {
             if(_invincibilityTimer > 0 || _health <= 0)
@@ -27,7 +36,7 @@ namespace Player
             
             int oldHealth = _health;
             _health -= damage;
-            
+            _cinemachineImpulseSource.GenerateImpulseWithForce(1);
             OnHealthChanged?.Invoke(_health, oldHealth);
             if (_health <= 0)
             {

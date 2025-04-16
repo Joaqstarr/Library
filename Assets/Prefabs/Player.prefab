@@ -1029,6 +1029,7 @@ GameObject:
   - component: {fileID: 492871544125979550}
   - component: {fileID: 6989378548304301981}
   - component: {fileID: 57643663070791912}
+  - component: {fileID: 5271742060668476801}
   m_Layer: 0
   m_Name: State-Driven Camera
   m_TagString: Untagged
@@ -1076,9 +1077,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 6989378548304301981}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 2534822114865394132}
-  - {fileID: 2221384756876207357}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1036624748
     m_VirtualCamera: {fileID: 2221384756876207357}
@@ -1136,6 +1135,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36f40a0d70814936a257ba402a3a1e33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5271742060668476801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5587604038749374373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00b2d199b96b516448144ab30fb26aed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ApplyAfter: 2
+  m_ChannelMask: 1
+  m_Gain: 1
+  m_Use2DDistance: 0
+  m_UseCameraSpace: 1
+  m_ReactionSettings:
+    m_SecondaryNoise: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_Duration: 1
+    m_NoiseOffsets: {x: 0, y: 0, z: 0}
 --- !u!1 &6184417817863886270
 GameObject:
   m_ObjectHideFlags: 3
@@ -1317,6 +1339,7 @@ GameObject:
   - component: {fileID: 8871060832024345180}
   - component: {fileID: 7334125169147509031}
   - component: {fileID: 6053896891116889362}
+  - component: {fileID: -5860588724546942018}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -1675,6 +1698,59 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _health: 3
   _invincibilityTime: 1
+--- !u!114 &-5860588724546942018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7163690925482534642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 180ecf9b41d478f468eb3e9083753217, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ImpulseDefinition:
+    m_ImpulseChannel: 1
+    m_ImpulseShape: 3
+    m_CustomImpulseShape:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    m_ImpulseDuration: 0.14
+    m_ImpulseType: 0
+    m_DissipationRate: 0.25
+    m_RawSignal: {fileID: 0}
+    m_AmplitudeGain: 1
+    m_FrequencyGain: 1
+    m_RepeatMode: 0
+    m_Randomize: 1
+    m_TimeEnvelope:
+      m_AttackShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_DecayShape:
+        serializedVersion: 2
+        m_Curve: []
+        m_PreInfinity: 2
+        m_PostInfinity: 2
+        m_RotationOrder: 4
+      m_AttackTime: 0
+      m_SustainTime: 0.2
+      m_DecayTime: 0.7
+      m_ScaleWithImpact: 1
+      m_HoldForever: 0
+    m_ImpactRadius: 100
+    m_DirectionMode: 0
+    m_DissipationMode: 2
+    m_DissipationDistance: 100
+    m_PropagationSpeed: 343
+  m_DefaultVelocity: {x: 0.038, y: 0.038, z: 0.038}
 --- !u!1 &7913396932638137083
 GameObject:
   m_ObjectHideFlags: 0
