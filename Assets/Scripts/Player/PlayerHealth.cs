@@ -1,0 +1,41 @@
+﻿using UnityEngine;
+
+namespace Player
+{
+    public class PlayerHealth : MonoBehaviour
+    {
+        public delegate void OnHealthChangedSignature(int newHealth, int oldHealth);
+        public OnHealthChangedSignature OnHealthChanged;
+        public OnHealthChangedSignature OnHealthDepleted;
+        
+        private int _health = 3;
+        
+        [SerializeField]
+        private float _invincibilityTime = 1f;
+        private float _invincibilityTimer = 0f;
+        
+        public void Damage(int damage)
+        {
+            if(_invincibilityTimer > 0 || _health <= 0)
+                return;
+            
+            int oldHealth = _health;
+            _health -= damage;
+            
+            OnHealthChanged?.Invoke(_health, oldHealth);
+            if (_health <= 0)
+            {
+                
+                OnHealthDepleted?.Invoke(_health, oldHealth);
+                
+                Respawn();
+            }
+        }
+            
+        private void Respawn()
+        {
+            // Handle player death
+            Debug.Log("Player died");
+        }
+    }
+}
