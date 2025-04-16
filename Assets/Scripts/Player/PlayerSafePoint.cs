@@ -18,7 +18,7 @@ namespace Player
         {
             if (_playerMovement.IsGrounded() && _playerMovement.GroundedRaycast(out RaycastHit hit))
             {
-                if(hit.transform && hit.transform.gameObject.isStatic)
+                if(hit.transform && hit.transform.CompareTag("SafeZone"))
                 {
                     _safePoint = transform.position;
                 }
