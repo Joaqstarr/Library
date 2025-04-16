@@ -30,10 +30,12 @@ namespace Utility.SceneManagement
 
         public void LoadScene()
         {
-            if (!IsLoaded())
+            if (IsLoaded())
             {
-                SceneManager.LoadSceneAsync(ScenePath, LoadSceneMode.Additive);
+                UnloadScene();
             }
+
+            SceneManager.LoadSceneAsync(ScenePath, LoadSceneMode.Additive);
         }
         
         public void UnloadScene()

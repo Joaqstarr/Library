@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Systems.Gamemode;
+using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Player
 {
@@ -8,6 +10,7 @@ namespace Player
         public OnHealthChangedSignature OnHealthChanged;
         public OnHealthChangedSignature OnHealthDepleted;
         
+        [SerializeField]
         private int _health = 3;
         
         [SerializeField]
@@ -35,7 +38,12 @@ namespace Player
         private void Respawn()
         {
             // Handle player death
-            Debug.Log("Player died");
+            
+            //reload scene if game manager is not present
+            if (!Gamemanager.Instance)
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
         }
     }
 }

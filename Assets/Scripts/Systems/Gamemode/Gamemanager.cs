@@ -58,7 +58,22 @@ namespace Systems.Gamemode
                 
             }*/
 
-            
+
+            LoadCurrentLevel();
+
+            SaveData();
+        }
+
+        public void SetCurrentLevel(SceneReference level)
+        {
+            if (level != null)
+            {
+                _saveData.CurrentLevel = level;
+            }
+        }
+
+        public void LoadCurrentLevel()
+        {
             if (_saveData.CurrentLevel == null  )
             {
                 _saveData.CurrentLevel = _defaultLevel;
@@ -68,10 +83,8 @@ namespace Systems.Gamemode
             {
                 _saveData.CurrentLevel.LoadScene();
             }
-
-            SaveData();
         }
-        
+
         public void TrySpawnPlayer(PlayerStart playerStart)
         {
             if (_player == null)
@@ -79,6 +92,13 @@ namespace Systems.Gamemode
                 if (playerStart)
                 {
                     _player = Instantiate(_playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
+
+                    PlayerHealth health = _player.GetComponent<PlayerHealth>();
+
+                    if (health)
+                    {
+                        health.OnHealthDepleted += OnDead;
+                    }
                 }
             }
         }
@@ -109,6 +129,13 @@ namespace Systems.Gamemode
                 return null;
             }
         }
-        
+
+
+        public void OnDead(int currentHealth, int oldHealth)
+        {
+            Destroy(_player.gameObject);
+            _player = null;
+            LoadCurrentLevel();
+        }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using DG.Tweening;
+using Player;
 using UnityEngine;
 
 namespace Enemies.Robot.Attacks
@@ -70,8 +71,16 @@ namespace Enemies.Robot.Attacks
         private void OnTriggerEnter(Collider other)
         {
             if (!_dealingDamage) return;
-            
-            Debug.Log(other.gameObject.name +" Collision! Deal Damage Here.");
+
+            if (other.CompareTag("Player"))
+            {
+                PlayerHealth health = other.GetComponent<PlayerHealth>();
+
+                if (health)
+                {
+                    health.Damage(1);
+                }
+            }
         }
     }
 }

@@ -24,6 +24,11 @@ namespace Enemies.Robot
 
         public override void OnUpdateState()
         {
+            if(_aggroState.Player == null)
+            {
+                _robotStateManager.SwitchToIdleState();
+                return;
+            }
             if (_attackTimer > 3)
             {
                 _aggroState.StartStompAttack();

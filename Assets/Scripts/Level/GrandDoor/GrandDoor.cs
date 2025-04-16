@@ -1,4 +1,5 @@
 ﻿using System;
+using Systems.Gamemode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utility;
@@ -109,6 +110,11 @@ namespace Level.GrandDoor
             if (_currentLevelLoadedState != LevelState.Both || _awaitingPlayerEnter) return;
             
             _currentLevelLoadedState = LevelState.Hub;
+            
+            if (Gamemanager.Instance)
+            {
+                Gamemanager.Instance.SetCurrentLevel(_hubLevel.Level);
+            }
             CloseDoor();
         }
         
@@ -117,6 +123,10 @@ namespace Level.GrandDoor
             if (_currentLevelLoadedState != LevelState.Both || _awaitingPlayerEnter) return;
             
             _currentLevelLoadedState = LevelState.Game;
+            if (Gamemanager.Instance)
+            {
+                Gamemanager.Instance.SetCurrentLevel(_gameLevel.Level);
+            }
             CloseDoor();
         }
 
