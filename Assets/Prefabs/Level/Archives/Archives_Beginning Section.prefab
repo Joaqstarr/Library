@@ -4963,7 +4963,7 @@ GameObject:
   - component: {fileID: 3135310988356374153}
   m_Layer: 0
   m_Name: Starting Platform
-  m_TagString: Untagged
+  m_TagString: SafeZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55549,14 +55549,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8927694714534085705}
     m_Modifications:
-    - target: {fileID: 21058488646895139, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041297385754907447, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2187737529141731118, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: m_Name
       value: SteamActivatorWithGauge
@@ -55660,6 +55652,14 @@ PrefabInstance:
     - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: OnSteamEmpty.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 21058488646895139, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041297385754907447, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3613237825287616842, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
@@ -55808,14 +55808,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8927694714534085705}
     m_Modifications:
-    - target: {fileID: 21058488646895139, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9041297385754907447, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
-      propertyPath: m_Layer
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2187737529141731118, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: m_Name
       value: SteamActivatorWithGauge (1)
@@ -55923,6 +55915,14 @@ PrefabInstance:
     - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: OnSteamEmpty.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 21058488646895139, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041297385754907447, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+      propertyPath: m_Layer
+      value: 7
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
