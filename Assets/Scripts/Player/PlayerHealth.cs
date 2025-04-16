@@ -1,4 +1,5 @@
-﻿using Systems.Gamemode;
+﻿using System;
+using Systems.Gamemode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -22,6 +23,8 @@ namespace Player
             if(_invincibilityTimer > 0 || _health <= 0)
                 return;
             
+            _invincibilityTimer = _invincibilityTime;
+            
             int oldHealth = _health;
             _health -= damage;
             
@@ -34,7 +37,12 @@ namespace Player
                 Respawn();
             }
         }
-            
+
+        private void Update()
+        {
+            _invincibilityTimer -= Time.deltaTime;
+        }
+
         private void Respawn()
         {
             // Handle player death
