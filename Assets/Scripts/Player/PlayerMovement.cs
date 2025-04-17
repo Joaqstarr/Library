@@ -59,11 +59,15 @@ namespace Player
             _rigidbody = GetComponent<Rigidbody>();
             _characterController = GetComponent<CharacterController>();
             _playerControls = GetComponent<PlayerControls>();
-            _cameraTransform = Camera.main.transform;
         }
 
         private void Update()
         {
+            if (_cameraTransform == null)
+            {
+                _cameraTransform = Camera.main.transform;
+
+            }
             _animationManager.Grounded = _isGrounded;
             
             CheckIfLaunchEnded();
