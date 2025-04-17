@@ -5,6 +5,7 @@ using Player.Attack;
 using Player.States;
 using UnityEngine;
 using UnityEngine.Splines;
+using UnityEngine.Timeline;
 using Utility.StateMachine;
 
 namespace Player
@@ -21,6 +22,9 @@ namespace Player
         public PlayerCameraStateManager PlayerCameraStateManagerInstance{get; private set;}
         public PlayerAttackManager PlayerAttackManagerInstance{get; private set;}
 
+        public Animator AnimatorInstance{get; private set;}
+        public SignalReceiver PlayerSignalReceiverInstance{get; private set;}
+
         [field: SerializeField] public Transform PlayerArt { get; private set; }
 
         [field: Header("Camera and Aim Settings")]
@@ -31,6 +35,7 @@ namespace Player
         
         private LocomotionState _locomotionState;
         private PipeState _pipeState;
+        private CinematicState _cinematicState;
 
         #endregion
 
@@ -45,11 +50,13 @@ namespace Player
             PlayerControlsInstance = GetComponent<PlayerControls>();
             PlayerInteractionManagerInstance = GetComponent<PlayerInteractionManager>();
             PlayerCameraStateManagerInstance = GetComponentInChildren<PlayerCameraStateManager>();
-            
+            AnimatorInstance = GetComponent<Animator>();
+            PlayerSignalReceiverInstance = GetComponent<SignalReceiver>();
             //state setup
             _locomotionState = new LocomotionState(this);
             _pipeState = new PipeState(this);
-            
+            _cinematicState = new CinematicState(this);
+
             _stateMachine = new HierarchalStateMachine();
         }
 
@@ -83,6 +90,11 @@ namespace Player
         private void SwitchState(BaseState newState)
         {
             _stateMachine.SwitchState(newState);
+        }
+
+        public void SwitchToCinematicState()
+        {
+            _stateMachine.SwitchState(_cinematicState);
         }
     }
 }

@@ -16,7 +16,7 @@ namespace Systems.SaveSystem
         public SerializableDictionary<string, bool> CutsceneFlags = new SerializableDictionary<string, bool>();
         public void PrepareForSave()
         {
-            CurrentLevelPath = CurrentLevel != null ? CurrentLevel.ScenePath : null;
+            CurrentLevelPath = CurrentLevel != null ? CurrentLevel.name : null;
         }
 
         public void RestoreAfterLoad()
