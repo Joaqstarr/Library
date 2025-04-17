@@ -137,5 +137,10 @@ namespace Systems.Gamemode
             _player = null;
             LoadCurrentLevel();
         }
+
+        public SaveData GetSaveData()
+        {
+            return _saveData;
+        }
     }
 }

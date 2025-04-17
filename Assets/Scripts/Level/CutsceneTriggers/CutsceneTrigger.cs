@@ -1,5 +1,6 @@
 ﻿using System;
 using Systems.CutsceneSystem;
+using Systems.Gamemode;
 using UnityEngine;
 
 namespace Level.CutsceneTriggers
@@ -8,13 +9,33 @@ namespace Level.CutsceneTriggers
     {
         [SerializeField]
         private CutsceneData _cutsceneToPlay;
+
+
+        private bool _fired = false;
+        private void Start()
+        {
+            //check save data
+            if (Gamemanager.Instance)
+            {
+                Gamemanager.Instance.GetSaveData().CutsceneFlags.TryGetValue(_cutsceneToPlay.Cutscene.name, out bool cutscenePlayed);
+            }
+        }
+
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag("Player"))
+            if (!_fired && other.CompareTag("Player"))
             {
-                if (CutsceneEventManager.instance)
+                if (CutsceneEventManager.Instance)
                 {
-                    CutsceneEventManager.instance.PlayCutscene(_cutsceneToPlay);
+                    CutsceneEventManager.Instance.PlayCutscene(_cutsceneToPlay);
+                    
+                }
+
+                if (Gamemanager.Instance)
+                {
+                    Gamemanager.Instance.GetSaveData().CutsceneFlags[_cutsceneToPlay.Cutscene.name] = true;
+                    _fired = true;
+                    //Gamemanager.Instance.SaveData();
                 }
             }
         }
