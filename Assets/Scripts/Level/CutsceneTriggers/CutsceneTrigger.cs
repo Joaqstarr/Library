@@ -18,6 +18,7 @@ namespace Level.CutsceneTriggers
             if (Gamemanager.Instance)
             {
                 Gamemanager.Instance.GetSaveData().CutsceneFlags.TryGetValue(_cutsceneToPlay.Cutscene.name, out bool cutscenePlayed);
+                _fired = cutscenePlayed;
             }
         }
 
@@ -35,7 +36,7 @@ namespace Level.CutsceneTriggers
                 {
                     Gamemanager.Instance.GetSaveData().CutsceneFlags[_cutsceneToPlay.Cutscene.name] = true;
                     _fired = true;
-                    //Gamemanager.Instance.SaveData();
+                    Gamemanager.Instance.SaveData();
                 }
             }
         }
