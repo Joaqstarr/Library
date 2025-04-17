@@ -22,8 +22,11 @@ namespace Systems.Gamemode
         
         [SerializeField]
         private Camera _mainCamera;
+
+        [SerializeField] private bool _shouldSave = true;
         private void Awake()
         {
+            if (!Application.isEditor) _shouldSave = true;
             if (Instance == null)
             {
                 Instance = this;
@@ -45,7 +48,8 @@ namespace Systems.Gamemode
 
         public void SaveData()
         {
-            _dataSaver.SaveData(_saveData);
+            if(_shouldSave)
+                _dataSaver.SaveData(_saveData);
         }
 
         private void Start()
