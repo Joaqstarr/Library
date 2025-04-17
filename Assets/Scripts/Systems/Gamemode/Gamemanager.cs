@@ -63,8 +63,6 @@ namespace Systems.Gamemode
 
 
             LoadCurrentLevel();
-
-            SaveData();
         }
 
         public void SetCurrentLevel(SceneReference level)
@@ -80,7 +78,7 @@ namespace Systems.Gamemode
         {
             if (_saveData.CurrentLevel == null  )
             {
-                _saveData.CurrentLevel = _defaultLevel;
+                SetCurrentLevel(_defaultLevel);
             }
 
             if (_saveData.CurrentLevel)
