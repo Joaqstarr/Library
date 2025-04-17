@@ -1155,7 +1155,7 @@ PlayableDirector:
   m_Enabled: 1
   serializedVersion: 3
   m_PlayableAsset: {fileID: 11400000, guid: 2bd4e81c07cda594698322a5b717e7aa, type: 2}
-  m_InitialState: 1
+  m_InitialState: 0
   m_WrapMode: 2
   m_DirectorUpdateMode: 1
   m_InitialTime: 0
@@ -1165,7 +1165,8 @@ PlayableDirector:
   - key: {fileID: 5024634481194317249, guid: 2bd4e81c07cda594698322a5b717e7aa, type: 2}
     value: {fileID: 1335585309}
   m_ExposedReferences:
-    m_References: []
+    m_References:
+    - 35d0cf21fcd3c254d9d19af898d57246: {fileID: 1335585307}
 --- !u!1 &1556577231
 GameObject:
   m_ObjectHideFlags: 0
@@ -1221,8 +1222,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 8.420765, y: 6.6915092, z: 8.463194}
-  m_Center: {x: -5.238903, y: 2.8457546, z: -0.17197132}
+  m_Size: {x: 27.923117, y: 6.6915092, z: 8.463194}
+  m_Center: {x: -4.3477755, y: 2.8457546, z: -0.17197132}
 --- !u!4 &1556577234
 Transform:
   m_ObjectHideFlags: 0
@@ -1472,7 +1473,7 @@ MonoBehaviour:
     Level: {fileID: 11400000, guid: b0bc0b8d6d9b1234ab281f8486929fe2, type: 2}
     Trigger: {fileID: 1587392726}
   _gameLevel:
-    Level: {fileID: 11400000, guid: 02c5490f68248964e93f99025e94ccd1, type: 2}
+    Level: {fileID: 11400000, guid: 5fa56be7b4cc2bd45b671b0b32a29c22, type: 2}
     Trigger: {fileID: 371260799}
   _insideDoorTrigger: {fileID: 1556577232}
 --- !u!95 &1783591213
@@ -1772,7 +1773,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1971926535}
   m_Layer: 0
-  m_Name: IntroCutscenePlayer
+  m_Name: IntroCutscenePlayers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1787,7 +1788,7 @@ Transform:
   m_GameObject: {fileID: 1971926534}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.980204, y: 9.050001, z: 27.360016}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
