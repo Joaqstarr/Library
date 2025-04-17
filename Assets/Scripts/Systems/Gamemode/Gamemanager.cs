@@ -19,6 +19,9 @@ namespace Systems.Gamemode
 
         [SerializeField]
         private SceneReference _defaultLevel;
+        
+        [SerializeField]
+        private Camera _mainCamera;
         private void Awake()
         {
             if (Instance == null)
@@ -31,7 +34,7 @@ namespace Systems.Gamemode
             }
 
             Application.backgroundLoadingPriority = ThreadPriority.Low;
-
+            _mainCamera.gameObject.SetActive(false);
 
             _dataSaver = new DataSaver("save.boogers");
 
@@ -100,6 +103,9 @@ namespace Systems.Gamemode
                     {
                         health.OnHealthDepleted += OnDead;
                     }
+                    
+                    _mainCamera.gameObject.SetActive(true);
+
                 }
             }
         }
