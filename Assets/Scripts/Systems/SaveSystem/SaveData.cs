@@ -12,6 +12,8 @@ namespace Systems.SaveSystem
         [System.NonSerialized]
         public SceneReference CurrentLevel = null; // Non-serialized reference
 
+        
+        public SerializableDictionary<string, bool> CutsceneFlags = new SerializableDictionary<string, bool>();
         public void PrepareForSave()
         {
             CurrentLevelPath = CurrentLevel != null ? CurrentLevel.ScenePath : null;

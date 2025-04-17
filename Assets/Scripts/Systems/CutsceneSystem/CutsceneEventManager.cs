@@ -10,16 +10,16 @@ namespace Systems.CutsceneSystem
 
         public delegate void CutsceneEventDelegate(CutsceneData cutsceneData);
         public static CutsceneEventDelegate OnCutsceneStart;
-        public static CutsceneEventManager instance;
+        public static CutsceneEventManager Instance;
         private void Awake()
         {
-            if (instance)
+            if (Instance)
             {
                 Destroy(this);
                 return;
             }else
             {
-                instance = this;
+                Instance = this;
             }
         }
 

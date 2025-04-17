@@ -26,7 +26,7 @@ namespace Systems.CutsceneSystem
         
         private void OnCutsceneStart(CutsceneData cutscenedata)
         {
-            if (cutscenedata.Cutscene == _playableDirector.playableAsset)
+            if(cutscenedata.Cutscene == _playableDirector.playableAsset)
             {
                 _playableDirector.Play();
             }
