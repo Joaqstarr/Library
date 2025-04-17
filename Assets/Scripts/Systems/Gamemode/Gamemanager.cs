@@ -142,5 +142,10 @@ namespace Systems.Gamemode
         {
             return _saveData;
         }
+
+        public PlayerStateManager GetPlayer()
+        {
+            return _player;
+        }
     }
 }

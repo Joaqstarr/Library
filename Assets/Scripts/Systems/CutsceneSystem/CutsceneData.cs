@@ -8,5 +8,7 @@ namespace Systems.CutsceneSystem
     {
         [field: SerializeField]
         public TimelineAsset Cutscene { get; private set; } 
+
+        
     }
 }
