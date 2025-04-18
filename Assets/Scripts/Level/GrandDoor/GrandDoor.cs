@@ -46,13 +46,13 @@ namespace Level.GrandDoor
         public void OpenDoor()
         {
             //load level
-            if (!_hubLevel.Level.IsLoaded())
+            if (_hubLevel.Level && !_hubLevel.Level.IsLoaded())
             {
-                _hubLevel.Level.LoadScene();
+                _hubLevel.Level.LoadScene(false);
             }
-            if(!_gameLevel.Level.IsLoaded())
+            if(_gameLevel.Level && !_gameLevel.Level.IsLoaded())
             {
-                _gameLevel.Level.LoadScene();
+                _gameLevel.Level.LoadScene(false);
             }
 
             _currentLevelLoadedState = LevelState.Both;
@@ -92,6 +92,27 @@ namespace Level.GrandDoor
             LevelSwitcher.LevelSwitcher.CanChangeLevel += CanChangeLevel;
             LevelSwitcher.LevelSwitcher.RequestCurrentLevel += RequestCurrentLevel;
 
+            Gamemanager.OnLevelLoadedFromSave += OnLevelLoadedFromSave;
+        }
+        private void OnDisable()
+        {
+            _hubLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredHub);
+            _gameLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredGameLevel);
+            _insideDoorTrigger.OnPlayerEnter.RemoveListener(PlayerEnteredDoor);
+            
+            LevelSwitcher.LevelSwitcher.OnLevelChanged -= OnLevelChanged;
+            LevelSwitcher.LevelSwitcher.CanChangeLevel -= CanChangeLevel;
+            LevelSwitcher.LevelSwitcher.RequestCurrentLevel -= RequestCurrentLevel;
+            
+            Gamemanager.OnLevelLoadedFromSave -= OnLevelLoadedFromSave;
+
+        }
+        private void OnLevelLoadedFromSave(SceneReference scene)
+        {
+            if (scene && scene != _hubLevel.Level)
+            {
+                _gameLevel.Level = scene;
+            }
         }
 
         private SceneReference RequestCurrentLevel()
@@ -106,21 +127,17 @@ namespace Level.GrandDoor
 
         private void OnLevelChanged(int levelindex, SceneReference level)
         {
-            _gameLevel.Level.UnloadScene();
+            if(_gameLevel.Level == level)return;
+            if (_gameLevel.Level)
+            {
+                _gameLevel.Level.UnloadScene();
+            }
+            
             _gameLevel.Level = level;
         }
 
 
-        private void OnDisable()
-        {
-            _hubLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredHub);
-            _gameLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredGameLevel);
-            _insideDoorTrigger.OnPlayerEnter.RemoveListener(PlayerEnteredDoor);
-            
-            LevelSwitcher.LevelSwitcher.OnLevelChanged -= OnLevelChanged;
-            LevelSwitcher.LevelSwitcher.CanChangeLevel -= CanChangeLevel;
-            LevelSwitcher.LevelSwitcher.RequestCurrentLevel -= RequestCurrentLevel;
-        }
+
         
         private void PlayerEnteredDoor()
         {
