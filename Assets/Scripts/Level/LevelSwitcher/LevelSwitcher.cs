@@ -1,5 +1,6 @@
 ﻿using System;
 using UnityEngine;
+using UnityEngine.Playables;
 using Utility.SceneManagement;
 
 namespace Level.LevelSwitcher
@@ -22,6 +23,14 @@ namespace Level.LevelSwitcher
         [SerializeField]
         private float _levelSwitchingDelay = 1f;
         private float _levelSwitchCooldown = 0f;
+
+
+        private PlayableDirector _playableDirector;
+
+        private void Awake()
+        {
+            _playableDirector = GetComponent<PlayableDirector>();
+        }
 
         private void Start()
         {
@@ -58,6 +67,8 @@ namespace Level.LevelSwitcher
 
             _currentLevel = (_currentLevel + 1)%_levels.Length;
             OnLevelChanged?.Invoke(_currentLevel, _levels[_currentLevel]);
+            _playableDirector.Play();
+
         }
 
         public void PreviousLevel()
@@ -70,6 +81,7 @@ namespace Level.LevelSwitcher
             
             OnLevelChanged?.Invoke(_currentLevel, _levels[_currentLevel]);
 
+            _playableDirector.Play();
         }
 
 
