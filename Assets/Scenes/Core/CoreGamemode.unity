@@ -573,6 +573,7 @@ MonoBehaviour:
   _playerPrefab: {fileID: 1088623530776141252, guid: 8ab450174d688764098e5c956528d3e1, type: 3}
   _defaultLevel: {fileID: 11400000, guid: b0bc0b8d6d9b1234ab281f8486929fe2, type: 2}
   _mainCamera: {fileID: 1083560634}
+  _shouldSave: 1
 --- !u!114 &619582471
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1316,6 +1317,91 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1783591211}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &1597830190
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2187737529141731118, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_Name
+      value: SteamActivatorWithGauge (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -23.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 2.0499973
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 20.924835
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2869591407910348045, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1783591212}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OpenDoor
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Level.GrandDoor.GrandDoor, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
 --- !u!1 &1691102093 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -7587987365536566331, guid: 8b8cc4b557f130c4fba5044743fd4f6e, type: 3}
@@ -1809,6 +1895,7 @@ SceneRoots:
   - {fileID: 1083560635}
   - {fileID: 463670183}
   - {fileID: 1847405928}
+  - {fileID: 1597830190}
   - {fileID: 1335585308}
   - {fileID: 1971926535}
   - {fileID: 1812908875}
