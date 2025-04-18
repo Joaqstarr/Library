@@ -87,7 +87,7 @@ namespace Systems.Gamemode
 
             if (_saveData.CurrentLevel)
             {
-                _saveData.CurrentLevel.LoadScene();
+                _saveData.CurrentLevel.LoadScene(false);
             }
         }
 

@@ -28,14 +28,24 @@ namespace Utility.SceneManagement
 
 
 
-        public void LoadScene()
+        public void LoadScene(bool forceReload = true)
         {
-            if (IsLoaded())
+            if (forceReload)
             {
-                UnloadScene();
-            }
+                if (IsLoaded())
+                {
+                    UnloadScene();
+                }
 
-            SceneManager.LoadSceneAsync(ScenePath, LoadSceneMode.Additive);
+                SceneManager.LoadSceneAsync(ScenePath, LoadSceneMode.Additive);
+            }
+            else
+            {
+                if (!IsLoaded())
+                {
+                    SceneManager.LoadSceneAsync(ScenePath, LoadSceneMode.Additive);
+                }
+            }
         }
         
         public void UnloadScene()

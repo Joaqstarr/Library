@@ -13,9 +13,36 @@ namespace Level.LevelSwitcher
         public delegate void LevelChangedSignature(int levelIndex, SceneReference level);
         public static LevelChangedSignature OnLevelChanged;
         
+        public delegate SceneReference CurrentLevelRequestSignature();
+        public static CurrentLevelRequestSignature RequestCurrentLevel;
+
+        public delegate bool CanChangeLevelSignature();
+        public static CanChangeLevelSignature CanChangeLevel;
+        
         [SerializeField]
         private float _levelSwitchingDelay = 1f;
         private float _levelSwitchCooldown = 0f;
+
+        private void Start()
+        {
+            if(RequestCurrentLevel != null)
+            {
+                SceneReference level = RequestCurrentLevel();
+
+                if (level != null)
+                {
+                    for (int i = 0; i < _levels.Length; i++)
+                    {
+                        if (_levels[i].Equals(level))
+                        {
+                            _currentLevel = i;
+                            OnLevelChanged?.Invoke(_currentLevel, _levels[_currentLevel]);
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
         private void Update()
         {
@@ -25,6 +52,8 @@ namespace Level.LevelSwitcher
         public void NextLevel()
         {
             if (_levels.Length == 0 || _levelSwitchCooldown > 0) return;
+            if(CanChangeLevel != null && !CanChangeLevel()) return;
+            
             _levelSwitchCooldown = _levelSwitchingDelay;
 
             _currentLevel = (_currentLevel + 1)%_levels.Length;
@@ -34,7 +63,7 @@ namespace Level.LevelSwitcher
         public void PreviousLevel()
         {
             if (_levels.Length == 0 || _levelSwitchCooldown > 0) return;
-            
+            if(CanChangeLevel != null && !CanChangeLevel()) return;
             
             _levelSwitchCooldown = _levelSwitchingDelay;
             _currentLevel = (_currentLevel - 1)%_levels.Length;

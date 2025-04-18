@@ -87,14 +87,39 @@ namespace Level.GrandDoor
             _hubLevel.Trigger.OnPlayerEnter.AddListener(EnteredHub);
             _gameLevel.Trigger.OnPlayerEnter.AddListener(EnteredGameLevel);
             _insideDoorTrigger.OnPlayerEnter.AddListener(PlayerEnteredDoor);
+            
+            LevelSwitcher.LevelSwitcher.OnLevelChanged += OnLevelChanged;
+            LevelSwitcher.LevelSwitcher.CanChangeLevel += CanChangeLevel;
+            LevelSwitcher.LevelSwitcher.RequestCurrentLevel += RequestCurrentLevel;
+
         }
 
+        private SceneReference RequestCurrentLevel()
+        {
+            return _gameLevel.Level;
+        }
 
+        private bool CanChangeLevel()
+        {
+            return !_animator.GetBool(IsDoorOpen);
+        }
+
+        private void OnLevelChanged(int levelindex, SceneReference level)
+        {
+            _gameLevel.Level.UnloadScene();
+            _gameLevel.Level = level;
+        }
 
 
         private void OnDisable()
         {
             _hubLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredHub);
+            _gameLevel.Trigger.OnPlayerEnter.RemoveListener(EnteredGameLevel);
+            _insideDoorTrigger.OnPlayerEnter.RemoveListener(PlayerEnteredDoor);
+            
+            LevelSwitcher.LevelSwitcher.OnLevelChanged -= OnLevelChanged;
+            LevelSwitcher.LevelSwitcher.CanChangeLevel -= CanChangeLevel;
+            LevelSwitcher.LevelSwitcher.RequestCurrentLevel -= RequestCurrentLevel;
         }
         
         private void PlayerEnteredDoor()
