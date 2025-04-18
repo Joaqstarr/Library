@@ -36,5 +36,7 @@ namespace Systems.Steam
 
             _bgMeter.rectTransform.localScale = new Vector3(1, _holder.SteamFillPercent, 1);
         }
+        
+        
     }
 }

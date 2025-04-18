@@ -12,7 +12,9 @@ namespace Systems.Gamemode
 
         public delegate void LevelLoadedFromSaveSignature(SceneReference scene);
         public static LevelLoadedFromSaveSignature OnLevelLoadedFromSave;
-        
+
+        public delegate void OnPlayerSpawnedSignature(PlayerStateManager player);
+        public static OnPlayerSpawnedSignature OnPlayerSpawned;
         
         [SerializeField] private PlayerStateManager _playerPrefab;
 
@@ -106,6 +108,8 @@ namespace Systems.Gamemode
                     }
                     
                     _mainCamera.gameObject.SetActive(true);
+                    
+                    OnPlayerSpawned?.Invoke(_player);
 
                 }
             }
