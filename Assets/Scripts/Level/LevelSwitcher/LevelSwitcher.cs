@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using Utility.SceneManagement;
 
 namespace Level.LevelSwitcher
@@ -9,34 +10,48 @@ namespace Level.LevelSwitcher
 
         private int _currentLevel = -1;
         
+        public delegate void LevelChangedSignature(int levelIndex, SceneReference level);
+        public static LevelChangedSignature OnLevelChanged;
+        
+        [SerializeField]
+        private float _levelSwitchingDelay = 1f;
+        private float _levelSwitchCooldown = 0f;
+
+        private void Update()
+        {
+            _levelSwitchCooldown -= Time.deltaTime;
+        }
+
         public void NextLevel()
         {
-            if (_levels.Length == 0) return;
-            
-            if (_currentLevel >= 0)
-            {
-                _levels[_currentLevel].UnloadScene();
-            }
-            
+            if (_levels.Length == 0 || _levelSwitchCooldown > 0) return;
+            _levelSwitchCooldown = _levelSwitchingDelay;
+
             _currentLevel = (_currentLevel + 1)%_levels.Length;
-            
-            _levels[_currentLevel].LoadScene();
+            OnLevelChanged?.Invoke(_currentLevel, _levels[_currentLevel]);
         }
 
         public void PreviousLevel()
         {
-            if (_levels.Length == 0) return;
-
-            if (_currentLevel >= 0)
-            {
-                _levels[_currentLevel].UnloadScene();
-            }
+            if (_levels.Length == 0 || _levelSwitchCooldown > 0) return;
             
-
+            
+            _levelSwitchCooldown = _levelSwitchingDelay;
             _currentLevel = (_currentLevel - 1)%_levels.Length;
             
-            _levels[_currentLevel].LoadScene();
+            OnLevelChanged?.Invoke(_currentLevel, _levels[_currentLevel]);
 
+        }
+
+
+        public int GetActiveLevelIndex()
+        {
+            return _currentLevel;
+        }
+        
+        public int GetLevelCount()
+        {
+            return _levels.Length;
         }
     }
 }
