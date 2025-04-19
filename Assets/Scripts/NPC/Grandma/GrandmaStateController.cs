@@ -22,7 +22,7 @@ namespace NPC.Grandma
 
         private void Start()
         {
-            if (_points.Length > 0)
+            if (_points != null && _points.Length > 0)
             {
                 StartCoroutine(WalkBetweenPoints());
             }

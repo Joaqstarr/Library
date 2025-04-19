@@ -10,6 +10,12 @@ namespace Systems.Gamemode
     {
         public static Gamemanager Instance { get; private set; }
 
+        public delegate void LevelLoadedFromSaveSignature(SceneReference scene);
+        public static LevelLoadedFromSaveSignature OnLevelLoadedFromSave;
+
+        public delegate void OnPlayerSpawnedSignature(PlayerStateManager player);
+        public static OnPlayerSpawnedSignature OnPlayerSpawned;
+        
         [SerializeField] private PlayerStateManager _playerPrefab;
 
         private PlayerStateManager _player;
@@ -41,10 +47,17 @@ namespace Systems.Gamemode
 
             _dataSaver = new DataSaver("save.boogers");
 
-            _saveData = _dataSaver.LoadData();
         }
-        
-        
+
+        private void LoadData()
+        {
+            _saveData = _dataSaver.LoadData();
+            LoadCurrentLevel();
+
+            OnLevelLoadedFromSave?.Invoke(_saveData.CurrentLevel);
+
+        }
+
 
         public void SaveData()
         {
@@ -54,19 +67,7 @@ namespace Systems.Gamemode
 
         private void Start()
         {
-            // Initialize game state or other components here
-            
-            /*
-            PlayerStart playerStart = GetPrincipalPlayerStart();
-
-            if (playerStart)
-            {
-                _player = Instantiate(_playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
-                
-            }*/
-
-
-            LoadCurrentLevel();
+            LoadData();
         }
 
         public void SetCurrentLevel(SceneReference level)
@@ -87,7 +88,7 @@ namespace Systems.Gamemode
 
             if (_saveData.CurrentLevel)
             {
-                _saveData.CurrentLevel.LoadScene();
+                _saveData.CurrentLevel.LoadScene(false);
             }
         }
 
@@ -107,6 +108,8 @@ namespace Systems.Gamemode
                     }
                     
                     _mainCamera.gameObject.SetActive(true);
+                    
+                    OnPlayerSpawned?.Invoke(_player);
 
                 }
             }
@@ -156,5 +159,6 @@ namespace Systems.Gamemode
         {
             return _player;
         }
+        
     }
 }
