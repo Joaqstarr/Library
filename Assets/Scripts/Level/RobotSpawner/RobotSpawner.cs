@@ -26,9 +26,7 @@ namespace Level.RobotSpawner
         {
             Transform spawnPoint = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)];
             
-            RobotStateManager robot = Instantiate(_robotPrefab, spawnPoint.position, Quaternion.identity);
-            
-            robot.transform.SetParent(transform.parent);
+            RobotStateManager robot = Instantiate(_robotPrefab, spawnPoint.position, Quaternion.identity, transform.parent);
             
             robot.PlaySpawnAnimation();
         }
