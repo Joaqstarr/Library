@@ -5,9 +5,10 @@ namespace UI
 {
     public class PrototypeMenu : MonoBehaviour
     {
+        [SerializeField] private string _levelToLoad = "CoreGamemode";
         public void StartGame()
         {
-            SceneManager.LoadScene("Archives");
+            SceneManager.LoadScene(_levelToLoad);
         }
         
         public void QuitGame()

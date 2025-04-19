@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8528753940985734064}
+  - component: {fileID: 1033012991932473377}
   m_Layer: 0
   m_Name: Archives Ambient Sounds
   m_TagString: Untagged
@@ -33,6 +34,22 @@ Transform:
   - {fileID: 2969672441386387192}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1033012991932473377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1366910152119317918}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 113a87d0ca1d4fa79a0b7e1033819c71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _postProcessVolume: {fileID: 0}
+  _audioSources:
+  - {fileID: 1123286763984226915}
+  - {fileID: 4217212719238557255}
 --- !u!1 &7585596070702885024
 GameObject:
   m_ObjectHideFlags: 0
