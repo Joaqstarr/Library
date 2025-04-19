@@ -8,15 +8,25 @@ namespace Level.RobotSpawner
     {
         [SerializeField] private RobotStateManager _robotPrefab;
 
+        [SerializeField] private float _spawnDelay = 5f;
+
+        private Transform[] _spawnPoints;
+
+        private void Awake()
+        {
+            _spawnPoints = GetComponentsInChildren<Transform>();
+        }
 
         private void Start()
         {
-            InvokeRepeating(nameof(SpawnRobot), 2, 5f);
+            InvokeRepeating(nameof(SpawnRobot), 8, _spawnDelay);
         }
 
         public void SpawnRobot()
         {
-            RobotStateManager robot = Instantiate(_robotPrefab, transform.position, Quaternion.identity);
+            Transform spawnPoint = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)];
+            
+            RobotStateManager robot = Instantiate(_robotPrefab, spawnPoint.position, Quaternion.identity);
             
             robot.transform.SetParent(transform.parent);
             
