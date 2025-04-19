@@ -2825,6 +2825,12 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDUnlitSubTarget",
+    "m_ObjectId": "06cd15b3f728497caf82c376a0d36304"
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.PropertyNode",
     "m_ObjectId": "071608d58bca45f5a58c1b380d37ba02",
     "m_Group": {
@@ -8427,14 +8433,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDUnlitData",
-    "m_ObjectId": "69c953bb680945d382b8bcfdc7e4cec2",
-    "m_EnableShadowMatte": false,
-    "m_DistortionOnly": false
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicVectorMaterialSlot",
     "m_ObjectId": "6a08262523dc4b869d087742ce80ceaa",
     "m_Id": 0,
@@ -9432,12 +9430,6 @@
 
 {
     "m_SGVersion": 0,
-    "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDUnlitSubTarget",
-    "m_ObjectId": "7c8d18e879294b02940691a37e7736f4"
-}
-
-{
-    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.DynamicValueMaterialSlot",
     "m_ObjectId": "7e6abb2eb56749c88dbff9d905f859ca",
     "m_Id": 0,
@@ -10119,6 +10111,18 @@
         "z": 0.0,
         "w": 0.0
     }
+}
+
+{
+    "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDLitData",
+    "m_ObjectId": "8eb7dc85d8f3465bac0c8fff1a0a0717",
+    "m_RayTracing": false,
+    "m_MaterialType": 0,
+    "m_RefractionModel": 0,
+    "m_SSSTransmission": true,
+    "m_EnergyConservingSpecular": true,
+    "m_ClearCoat": false
 }
 
 {
@@ -14123,6 +14127,14 @@
 
 {
     "m_SGVersion": 0,
+    "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDUnlitData",
+    "m_ObjectId": "de1b643246de4c5984f54a54e9a344c3",
+    "m_EnableShadowMatte": false,
+    "m_DistortionOnly": false
+}
+
+{
+    "m_SGVersion": 0,
     "m_Type": "UnityEditor.ShaderGraph.LerpNode",
     "m_ObjectId": "de3b3087b2bb4fa1bde8ff63165b935d",
     "m_Group": {
@@ -15685,7 +15697,7 @@
     "m_Type": "UnityEditor.Rendering.HighDefinition.ShaderGraph.HDTarget",
     "m_ObjectId": "fbd902784d0747d797bb1fc8b20e5704",
     "m_ActiveSubTarget": {
-        "m_Id": "7c8d18e879294b02940691a37e7736f4"
+        "m_Id": "06cd15b3f728497caf82c376a0d36304"
     },
     "m_Datas": [
         {
@@ -15695,7 +15707,10 @@
             "m_Id": "36feec21c65d4df78147209825954d72"
         },
         {
-            "m_Id": "69c953bb680945d382b8bcfdc7e4cec2"
+            "m_Id": "8eb7dc85d8f3465bac0c8fff1a0a0717"
+        },
+        {
+            "m_Id": "de1b643246de4c5984f54a54e9a344c3"
         }
     ],
     "m_CustomEditorGUI": "",
