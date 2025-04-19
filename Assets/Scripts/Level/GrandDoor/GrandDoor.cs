@@ -1,5 +1,6 @@
 ﻿using System;
 using Systems.Gamemode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Utility;
@@ -25,6 +26,12 @@ namespace Level.GrandDoor
         private PlayerDetectingTrigger _insideDoorTrigger;
 
         private Animator _animator;
+
+        [SerializeField] private float _autoCloseTime = 10f;
+        private float _autoCloseTimer;
+        
+        private bool _awaitingSceneLoad = false;
+
         private enum LevelState
         {
             Hub,
@@ -33,14 +40,15 @@ namespace Level.GrandDoor
         }
 
         private LevelState _currentLevelLoadedState;
-        
+        private LevelState _previousLevelLoadedState;
+
         private bool _doorOpen = false;
-        private bool _awaitingPlayerEnter = true;
+        private bool _awaitingPlayerEnter;
 
         private void Awake()
         {
             _animator = GetComponent<Animator>();
-            _currentLevelLoadedState = LevelState.Hub;
+
         }
 
         public void OpenDoor()
@@ -55,27 +63,34 @@ namespace Level.GrandDoor
                 _gameLevel.Level.LoadScene(false);
             }
 
+            _previousLevelLoadedState = _currentLevelLoadedState;
             _currentLevelLoadedState = LevelState.Both;
 
             //play open animation
             SceneManager.sceneLoaded += SceneLoaded;
 
+            _awaitingSceneLoad = true;
         }
 
         private void SceneLoaded(Scene arg0, LoadSceneMode arg1)
         {
+            
+            if(!_awaitingSceneLoad) return;
+            
             if (arg0.name == _hubLevel.Level.ScenePath || arg0.name == _gameLevel.Level.ScenePath)
             {
                 _animator.SetBool(IsDoorOpen, true);
                 _doorOpen = true;
                 _awaitingPlayerEnter = true;
+                _autoCloseTimer = _autoCloseTime;
+                
+                _awaitingSceneLoad = false;
+                SceneManager.sceneLoaded -= SceneLoaded;
             }
-            SceneManager.sceneLoaded -= SceneLoaded;
         }
 
         public void CloseDoor()
         {
-            //unload level
 
             _animator.SetBool(IsDoorOpen, false);
             _doorOpen = false;
@@ -112,6 +127,13 @@ namespace Level.GrandDoor
             if (scene && scene != _hubLevel.Level)
             {
                 _gameLevel.Level = scene;
+                _currentLevelLoadedState = LevelState.Game;
+                _previousLevelLoadedState = LevelState.Game;
+            }
+            else
+            {
+                _previousLevelLoadedState = LevelState.Hub;
+                _currentLevelLoadedState = LevelState.Hub;
             }
         }
 
@@ -137,8 +159,23 @@ namespace Level.GrandDoor
         }
 
 
+        private void Update()
+        {
+            if (_awaitingPlayerEnter)
+            {
+                _autoCloseTimer -= Time.deltaTime;
+                
+                if(_autoCloseTimer <= 0)
+                {
+                    _currentLevelLoadedState = _previousLevelLoadedState;
 
-        
+                    _awaitingPlayerEnter = false;
+                    CloseDoor();
+                    _autoCloseTimer = _autoCloseTime;
+                }
+            }
+        }
+
         private void PlayerEnteredDoor()
         {
             if (_currentLevelLoadedState == LevelState.Both)

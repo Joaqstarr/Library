@@ -32,7 +32,6 @@ namespace Utility.ScreenShake
             while (_isShaking)
             {
                 _impulse.GenerateImpulseWithForce(1);
-                
                 yield return new WaitForSeconds(length*0.9f);
             }
             
