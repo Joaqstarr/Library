@@ -51,7 +51,7 @@ namespace Enemies.Robot
         private void OnStompAnimationEvent()
         {
             //set to foot position
-            _stompRing.StartStompRing(_robotStateManager.transform.position);
+            _stompRing.StartStompRing(_robotStateManager.RightFoot.position);
         }
         
         

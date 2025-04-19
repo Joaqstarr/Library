@@ -21,6 +21,8 @@ namespace Enemies.Robot.Attacks
         private bool _dealingDamage = false;
 
         private Transform _startingParent = null;
+        
+        private Tweener _tweener = null;
 
         private void Awake()
         {
@@ -46,7 +48,8 @@ namespace Enemies.Robot.Attacks
             
             _dealingDamage = true;
             transform.localScale = _startSize; //new Vector3(0.01f, 1f, 0.01f);
-            transform.DOScale(_endSize, _growTime).SetEase(_growEase).onComplete += () =>
+            _tweener = transform.DOScale(_endSize, _growTime).SetEase(_growEase);
+            _tweener.onComplete += () =>
             {
                 _dealingDamage = false;
                 Vector3 fizzleSize = _endSize;
@@ -66,6 +69,12 @@ namespace Enemies.Robot.Attacks
         private void OnDisable()
         {
             transform.localScale = new Vector3(0.01f, 1f, 0.01f);
+            if (_tweener != null && _tweener.IsActive())
+            {
+                _tweener.Kill();
+            }
+
+            _tweener = null;
         }
 
         private void OnTriggerEnter(Collider other)
