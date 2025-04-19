@@ -1,4 +1,7 @@
-﻿using Player;
+﻿using System.Collections;
+using System.Collections.Generic;
+using Cinemachine;
+using Player;
 using Player.Attack;
 using UnityEngine;
 using Systems.SaveSystem;
@@ -29,6 +32,8 @@ namespace Systems.Gamemode
         [SerializeField]
         private Camera _mainCamera;
 
+        private CinemachineBrain _cinemachineBrain;
+        
         [SerializeField] private bool _shouldSave = true;
         private void Awake()
         {
@@ -43,10 +48,10 @@ namespace Systems.Gamemode
             }
 
             Application.backgroundLoadingPriority = ThreadPriority.Low;
-            _mainCamera.gameObject.SetActive(false);
 
             _dataSaver = new DataSaver("save.boogers");
 
+            _cinemachineBrain = _mainCamera.GetComponent<CinemachineBrain>();
         }
 
         private void LoadData()
@@ -79,7 +84,7 @@ namespace Systems.Gamemode
             }
         }
 
-        public void LoadCurrentLevel()
+        public void LoadCurrentLevel(bool forceReload = false)
         {
             if (_saveData.CurrentLevel == null  )
             {
@@ -88,7 +93,7 @@ namespace Systems.Gamemode
 
             if (_saveData.CurrentLevel)
             {
-                _saveData.CurrentLevel.LoadScene(false);
+                _saveData.CurrentLevel.LoadScene(forceReload);
             }
         }
 
@@ -98,6 +103,8 @@ namespace Systems.Gamemode
             {
                 if (playerStart)
                 {
+                    float defaultBlendTime = _cinemachineBrain.m_DefaultBlend.m_Time;
+                    _cinemachineBrain.m_DefaultBlend.m_Time = 0f;
                     _player = Instantiate(_playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
 
                     PlayerHealth health = _player.GetComponent<PlayerHealth>();
@@ -107,10 +114,16 @@ namespace Systems.Gamemode
                         health.OnHealthDepleted += OnDead;
                     }
                     
-                    _mainCamera.gameObject.SetActive(true);
-                    
+
                     OnPlayerSpawned?.Invoke(_player);
 
+                    StartCoroutine(ResetBlend());
+                    IEnumerator ResetBlend()
+                    {
+                        yield return new WaitForSeconds(0.1f);
+                        _cinemachineBrain.m_DefaultBlend.m_Time = defaultBlendTime;
+
+                    }
                 }
             }
         }
@@ -147,7 +160,7 @@ namespace Systems.Gamemode
         {
             Destroy(_player.gameObject);
             _player = null;
-            LoadCurrentLevel();
+            LoadCurrentLevel(true);
         }
 
         public SaveData GetSaveData()
