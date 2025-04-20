@@ -21,6 +21,11 @@ namespace Enemies.Robot
         
         public override void OnUpdateState()
         {
+            if(_aggroState.Player == null)
+            {
+                _robotStateManager.SwitchToIdleState();
+                return;
+            }
             if (!_aggroState.Player)
             {
                 _robotStateManager.SwitchToIdleState();
