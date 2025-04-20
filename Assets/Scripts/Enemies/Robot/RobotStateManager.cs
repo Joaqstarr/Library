@@ -1,4 +1,5 @@
-﻿using Player;
+﻿using System;
+using Player;
 using Systems.Steam;
 using UnityEngine;
 using UnityEngine.AI;
@@ -8,12 +9,16 @@ namespace Enemies.Robot
 {
     public class RobotStateManager : MonoBehaviour
     {
-
+        public delegate void OnCollisionEnterSignature(Collider other);
+        public OnCollisionEnterSignature OnRobotCollisionEnter;
+        
+        
         [field: SerializeField] public RobotData Data { get; private set; }
         public NavMeshAgent Agent { get; private set; }
         public Animator RobotAnimator { get; private set; }
         public RobotAnimationEventHandler AnimationEventHandler { get; private set; }
         public SteamResourceHolder SteamTank { get; private set; }
+        public Rigidbody Rigidbody { get; private set; }
 
         [field: SerializeField]public Transform RightFoot { get; private set; }
         #region States
@@ -31,6 +36,7 @@ namespace Enemies.Robot
             RobotAnimator = GetComponent<Animator>();
             AnimationEventHandler = GetComponent<RobotAnimationEventHandler>();
             SteamTank = GetComponentInChildren<SteamResourceHolder>();
+            Rigidbody = GetComponent<Rigidbody>();
             // Initialize with a default state
             _stateMachine = new HierarchalStateMachine();
             _idleState = new RobotIdleState(this);
@@ -76,7 +82,19 @@ namespace Enemies.Robot
         {
             SwitchState(_spawnState);
         }
-        
-        
+
+        public void Overload()
+        {
+            SwitchToIdleState();
+            Destroy(gameObject);
+        }
+
+
+
+        private void OnTriggerEnter(Collider other)
+        {
+            OnRobotCollisionEnter?.Invoke(other);
+
+        }
     }
 }

@@ -26,10 +26,7 @@ namespace Enemies.Robot
                 _robotStateManager.SwitchToIdleState();
                 return;
             }
-            if (!_aggroState.Player)
-            {
-                _robotStateManager.SwitchToIdleState();
-            }
+
             if (Vector3.Distance(_robotStateManager.transform.position, _aggroState.Player.transform.position) <= Data.StrafeDistance)
             {
                 _aggroState.SwitchToStrafeState();

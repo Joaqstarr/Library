@@ -19,7 +19,10 @@ namespace Enemies.Robot
             //play shut down animation
             RobotAnimator.SetBool(IsEmpty, true);
 
+            _robotStateManager.OnRobotCollisionEnter += OnRobotCollisionEnter;
         }
+
+
 
         public override void OnUpdateState()
         {
@@ -33,11 +36,26 @@ namespace Enemies.Robot
 
         protected override void OnExitState()
         {
-            Agent.isStopped = false;
-            Agent.enabled = true;
-            RobotAnimator.SetBool(IsEmpty, false);
-
             base.OnExitState();
+            
+            Agent.enabled = true;
+            Agent.isStopped = false;
+            RobotAnimator.SetBool(IsEmpty, false);
+            _robotStateManager.OnRobotCollisionEnter -= OnRobotCollisionEnter;
+            _robotStateManager.Rigidbody.isKinematic = true;
+
+        }
+        
+        private void OnRobotCollisionEnter(Collider other)
+        {
+            if (other.CompareTag("StompRing"))
+            {
+                _robotStateManager.Rigidbody.isKinematic = false;
+
+                Vector3 knockbackDirection = ((_robotStateManager.transform.position + (_robotStateManager.transform.up * 2)) - other.transform.position).normalized;
+                float knockbackForce = 50f;
+                _robotStateManager.Rigidbody.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+            }
         }
     }
 }

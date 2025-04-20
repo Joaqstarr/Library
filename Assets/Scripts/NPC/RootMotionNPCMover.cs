@@ -24,6 +24,7 @@ namespace NPC
 
         private void Update()
         {
+            if (!_agent.enabled) return;
             if (!_agent.isActiveAndEnabled || !_agent.isOnNavMesh) return;
 
             Vector3 worldDeltaPosition = _agent.nextPosition - transform.position;
@@ -60,7 +61,7 @@ namespace NPC
             rootPosition.y = _agent.nextPosition.y;
 
             // Constrain the position to the NavMesh
-            if (NavMesh.SamplePosition(rootPosition, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
+            if (_agent.enabled &&  NavMesh.SamplePosition(rootPosition, out NavMeshHit hit, 1.0f, NavMesh.AllAreas))
             {
                 rootPosition = hit.position;
             }

@@ -63,6 +63,10 @@ namespace Enemies.Robot.Attacks
 
         private void DisableRing()
         {
+            if (_startingParent == null)
+            {
+                Destroy(gameObject);
+            }
             transform.parent = _startingParent;
             gameObject.SetActive(false);
         }
