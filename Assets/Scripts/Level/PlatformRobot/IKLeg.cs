@@ -28,8 +28,9 @@ namespace Level.PlatformRobot
 
         private void Update()
         {
+            Debug.DrawRay(_legOrigin.position, -_legOrigin.right * 10, Color.red);
             // Perform a raycast to find the ground position
-            if (Physics.Raycast(_legOrigin.position, -_legOrigin.right, out RaycastHit hit, Mathf.Infinity, _groundLayer))
+            if (Physics.Raycast(_legOrigin.position + _legOrigin.parent.forward * 15, -_legOrigin.right, out RaycastHit hit, Mathf.Infinity, _groundLayer))
             {
                 Vector3 desiredPosition = hit.point;
 

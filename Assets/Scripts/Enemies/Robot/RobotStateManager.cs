@@ -15,7 +15,7 @@ namespace Enemies.Robot
         public RobotAnimationEventHandler AnimationEventHandler { get; private set; }
         public SteamResourceHolder SteamTank { get; private set; }
 
-        
+        [field: SerializeField]public Transform RightFoot { get; private set; }
         #region States
         private HierarchalStateMachine _stateMachine;
 

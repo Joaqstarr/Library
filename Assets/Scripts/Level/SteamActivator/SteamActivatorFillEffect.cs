@@ -11,6 +11,13 @@ namespace Level.SteamActivator
         
         float _scaleSpeed = 5f;
 
+        private Renderer _renderer;
+
+        private void Awake()
+        {
+            _renderer = GetComponentInChildren<Renderer>();
+        }
+
         private void Update()
         {
             if(!_resourceHolder) return;
@@ -21,6 +28,12 @@ namespace Level.SteamActivator
             newScale.y = Mathf.Lerp(newScale.y, targetYScale, Time.deltaTime * _scaleSpeed);
             
             transform.localScale = newScale;
+
+
+            _renderer.enabled = newScale.y > 0.1f;
+            
         }
+        
+        
     }
 }
