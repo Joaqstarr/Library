@@ -19,7 +19,7 @@ namespace Level.RobotSpawner
 
         private void Start()
         {
-            InvokeRepeating(nameof(SpawnRobot), 8, _spawnDelay);
+            InvokeRepeating(nameof(SpawnRobot), 1, _spawnDelay);
         }
 
         public void SpawnRobot()

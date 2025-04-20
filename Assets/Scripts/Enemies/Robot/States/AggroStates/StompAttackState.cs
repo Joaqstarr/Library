@@ -1,4 +1,5 @@
 ﻿using Enemies.Robot.Attacks;
+using Systems.CombatTokens;
 using UnityEngine;
 
 namespace Enemies.Robot
@@ -7,7 +8,7 @@ namespace Enemies.Robot
     {
         private static readonly int Stomp = Animator.StringToHash("Stomp");
         private StompRing _stompRing;
-        
+        private CombatTokenManager.Token _attackToken;
         public StompAttackState(RobotStateManager robotStateManager, RobotAggroState aggroState) : base(robotStateManager, aggroState)
         {
 
@@ -21,6 +22,18 @@ namespace Enemies.Robot
                 _stompRing = GameObject.Instantiate(Data.StompRingPrefab, _robotStateManager.transform);
                 _stompRing.gameObject.SetActive(false);
             }
+
+            _attackToken = null;
+            if (CombatTokenManager.Instance)
+            {
+                _attackToken = CombatTokenManager.Instance.RequestToken(_robotStateManager.gameObject);
+                if (_attackToken == null)
+                {
+                    _aggroState.SwitchToApproachState();
+                    return;
+                }
+            }
+            
             Agent.isStopped = true;
             
             AnimationEventHandler.OnAnimationEnded += AnimationEventHandlerOnOnAnimationEnded;
@@ -29,6 +42,7 @@ namespace Enemies.Robot
             //play stomp animation
             //subscribe to animation event
             RobotAnimator.SetTrigger(Stomp);
+
             
         }
 
@@ -40,6 +54,13 @@ namespace Enemies.Robot
         protected override void OnExitState()
         {
             base.OnExitState();
+
+            if (_attackToken != null)
+            {
+                _attackToken.DeallocateToken();
+                _attackToken = null;
+            }
+            
             AnimationEventHandler.OnAnimationEnded -= AnimationEventHandlerOnOnAnimationEnded;
             AnimationEventHandler.OnAttackHit -= OnStompAnimationEvent;
 
