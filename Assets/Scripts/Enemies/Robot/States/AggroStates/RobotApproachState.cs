@@ -21,10 +21,12 @@ namespace Enemies.Robot
         
         public override void OnUpdateState()
         {
-            if (!_aggroState.Player)
+            if(_aggroState.Player == null)
             {
                 _robotStateManager.SwitchToIdleState();
+                return;
             }
+
             if (Vector3.Distance(_robotStateManager.transform.position, _aggroState.Player.transform.position) <= Data.StrafeDistance)
             {
                 _aggroState.SwitchToStrafeState();

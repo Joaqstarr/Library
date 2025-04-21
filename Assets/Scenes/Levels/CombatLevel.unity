@@ -412,8 +412,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 413007726}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.10391847, y: -0.71175194, z: -0.10777389, w: 0.68629074}
-  m_LocalPosition: {x: -28.733408, y: -2.463449, z: -1.5556297}
+  m_LocalRotation: {x: -0.074887715, y: -0.65306985, z: -0.0973955, w: 0.7472656}
+  m_LocalPosition: {x: -28.733406, y: -2.463449, z: -1.5556297}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5375,6 +5375,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _robotPrefab: {fileID: 3082980345239922649, guid: 264087172a199064aaeed4861d156713, type: 3}
   _spawnDelay: 5
+  _maxEnemies: 5
 --- !u!1001 &1748209021
 PrefabInstance:
   m_ObjectHideFlags: 0
