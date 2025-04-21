@@ -30,7 +30,7 @@ namespace Level.SteamActivator
             transform.localScale = newScale;
 
 
-            _renderer.enabled = newScale.y > 0.1f;
+            _renderer.enabled = newScale.y > 0.01f;
             
         }
         

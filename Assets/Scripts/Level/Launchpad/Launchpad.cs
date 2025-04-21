@@ -28,11 +28,16 @@ namespace Level.Launchpad
 
         private void LaunchPlayer(PlayerStateManager player)
         {
+            PlayerCloudAttractionHandler handler = player.GetComponent<PlayerCloudAttractionHandler>();
+
+            handler.FullyAttract();
             DOVirtual.Vector3(player.transform.position, transform.position, 0.2f,(value) =>
             {
                 player.PlayerMovementInstance.Teleport(value);
             }).onComplete += () =>
-            {
+            {            
+                handler.DisableFullAttraction();
+
                 player.PlayerMovementInstance.LaunchCharacter(transform.forward * _launchForce);
             };
             

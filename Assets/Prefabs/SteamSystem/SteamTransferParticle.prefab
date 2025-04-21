@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 6268272003552945259}
   - component: {fileID: 5119572756863840464}
   - component: {fileID: 4165617778948818454}
+  - component: {fileID: 4775762655286138506}
+  - component: {fileID: 2376133409608986059}
   m_Layer: 0
   m_Name: SteamTransferParticle
   m_TagString: Untagged
@@ -5008,7 +5010,10 @@ VisualEffect:
     m_Vector2f:
       m_Array: []
     m_Vector3f:
-      m_Array: []
+      m_Array:
+      - m_Value: {x: 1.5448717, y: 1.2951514, z: -3.9834888}
+        m_Name: recieverPositionWorldSpace
+        m_Overridden: 1
     m_Vector4f:
       m_Array: []
     m_Uint:
@@ -5025,3 +5030,34 @@ VisualEffect:
       m_Array: []
     m_Bool:
       m_Array: []
+--- !u!114 &4775762655286138506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013402017175930193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 2376133409608986059}
+  m_VisualEffect: {fileID: 4165617778948818454}
+--- !u!114 &2376133409608986059
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013402017175930193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24279ee835d6c4c48ae512c6e29b9808, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: recieverPositionWorldSpace
+  Target: {fileID: 4756818907982433730}

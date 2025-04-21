@@ -43,7 +43,7 @@ namespace Systems.Steam
             _cooldownTimer -= Time.deltaTime;
         }
 
-        private void OnInstantTransferFromBegin(float amount, bool visuals, SteamResourceHolder holder)
+        private void OnInstantTransferFromBegin(float amount, bool visuals, SteamResourceHolder fromHolder)
         {
 
             if (visuals && amount > 0.01 && _cooldownTimer < 0)
@@ -52,13 +52,12 @@ namespace Systems.Steam
                 
                 var emitParams = new ParticleSystem.EmitParams
                 {
-                    position = holder.transform.position,
+                    position = fromHolder.transform.position,
                     startSize = _sizeModifier * amount * _particleSystem.main.startSize.constant
                 };
-                _particleSystem.Emit(emitParams, 1);
+                //_particleSystem.Emit(emitParams, 1);
 
-                eventAttribute.SetVector3("position", holder.transform.position);
-                eventAttribute.SetVector3("targetPosition", transform.position);
+                eventAttribute.SetVector3("position", fromHolder.transform.position);
 
                 _vfx.SendEvent("OnSuck", eventAttribute);
             }

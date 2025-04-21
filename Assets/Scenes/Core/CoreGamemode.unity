@@ -936,8 +936,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083560629}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16230251, y: -0.6971738, z: 0.16687894, w: 0.6780547}
-  m_LocalPosition: {x: -44.568794, y: 7.391636, z: 22.16563}
+  m_LocalRotation: {x: 0.046372928, y: 0.71611166, z: -0.032723162, w: 0.6956744}
+  m_LocalPosition: {x: -6.39, y: 4.46, z: 23.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1123,6 +1123,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 757046135129160438, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
+      value: -20.945162
+      objectReference: {fileID: 0}
+    - target: {fileID: 757046135129160438, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
+      value: 2.5839999
+      objectReference: {fileID: 0}
+    - target: {fileID: 757046135129160438, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
+      value: 20.956736
+      objectReference: {fileID: 0}
     - target: {fileID: 2187737529141731118, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: m_Name
       value: SteamActivatorWithGauge (1)
@@ -1268,6 +1280,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 757046135129160438, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
+      value: 14.851496
+      objectReference: {fileID: 0}
+    - target: {fileID: 757046135129160438, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
+      value: 2.4619973
+      objectReference: {fileID: 0}
+    - target: {fileID: 757046135129160438, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
+      value: 21.263836
+      objectReference: {fileID: 0}
     - target: {fileID: 2187737529141731118, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: m_Name
       value: SteamActivatorWithGauge

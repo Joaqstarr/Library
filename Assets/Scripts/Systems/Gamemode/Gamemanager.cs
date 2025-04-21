@@ -5,6 +5,7 @@ using Player;
 using Player.Attack;
 using UnityEngine;
 using Systems.SaveSystem;
+using UnityEngine.SceneManagement;
 using Utility.SceneManagement;
 
 namespace Systems.Gamemode
@@ -37,6 +38,8 @@ namespace Systems.Gamemode
         [SerializeField] private bool _shouldSave = true;
         private void Awake()
         {
+            SceneManager.SetActiveScene(SceneManager.GetSceneByName("CoreGamemode"));
+            
             if (!Application.isEditor) _shouldSave = true;
             if (Instance == null)
             {
