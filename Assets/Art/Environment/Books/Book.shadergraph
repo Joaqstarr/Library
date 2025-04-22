@@ -807,7 +807,7 @@
     "m_SourceType": 1,
     "m_FunctionName": "LODFade2",
     "m_FunctionSource": "",
-    "m_FunctionBody": "\rfadeValue = 1-unity_LODFade.x ;\r\n"
+    "m_FunctionBody": "if(unity_LODFade.x < 0)\n{\n\tfadeValue = 1 + unity_LODFade.x;\n}else if(unity_LODFade.x > 0){\n\tfadeValue = 1-unity_LODFade.x ;\n}else{\n\tfadeValue = 1;\n}\n\r\r\n"
 }
 
 {
