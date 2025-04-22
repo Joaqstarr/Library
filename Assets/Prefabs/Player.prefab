@@ -1108,9 +1108,7 @@ MonoBehaviour:
   m_AnimatedTarget: {fileID: 6989378548304301981}
   m_LayerIndex: 0
   m_ShowDebugText: 0
-  m_ChildCameras:
-  - {fileID: 2534822114865394132}
-  - {fileID: 2221384756876207357}
+  m_ChildCameras: []
   m_Instructions:
   - m_FullHash: 1036624748
     m_VirtualCamera: {fileID: 2221384756876207357}
@@ -2130,6 +2128,18 @@ PrefabInstance:
     - target: {fileID: 1013402017175930193, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_Layer
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
+      value: 19.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
+      propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
+      value: 19.19
       objectReference: {fileID: 0}
     - target: {fileID: 4756818907982433730, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_LocalPosition.x
