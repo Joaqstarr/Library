@@ -1,5 +1,6 @@
 ﻿using System;
 using Player.Attack;
+using Systems.Steam;
 using UnityEngine;
 using UnityEngine.VFX;
 
@@ -11,9 +12,12 @@ namespace Player
         [SerializeField] private VisualEffect _blowEffect;
 
         private PlayerAttackManager _playerAttackManager;
+        private SteamResourceHolder _resourceHolder;
 
         private void Awake()
         {
+            _resourceHolder = GetComponentInParent<SteamResourceHolder>();
+            
             _playerAttackManager = GetComponentInParent<PlayerAttackManager>();
         }
 
@@ -21,7 +25,7 @@ namespace Player
         {
             if(_playerAttackManager == null) return;
 
-            if (_playerAttackManager.IsAttacking)
+            if (_playerAttackManager.IsAttacking && _resourceHolder.SteamFillPercent > 0.02)
             {
                 switch (_playerAttackManager.AttackState)
                 {
