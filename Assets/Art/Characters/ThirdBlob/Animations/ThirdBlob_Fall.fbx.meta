@@ -19,17 +19,14 @@ ModelImporter:
     rigImportErrors: 
     rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
       copied configuration does not match position in animation file:\n\t'thigh_l'
-      : position error = 1.238841 mm\n\t'thigh_r' : position error = 1.238620 mm\n"
+      : position error = 3.005586 mm\n\t'thigh_r' : position error = 3.005605 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'ThirdBlob_Fall' has import animation warnings
       that might lower retargeting quality:\nNote: Activate translation DOF on avatar
       to improve retargeting quality.\n\t'spine_01' has translation animation that
-      will be discarded.\n\t'spine_02' has translation animation that will be discarded.\n\t'spine_03'
-      has translation animation that will be discarded.\n\t'neck_01' has translation
-      animation that will be discarded.\n\t'clavicle_l' has translation animation
-      that will be discarded.\n\t'clavicle_r' has translation animation that will
-      be discarded.\n\t'thigh_l' has translation animation that will be discarded.\n\t'thigh_r'
-      has translation animation that will be discarded.\n"
+      will be discarded.\n\t'spine_02' has translation animation that will be discarded.\n\t'thigh_l'
+      has translation animation that will be discarded.\n\t'thigh_r' has translation
+      animation that will be discarded.\n"
     animationRetargetingWarnings: 
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
@@ -47,7 +44,7 @@ ModelImporter:
       takeName: ThirdBlob_Fall
       internalID: 5923573737782925305
       firstFrame: 0
-      lastFrame: 40
+      lastFrame: 60
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
@@ -55,7 +52,7 @@ ModelImporter:
       loop: 0
       hasAdditiveReferencePose: 0
       loopTime: 1
-      loopBlend: 0
+      loopBlend: 1
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
