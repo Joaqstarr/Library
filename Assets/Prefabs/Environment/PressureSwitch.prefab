@@ -49,12 +49,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd00e842c44f31f42a641ea59cd8a7aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isSwitchActive: 0
   OnSwitchActivated:
     m_PersistentCalls:
       m_Calls: []
   OnSwitchDeactivated:
     m_PersistentCalls:
       m_Calls: []
+  syncedSwitches: 0
+  SwitchGroup: []
 --- !u!114 &2731904655922337932
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -387,7 +390,7 @@ MeshCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 16063
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
