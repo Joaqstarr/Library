@@ -96,5 +96,10 @@ namespace Enemies.Robot
             OnRobotCollisionEnter?.Invoke(other);
 
         }
+
+        public bool IsAlive()
+        {
+            return SteamTank.SteamFillPercent > 0.01f;
+        }
     }
 }

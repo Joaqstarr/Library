@@ -36,14 +36,22 @@ namespace Level.RobotSpawner
                     _robots.RemoveAt(i);
                 }
             }
-            
-            if(_robots.Count >= _maxEnemies) return;
+
+            int count = 0;
+            foreach (var robot in _robots)
+            {
+                if (robot.IsAlive())
+                {
+                    count++;
+                }
+            }
+            if(count >= _maxEnemies) return;
             
             Transform spawnPoint = _spawnPoints[UnityEngine.Random.Range(0, _spawnPoints.Length)];
             
-            RobotStateManager robot = Instantiate(_robotPrefab, spawnPoint.position, Quaternion.identity, transform.parent);
-            _robots.Add(robot);
-            robot.PlaySpawnAnimation();
+            RobotStateManager spawnedRobot = Instantiate(_robotPrefab, spawnPoint.position, Quaternion.identity, transform.parent);
+            _robots.Add(spawnedRobot);
+            spawnedRobot.PlaySpawnAnimation();
         }
     }
 }

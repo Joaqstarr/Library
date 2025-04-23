@@ -76,7 +76,17 @@ namespace Player.Face
 
             _activeEmotions.Push(newEmotion);
         }
-        
+        public void AddEmotion(FaceEmotion emotion)
+        {
+            EmotionStruct newEmotion = new EmotionStruct
+            {
+                Emotion = emotion,
+                Duration = -1,
+                Timer = 0f
+            };
+
+            _activeEmotions.Push(newEmotion);
+        }
         public void StopEmotion(FaceEmotion emotion)
         {
             if (_activeEmotions.Count == 0) return;
@@ -111,6 +121,7 @@ namespace Player.Face
         {
             if (_activeEmotions.Count == 0)
             { 
+                
                 _leftEyeBrowRenderer.material = GetMaterialForFacePart(FacePart.EyeBrowL);
                 _rightEyeBrowRenderer.material = GetMaterialForFacePart(FacePart.EyeBrowR);
                 _eyeRenderer.material = GetMaterialForFacePart(FacePart.Eyes);
@@ -123,7 +134,7 @@ namespace Player.Face
             
             _activeEmotions.Push(currentEmotion);
 
-            if (currentEmotion.Timer >= currentEmotion.Duration)
+            if (currentEmotion.Duration > 0 && currentEmotion.Timer >= currentEmotion.Duration)
             {
                 _activeEmotions.Pop();
             }
