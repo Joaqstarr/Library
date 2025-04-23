@@ -78,6 +78,14 @@ namespace Player.Face
         }
         public void AddEmotion(FaceEmotion emotion)
         {
+            foreach (var emo in _activeEmotions)
+            {
+                if(emo.Emotion == emotion)
+                {
+                    return;
+                }
+            }
+            
             EmotionStruct newEmotion = new EmotionStruct
             {
                 Emotion = emotion,

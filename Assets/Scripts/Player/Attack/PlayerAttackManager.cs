@@ -9,6 +9,10 @@ namespace Player.Attack
 
         public delegate void AttackStateDel(bool isInhaling);
         public static AttackStateDel OnAttackStateChange;
+        public static AttackStateDel OnAttackStart;
+        public static AttackStateDel OnAttackEnd;
+        
+        
         public enum AttackTypes
         {
             Suck,
@@ -66,6 +70,10 @@ namespace Player.Attack
         {
             if(_playerControls.AttackPressed)
             {
+                if (!IsAttacking)
+                {
+                    OnAttackStart?.Invoke(AttackState == AttackTypes.Suck);
+                }
                 IsAttacking = true;
                 switch (AttackState)
                 {
@@ -79,6 +87,10 @@ namespace Player.Attack
             }
             else
             {
+                if (IsAttacking)
+                {
+                    OnAttackEnd?.Invoke(AttackState == AttackTypes.Suck);
+                }
                 IsAttacking = false;
             }
         }

@@ -3044,6 +3044,7 @@ GameObject:
   - component: {fileID: 4685717604162195124}
   - component: {fileID: 7317611890466336489}
   - component: {fileID: 2854891363955981215}
+  - component: {fileID: 4886077904860981860}
   m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
@@ -3112,6 +3113,11 @@ MonoBehaviour:
     Mouth: {fileID: 0}
     LEyebrow: {fileID: 0}
     REyebrow: {fileID: 0}
+  - Emotion: 4
+    Eyes: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
+    Mouth: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
+    LEyebrow: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
+    REyebrow: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
   _eyeRenderer: {fileID: 6313259614811609250}
   _mouthRenderer: {fileID: 4221129764876464853}
   _leftEyeBrowRenderer: {fileID: 4672090142276749185}
@@ -3129,6 +3135,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _blinkRanTime: {x: 3, y: 6}
+--- !u!114 &4886077904860981860
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7275025044610729447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b513d0d26344d1d96ca5667f6e89a3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7540016197411466452
 GameObject:
   m_ObjectHideFlags: 0
