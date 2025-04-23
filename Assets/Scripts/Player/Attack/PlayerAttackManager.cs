@@ -103,6 +103,11 @@ namespace Player.Attack
         private void OnDisable()
         {
             _playerControls.OnTogglePressed -= ToggleAttackType;
+            if (IsAttacking)
+            {
+                OnAttackEnd?.Invoke(AttackState == AttackTypes.Suck);
+            }
+            IsAttacking = false;
         }
 
         private void ToggleAttackType()
