@@ -26,6 +26,8 @@ namespace Systems.CutsceneSystem
         public delegate void CutsceneEventDelegate(CutsceneData cutsceneData, ref List<BindingData> bindings);
         public static CutsceneEventDelegate OnCutsceneStart;
         public static CutsceneEventManager Instance;
+
+
         private void Awake()
         {
             if (Instance)
@@ -36,6 +38,7 @@ namespace Systems.CutsceneSystem
             {
                 Instance = this;
             }
+            
         }
 
         public void PlayCutscene(CutsceneData cutsceneData, List<BindingData> bindings = null)

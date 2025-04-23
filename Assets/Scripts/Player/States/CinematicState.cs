@@ -13,15 +13,14 @@ namespace Player.States
             base.OnEnterState();
 
             _playerMovement.enabled = false;
-            
-            Debug.Log("entering cinematic state");
+            _playerStateManager.PlayerAttackManagerInstance.enabled = false;
         }
 
         protected override void OnExitState()
         {
             base.OnExitState();
+            _playerStateManager.PlayerAttackManagerInstance.enabled = true;
             
-            Debug.Log("Exiting cinematic state");
         }
     }
 }
