@@ -64,7 +64,10 @@ namespace Player.Face
             }
         }
 
-
+        public void AddEmotion(int index)
+        {
+            AddEmotion((FaceEmotion)index);
+        }
         public void AddEmotion(FaceEmotion emotion, float duration)
         {
             EmotionStruct newEmotion = new EmotionStruct
@@ -94,6 +97,11 @@ namespace Player.Face
             };
 
             _activeEmotions.Push(newEmotion);
+        }
+
+        public void StopEmotion(int index)
+        {
+            StopEmotion((FaceEmotion)index);
         }
         public void StopEmotion(FaceEmotion emotion)
         {

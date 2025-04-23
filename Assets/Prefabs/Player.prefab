@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.6613405, z: -3.2391777}
+  m_FollowOffset: {x: 0, y: 0.4, z: -2.68}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -380,7 +380,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893256370118052104}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00087051094, y: -0.000000029802322, z: -0.0000000037252903, w: 0.99999964}
+  m_LocalRotation: {x: -0.030313572, y: 0.000000004099999, z: 0.0000000043760213, w: 0.99954045}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -487,6 +487,65 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _target: {fileID: 4813247471673770113}
   _smoothTime: 0.2
+--- !u!1 &1891917209177752406
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5350384849554816816}
+  - component: {fileID: 4615461391939118410}
+  m_Layer: 8
+  m_Name: Stage1To2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5350384849554816816
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891917209177752406}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 65568686135566227}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!320 &4615461391939118410
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1891917209177752406}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: f772e60ec1acfa844b3ca44c48ccaeed, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -4571366037892226229, guid: f772e60ec1acfa844b3ca44c48ccaeed, type: 2}
+    value: {fileID: 6628534065207012825}
+  - key: {fileID: 8646476841673845738, guid: f772e60ec1acfa844b3ca44c48ccaeed, type: 2}
+    value: {fileID: 921519455648512966}
+  - key: {fileID: 6335305839491999249, guid: f772e60ec1acfa844b3ca44c48ccaeed, type: 2}
+    value: {fileID: 1989351211971089040}
+  - key: {fileID: 5185323875603638362, guid: f772e60ec1acfa844b3ca44c48ccaeed, type: 2}
+    value: {fileID: 3514479235585086105}
+  - key: {fileID: -4521302582231329639, guid: f772e60ec1acfa844b3ca44c48ccaeed, type: 2}
+    value: {fileID: 4369483017916368851}
+  m_ExposedReferences:
+    m_References: []
 --- !u!1 &2252474188564375883
 GameObject:
   m_ObjectHideFlags: 0
@@ -726,7 +785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.6613405, z: -3.2391777}
+  m_FollowOffset: {x: 0, y: 0.4, z: -2.68}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1053,7 +1112,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b342d8ce5c2fd48b8fa3147d48d1d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Weight: 1
+  m_Weight: 0
   m_Effectors: []
 --- !u!114 &8286331399961315880
 MonoBehaviour:
@@ -1181,8 +1240,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4314569096102657643}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.1173299, y: -0.44354212, z: -0.058697015, w: 0.8865996}
-  m_LocalPosition: {x: 0.53210974, y: -4.2274914, z: -0.9015403}
+  m_LocalRotation: {x: -0.09054938, y: -0.8339238, z: -0.14381419, w: 0.52506137}
+  m_LocalPosition: {x: 0.3566537, y: -4.488832, z: 2.1991901}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1239,7 +1298,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0.167507
+    Value: 0
     m_SpeedMode: 1
     m_MaxSpeed: 2
     m_AccelTime: 0
@@ -1569,7 +1628,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.6613405, z: -3.2391777}
+  m_FollowOffset: {x: 0, y: 0.4, z: -2.68}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1783,6 +1842,38 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81a63dc0e0ec49caa24ce756b0aa6e59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &5194615144813202424
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 65568686135566227}
+  m_Layer: 8
+  m_Name: Cutscenes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &65568686135566227
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5194615144813202424}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 5350384849554816816}
+  m_Father: {fileID: 3448326202280540805}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5296100853994721818
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,7 +2205,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5334083795213922328}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.017562672, y: -0.0000011026859, z: -0.00000029057264, w: 0.9998458}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2577,7 +2668,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6184417817863886270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.035821423, y: -0.000013500451, z: -0.0000041611493, w: 0.99935824}
+  m_LocalRotation: {x: -0.06522522, y: 0.00000003731155, z: 0.000000009335345, w: 0.9978706}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2906,6 +2997,7 @@ Transform:
   - {fileID: 2065037275837711043}
   - {fileID: 88604423194906567}
   - {fileID: 3930161239581013171}
+  - {fileID: 65568686135566227}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &256779831838085523
@@ -3369,6 +3461,7 @@ GameObject:
   - component: {fileID: 7317611890466336489}
   - component: {fileID: 2854891363955981215}
   - component: {fileID: 4886077904860981860}
+  - component: {fileID: 4369483017916368851}
   m_Layer: 8
   m_Name: Face
   m_TagString: Untagged
@@ -3442,6 +3535,21 @@ MonoBehaviour:
     Mouth: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
     LEyebrow: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
     REyebrow: {fileID: 2100000, guid: 3dc487193f36bda43bba8f209a735aac, type: 2}
+  - Emotion: 1
+    Eyes: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
+    Mouth: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
+    LEyebrow: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
+    REyebrow: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
+  - Emotion: 3
+    Eyes: {fileID: 2100000, guid: b72fe21110b2f2c4ea01f64125534dc9, type: 2}
+    Mouth: {fileID: 2100000, guid: b72fe21110b2f2c4ea01f64125534dc9, type: 2}
+    LEyebrow: {fileID: 2100000, guid: b72fe21110b2f2c4ea01f64125534dc9, type: 2}
+    REyebrow: {fileID: 2100000, guid: b72fe21110b2f2c4ea01f64125534dc9, type: 2}
+  - Emotion: 2
+    Eyes: {fileID: 2100000, guid: 4169878fd4cf37145a69e1c17ac87226, type: 2}
+    Mouth: {fileID: 2100000, guid: 4169878fd4cf37145a69e1c17ac87226, type: 2}
+    LEyebrow: {fileID: 2100000, guid: 4169878fd4cf37145a69e1c17ac87226, type: 2}
+    REyebrow: {fileID: 2100000, guid: 4169878fd4cf37145a69e1c17ac87226, type: 2}
   _eyeRenderer: {fileID: 6313259614811609250}
   _mouthRenderer: {fileID: 4221129764876464853}
   _leftEyeBrowRenderer: {fileID: 4672090142276749185}
@@ -3471,6 +3579,111 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b513d0d26344d1d96ca5667f6e89a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4369483017916368851
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7275025044610729447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e52de21a22b6dd44c9cc19f810c65059, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Events:
+    m_Signals:
+    - {fileID: 11400000, guid: 00a672c3970d67c41b1febd615d357e5, type: 2}
+    - {fileID: 11400000, guid: 059b78c727f2c0445b9754dffcde2628, type: 2}
+    - {fileID: 11400000, guid: e57353fac7ac50f4fbc7ff4c354bb490, type: 2}
+    - {fileID: 11400000, guid: 40313fb7b3dda22418e95d7aa9d872a2, type: 2}
+    - {fileID: 11400000, guid: f5a0febb49b14bf4fba5502b60a74e0e, type: 2}
+    - {fileID: 11400000, guid: 4b281185ee238014e9a17c633217d7e1, type: 2}
+    m_Events:
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7317611890466336489}
+          m_TargetAssemblyTypeName: Player.Face.FaceEmotionHandler, Assembly-CSharp
+          m_MethodName: AddEmotion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7317611890466336489}
+          m_TargetAssemblyTypeName: Player.Face.FaceEmotionHandler, Assembly-CSharp
+          m_MethodName: StopEmotion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 1
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7317611890466336489}
+          m_TargetAssemblyTypeName: Player.Face.FaceEmotionHandler, Assembly-CSharp
+          m_MethodName: StopEmotion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7317611890466336489}
+          m_TargetAssemblyTypeName: Player.Face.FaceEmotionHandler, Assembly-CSharp
+          m_MethodName: AddEmotion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 2
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7317611890466336489}
+          m_TargetAssemblyTypeName: Player.Face.FaceEmotionHandler, Assembly-CSharp
+          m_MethodName: AddEmotion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+    - m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 7317611890466336489}
+          m_TargetAssemblyTypeName: Player.Face.FaceEmotionHandler, Assembly-CSharp
+          m_MethodName: StopEmotion
+          m_Mode: 3
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 3
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &7540016197411466452
 GameObject:
   m_ObjectHideFlags: 0
@@ -3529,7 +3742,7 @@ Transform:
   m_GameObject: {fileID: 7913396932638137083}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.6400819, y: -4.187832, z: -0.09916639}
+  m_LocalPosition: {x: -1.6400819, y: -4.187832, z: -0.09916687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3820,15 +4033,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -3841,6 +4054,10 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -4576278319712781037, guid: 798565a5e83ef64489d870fee58a12cc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4199,6 +4416,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 7f3aff2d93832134fb77fbb64f6997a2, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -7821132884460965256, guid: 7f3aff2d93832134fb77fbb64f6997a2, type: 3}
       propertyPath: m_Layer
       value: 8
@@ -4309,7 +4530,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: 19.22
+      value: -11.47
       objectReference: {fileID: 0}
     - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
@@ -4317,7 +4538,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: 19.19
+      value: -5.48
       objectReference: {fileID: 0}
     - target: {fileID: 4756818907982433730, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_LocalPosition.x
