@@ -18,6 +18,7 @@ namespace Enemies.Robot
         public Animator RobotAnimator { get; private set; }
         public RobotAnimationEventHandler AnimationEventHandler { get; private set; }
         public SteamResourceHolder SteamTank { get; private set; }
+        public NavMeshObstacle EmptyObstacle { get; private set; }
         public Rigidbody Rigidbody { get; private set; }
 
         [field: SerializeField]public Transform RightFoot { get; private set; }
@@ -32,6 +33,7 @@ namespace Enemies.Robot
         
         private void Awake()
         {
+            EmptyObstacle = GetComponent<NavMeshObstacle>();
             Agent = GetComponent<NavMeshAgent>();
             RobotAnimator = GetComponent<Animator>();
             AnimationEventHandler = GetComponent<RobotAnimationEventHandler>();
@@ -95,6 +97,11 @@ namespace Enemies.Robot
         {
             OnRobotCollisionEnter?.Invoke(other);
 
+        }
+
+        public bool IsAlive()
+        {
+            return SteamTank.SteamFillPercent > 0.01f;
         }
     }
 }

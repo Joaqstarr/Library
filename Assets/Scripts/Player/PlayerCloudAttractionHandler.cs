@@ -23,7 +23,6 @@ namespace Player
 
         
         private PlayerInteractionManager _playerInteractionManager;
-        private Material _playerCloudMat;
         
         private bool _attracting = false;
         private bool _fullyAttracting = false;
@@ -87,12 +86,7 @@ namespace Player
         private void Awake()
         {
             
-            _playerCloudMat = _meshRenderers[0].material;
 
-            foreach (var renderer in _meshRenderers)
-            {
-                renderer.material = _playerCloudMat;
-            }
             _playerInteractionManager = GetComponent<PlayerInteractionManager>();
         }
 
@@ -154,20 +148,47 @@ namespace Player
 
         public Vector3 AttractionPoint
         {
-            get => _playerCloudMat.GetVector(AttractionPointId);
-            set => _playerCloudMat.SetVector(AttractionPointId, value);
+            get => _meshRenderers[0].material.GetVector(AttractionPointId);
+            set
+            {
+                foreach (var meshRenderer in _meshRenderers)
+                {
+                    Material _playerCloudMat = meshRenderer.material;
+                    if (_playerCloudMat == null) continue;
+                    
+                    _playerCloudMat.SetVector(AttractionPointId, value);
+                }
+            }
         }
 
         public float AttractionStrength
         {
-            get => _playerCloudMat.GetFloat(AttractionStrengthId);
-            set => _playerCloudMat.SetFloat(AttractionStrengthId, value);
+            get => _meshRenderers[0].material.GetFloat(AttractionStrengthId);
+            set
+            {
+                foreach (var meshRenderer in _meshRenderers)
+                {
+                    Material _playerCloudMat = meshRenderer.material;
+                    if (_playerCloudMat == null) continue;
+                    
+                    _playerCloudMat.SetFloat(AttractionStrengthId, value);
+                }
+            } 
         }
 
         public float AttractionFilter
         {
-            get => _playerCloudMat.GetFloat(AttractionFilterId);
-            set => _playerCloudMat.SetFloat(AttractionFilterId, value);
+            get => _meshRenderers[0].material.GetFloat(AttractionFilterId);
+            set
+            {
+                foreach (var meshRenderer in _meshRenderers)
+                {
+                    Material _playerCloudMat = meshRenderer.material;
+                    if (_playerCloudMat == null) continue;
+
+                    _playerCloudMat.SetFloat(AttractionFilterId, value);
+                }
+            }
         }
     }
 }

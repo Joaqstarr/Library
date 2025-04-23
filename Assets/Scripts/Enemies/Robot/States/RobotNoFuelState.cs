@@ -14,6 +14,7 @@ namespace Enemies.Robot
         {
             base.OnEnterState();
 
+            _robotStateManager.EmptyObstacle.enabled = true;
             Agent.isStopped = true;
             Agent.enabled = false;
             //play shut down animation
@@ -37,7 +38,8 @@ namespace Enemies.Robot
         protected override void OnExitState()
         {
             base.OnExitState();
-            
+            _robotStateManager.EmptyObstacle.enabled = false;
+
             Agent.enabled = true;
             Agent.isStopped = false;
             RobotAnimator.SetBool(IsEmpty, false);

@@ -27,5 +27,20 @@ namespace Systems.SaveSystem
                 
             }
         }
+
+        public int GetLevelCompletedCount()
+        {
+            int count = 0;
+
+            foreach (var levelCompletedFlag in IsLevelCompleted)
+            {
+                if(levelCompletedFlag)
+                {
+                    count++;
+                }
+            }
+
+            return count;
+        }
     }
 }
