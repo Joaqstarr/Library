@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.4, z: -2.68}
+  m_FollowOffset: {x: 0, y: 0.4965108, z: -2.913548}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -139,8 +139,9 @@ GameObject:
   - component: {fileID: 591008745538165688}
   - component: {fileID: 8361700166237121687}
   - component: {fileID: 2071534416118442432}
+  - component: {fileID: 6861510679582332078}
   m_Layer: 0
-  m_Name: Steam
+  m_Name: SteamBlow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -264,8 +265,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings: []
+  m_Bindings:
+  - {fileID: 6861510679582332078}
   m_VisualEffect: {fileID: 591008745538165688}
+--- !u!114 &6861510679582332078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 490879488016631073}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: Spawn Position
+  Target: {fileID: 3930161239581013171}
 --- !u!1 &632465038030579873
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893256370118052104}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.19853011, y: -0.02286546, z: -0.0046892003, w: 0.97981685}
+  m_LocalRotation: {x: -0.2244431, y: 0.07428582, z: -0.0018201105, w: 0.97164994}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -785,7 +802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.4, z: -2.68}
+  m_FollowOffset: {x: 0, y: 0.4965108, z: -2.913548}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1240,8 +1257,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4314569096102657643}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00083083427, y: 0.71023554, z: 0.000838237, w: 0.7039632}
-  m_LocalPosition: {x: -4.7381654, y: -4.488832, z: 0.9395127}
+  m_LocalRotation: {x: 0.046372928, y: 0.71611166, z: -0.032723162, w: 0.6956744}
+  m_LocalPosition: {x: -4.929093, y: -4.392321, z: 1.5483155}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1298,7 +1315,7 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_YAxis:
-    Value: 0
+    Value: 0.074562624
     m_SpeedMode: 1
     m_MaxSpeed: 2
     m_AccelTime: 0
@@ -1628,7 +1645,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_BindingMode: 5
-  m_FollowOffset: {x: 0, y: 0.4, z: -2.68}
+  m_FollowOffset: {x: 0, y: 0.4965108, z: -2.913548}
   m_XDamping: 1
   m_YDamping: 1
   m_ZDamping: 1
@@ -1946,6 +1963,7 @@ GameObject:
   - component: {fileID: 4508211550144911374}
   - component: {fileID: 2660410186313508270}
   - component: {fileID: 4713135541280945422}
+  - component: {fileID: 892016916516856260}
   m_Layer: 0
   m_Name: SteamSuck
   m_TagString: Untagged
@@ -2065,8 +2083,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ExecuteInEditor: 1
-  m_Bindings: []
+  m_Bindings:
+  - {fileID: 892016916516856260}
   m_VisualEffect: {fileID: 4508211550144911374}
+--- !u!114 &892016916516856260
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5296100853994721818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07c3070554d0a8944a95ff8f018c2c9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: SuckPos
+  Target: {fileID: 3930161239581013171}
 --- !u!1 &5326250666392505610
 GameObject:
   m_ObjectHideFlags: 0
@@ -2265,8 +2299,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5334083795213922328}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.16873704, y: -0.02299709, z: -0.0039939205, w: 0.98538476}
-  m_LocalPosition: {x: 0.0000016365682, y: -0.00000007207216, z: 0.000030533218}
+  m_LocalRotation: {x: -0.19990289, y: 0.07421649, z: -0.0036902674, w: 0.9769939}
+  m_LocalPosition: {x: 0.0000018102094, y: 0.00000086713175, z: 0.000003793217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2728,8 +2762,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6184417817863886270}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.23264971, y: -0.022687657, z: -0.0054854075, w: 0.97228044}
-  m_LocalPosition: {x: 0.0000016365682, y: -0.00000007207216, z: 0.000030533218}
+  m_LocalRotation: {x: -0.25826153, y: 0.0743041, z: 0.0007770232, w: 0.9632131}
+  m_LocalPosition: {x: 0.0000018102094, y: 0.00000086713175, z: 0.000003793217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
