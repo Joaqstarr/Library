@@ -22,6 +22,8 @@ namespace Player.States
         protected override void OnEnterState()
         {
             base.OnEnterState();
+            _playerStateManager.FaceEmotionHandlerInstance.HideFace();
+
             _playerStateManager.PlayerInteractionManagerInstance.enabled = false;
             _playerStateManager.PlayerAttackManagerInstance.enabled = false;
 
@@ -39,7 +41,6 @@ namespace Player.States
                 yield return new WaitForSeconds(0.5f);
                 _finishedTransition = true;
             }
-            
             _pipe.EnablePipeLump();
         }
 
@@ -52,6 +53,8 @@ namespace Player.States
             _playerStateManager.PlayerCloudAttractionHandlerInstance.AttractionPoint = _playerStateManager.transform.position;
             _pipe.DisablePipeLump();
             _playerStateManager.PlayerCloudAttractionHandlerInstance.DisableFullAttraction();
+            _playerStateManager.FaceEmotionHandlerInstance.ShowFace();
+
             _spline = null;
             _pipe = null;
             _playerMovement.enabled = true;

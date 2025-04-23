@@ -171,5 +171,21 @@ namespace Player.Face
                     return null;
             }
         }
+
+        public void HideFace()
+        {
+            _rightEyeBrowRenderer.enabled = false;
+            _leftEyeBrowRenderer.enabled = false;
+            _eyeRenderer.enabled = false;
+            _mouthRenderer.enabled = false;
+        }
+        
+        public void ShowFace()
+        {
+            _rightEyeBrowRenderer.enabled = true;
+            _leftEyeBrowRenderer.enabled = true;
+            _eyeRenderer.enabled = true;
+            _mouthRenderer.enabled = true;
+        }
     }
 }

@@ -3085,11 +3085,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _defaultEmotion:
     Emotion: 0
-    Eyes: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
-    Mouth: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
-    LEyebrow: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
-    REyebrow: {fileID: 2100000, guid: 9cf8f68c1db1e4e4fbeab6326a6625b0, type: 2}
-  _emotionDefinitions: []
+    Eyes: {fileID: 2100000, guid: ea7aa780a5182604096b517b8cd9a5fd, type: 2}
+    Mouth: {fileID: 2100000, guid: ea7aa780a5182604096b517b8cd9a5fd, type: 2}
+    LEyebrow: {fileID: 2100000, guid: ea7aa780a5182604096b517b8cd9a5fd, type: 2}
+    REyebrow: {fileID: 2100000, guid: ea7aa780a5182604096b517b8cd9a5fd, type: 2}
+  _emotionDefinitions:
+  - Emotion: 5
+    Eyes: {fileID: 2100000, guid: 71b7f780175684941a6d6748a10aa1ed, type: 2}
+    Mouth: {fileID: 0}
+    LEyebrow: {fileID: 0}
+    REyebrow: {fileID: 0}
   _eyeRenderer: {fileID: 6313259614811609250}
   _mouthRenderer: {fileID: 4221129764876464853}
   _leftEyeBrowRenderer: {fileID: 4672090142276749185}

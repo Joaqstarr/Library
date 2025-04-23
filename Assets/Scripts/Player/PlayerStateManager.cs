@@ -2,6 +2,7 @@
 using Cinemachine;
 using Level.Pipe;
 using Player.Attack;
+using Player.Face;
 using Player.States;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -22,6 +23,7 @@ namespace Player
         public PlayerCameraStateManager PlayerCameraStateManagerInstance{get; private set;}
         public PlayerAttackManager PlayerAttackManagerInstance{get; private set;}
 
+        public FaceEmotionHandler FaceEmotionHandlerInstance{get; private set;}
         public Animator AnimatorInstance{get; private set;}
         public SignalReceiver PlayerSignalReceiverInstance{get; private set;}
 
@@ -50,6 +52,7 @@ namespace Player
             PlayerControlsInstance = GetComponent<PlayerControls>();
             PlayerInteractionManagerInstance = GetComponent<PlayerInteractionManager>();
             PlayerCameraStateManagerInstance = GetComponentInChildren<PlayerCameraStateManager>();
+            FaceEmotionHandlerInstance = GetComponentInChildren<FaceEmotionHandler>();
             AnimatorInstance = GetComponent<Animator>();
             PlayerSignalReceiverInstance = GetComponent<SignalReceiver>();
             //state setup
