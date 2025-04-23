@@ -14,15 +14,18 @@ namespace Level.Pipe
         private PipeLump _pipeLump;
 
         [SerializeField] private PipeInteractable _pipeEntrancePrefab;
+        
+        [SerializeField]
+        private bool _autoSpawnPipeEntrances = true;
         private void Awake()
         {
             PipeSpline = GetComponent<SplineContainer>().Spline;
-            
-            
-            SpawnPipeEntrance(0);
 
-            SpawnPipeEntrance(1);
-
+            if (_autoSpawnPipeEntrances)
+            {
+                SpawnPipeEntrance(0);
+                SpawnPipeEntrance(1);
+            }
         }
 
         private void SpawnPipeEntrance(float interp)

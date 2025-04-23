@@ -21,6 +21,8 @@ namespace Systems.Interaction
         [SerializeField]
         protected UnityEvent OnInteractedEvent;
         [SerializeField]
+        protected UnityEvent<PlayerStateManager> OnInteractedEventWithPlayer;
+        [SerializeField]
         public string InteractableName = "Interactable";
         public Vector3 GetCloudAttractorPoint()
         {
@@ -45,6 +47,7 @@ namespace Systems.Interaction
         protected virtual void InteractionTriggered(PlayerStateManager player)
         {
             OnInteractedEvent?.Invoke();
+            OnInteractedEventWithPlayer?.Invoke(player);
         }
 
         private void Update()

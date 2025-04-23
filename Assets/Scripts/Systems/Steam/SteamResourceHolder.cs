@@ -112,6 +112,8 @@ namespace Systems.Steam
 
         public void BeginSteamTransferFrom(SteamResourceHolder giver, float amount, float time = 0, bool visuals = false)
         {
+            _regenCooldownTimer = _postTransferRegenCooldown;
+
             giver.BeginSteamTransferTo(this, amount, time, visuals);
         }
 
