@@ -14,6 +14,8 @@ namespace Player.Attack
             Suck,
             Blow
         }
+
+        public bool IsAttacking { get; private set; } = false;
         public AttackTypes AttackState { get; private set; }
         private Hitbox _attackHitbox;
         private SteamResourceHolder _playerSteamResource;
@@ -27,6 +29,7 @@ namespace Player.Attack
             _attackHitbox = GetComponentInChildren<Hitbox>();
         }
 
+        
         private void Start()
         {
             OnAttackStateChange?.Invoke(true);
@@ -63,6 +66,7 @@ namespace Player.Attack
         {
             if(_playerControls.AttackPressed)
             {
+                IsAttacking = true;
                 switch (AttackState)
                 {
                     case AttackTypes.Blow:
@@ -72,6 +76,10 @@ namespace Player.Attack
                         Suck();
                         break;
                 }
+            }
+            else
+            {
+                IsAttacking = false;
             }
         }
 

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Cinemachine;
+using UnityEngine;
 
 namespace Level.PlatformRobot
 {
@@ -20,8 +21,17 @@ namespace Level.PlatformRobot
         private Vector3 _currentTargetPosition; // Current target position
         private bool _isStepping = false;
 
+        public bool IsMoving {get{ return _isStepping; } }
+        
+        [SerializeField]
+        private IKLeg[] _linkedLegs; // Linked legs for synchronization
+
+        [SerializeField] private float _postStepWait = 0.5f;
+
+        private CinemachineImpulseSource _cinemachineImpulse;
         private void Start()
         {
+            _cinemachineImpulse = GetComponent<CinemachineImpulseSource>();
             // Initialize the target position to the current IK target position
             _currentTargetPosition = _ikTarget.position;
         }
@@ -34,14 +44,27 @@ namespace Level.PlatformRobot
             {
                 Vector3 desiredPosition = hit.point;
 
+
                 // Check if the leg is far enough from the current target
-                if (!_isStepping && Vector3.Distance(_ikTarget.position, desiredPosition) > _stepDistance)
+                if (!_isStepping && !IsOtherLegMoving() && Vector3.Distance(_ikTarget.position, desiredPosition) > _stepDistance)
                 {
                     StartCoroutine(MoveToTarget(desiredPosition));
                 }
             }
         }
 
+        private bool IsOtherLegMoving()
+        {
+            if(_linkedLegs.Length > 0)
+            {
+                foreach (IKLeg leg in _linkedLegs)
+                {
+                    if(leg.IsMoving) return true;
+                }
+            }
+
+            return false;
+        }
         private System.Collections.IEnumerator MoveToTarget(Vector3 newTargetPosition)
         {
             _isStepping = true;
@@ -65,6 +88,9 @@ namespace Level.PlatformRobot
 
             _ikTarget.position = newTargetPosition;
             _currentTargetPosition = newTargetPosition;
+            if(_cinemachineImpulse)
+                _cinemachineImpulse.GenerateImpulseAtPositionWithVelocity(_ikTarget.position, _cinemachineImpulse.m_DefaultVelocity);
+            yield return new WaitForSeconds(_postStepWait);
             _isStepping = false;
         }
     }
