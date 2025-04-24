@@ -24,4 +24,6 @@ public class RaisePuzzleSection : MonoBehaviour
         if (!_raisedTo2) animator.SetTrigger("TrRaise2");
         _raisedTo2 = true;
     }
+    
+    
 }
