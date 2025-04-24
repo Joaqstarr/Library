@@ -69,7 +69,6 @@ namespace Level.CutsceneTriggers
                 {
                     Gamemanager.Instance.GetSaveData().CutsceneFlags[_cutsceneToPlay.Cutscene.name] = true;
                     _fired = true;
-                    Gamemanager.Instance.SaveData();
                 }
             }
         }

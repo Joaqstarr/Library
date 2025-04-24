@@ -600,6 +600,34 @@ PrefabInstance:
       propertyPath: m_fontSizeBase
       value: 50
       objectReference: {fileID: 0}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 619582470}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SaveData
+      objectReference: {fileID: 0}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Systems.Gamemode.Gamemanager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 495563288415978491, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 5733598205320315758, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1082,8 +1110,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083560629}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.00083045254, y: 0.71023554, z: 0.0008378553, w: 0.7039632}
-  m_LocalPosition: {x: -103.630936, y: 5.408268, z: 14.54217}
+  m_LocalRotation: {x: 0.046372928, y: 0.71611166, z: -0.032723162, w: 0.6956744}
+  m_LocalPosition: {x: -6.39, y: 4.46, z: 23.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
