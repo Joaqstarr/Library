@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cinemachine;
 using Player;
 using Systems.Gamemode;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.Timeline;
@@ -38,7 +40,7 @@ namespace Systems.CutsceneSystem
             {
                 Instance = this;
             }
-            
+
         }
 
         public void PlayCutscene(CutsceneData cutsceneData, List<BindingData> bindings = null)
@@ -60,9 +62,10 @@ namespace Systems.CutsceneSystem
                 if (player)
                 {
                     bindings.Add(new BindingData("Player", Gamemanager.Instance.GetPlayer().AnimatorInstance));
-                    bindings.Add(new BindingData("PlayerSignal", Gamemanager.Instance.GetPlayer().PlayerSignalReceiverInstance));
-
+                    bindings.Add(new BindingData("PlayerSignal",
+                        Gamemanager.Instance.GetPlayer().PlayerSignalReceiverInstance));
                 }
+            
             }
 
             OnCutsceneStart?.Invoke(cutsceneData, ref bindings);
