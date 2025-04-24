@@ -87,8 +87,8 @@ namespace Enemies.Robot
 
         public void Overload()
         {
-            SwitchToIdleState();
-            Destroy(gameObject);
+            //SwitchToIdleState();
+            //Destroy(gameObject);
         }
 
 

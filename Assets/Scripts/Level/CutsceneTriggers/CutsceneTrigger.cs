@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using Systems.CutsceneSystem;
 using Systems.Gamemode;
@@ -25,8 +26,16 @@ namespace Level.CutsceneTriggers
         
         [SerializeField]
         private List<BindingDataContext> _bindings = new List<BindingDataContext>();
+        
         private void Start()
         {
+
+            StartCoroutine(WaitToCheckCutscene());
+        }
+
+        IEnumerator WaitToCheckCutscene()
+        {
+            yield return new WaitForSeconds(0.01f);
             //check save data
             if (Gamemanager.Instance)
             {
@@ -60,7 +69,6 @@ namespace Level.CutsceneTriggers
                 {
                     Gamemanager.Instance.GetSaveData().CutsceneFlags[_cutsceneToPlay.Cutscene.name] = true;
                     _fired = true;
-                    Gamemanager.Instance.SaveData();
                 }
             }
         }

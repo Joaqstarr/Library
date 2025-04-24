@@ -21,6 +21,15 @@ namespace Enemies.Robot
             RobotAnimator.SetBool(IsEmpty, true);
 
             _robotStateManager.OnRobotCollisionEnter += OnRobotCollisionEnter;
+
+            if (_robotStateManager.Data.IsKinematicByDefault)
+            {
+                _robotStateManager.Rigidbody.isKinematic = true;
+            }
+            else
+            {
+                _robotStateManager.Rigidbody.isKinematic = false;
+            }
         }
 
 

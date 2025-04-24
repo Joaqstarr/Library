@@ -38,7 +38,6 @@ namespace Systems.Gamemode
         [SerializeField] private bool _shouldSave = true;
         private void Awake()
         {
-            SceneManager.SetActiveScene(SceneManager.GetSceneByName("CoreGamemode"));
             
             if (!Application.isEditor) _shouldSave = true;
             if (Instance == null)

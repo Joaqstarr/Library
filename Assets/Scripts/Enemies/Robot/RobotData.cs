@@ -17,6 +17,10 @@ namespace Enemies.Robot
         
         [field: Header("Stomp Attack")]
         [field: SerializeField] public StompRing StompRingPrefab { get; private set; }
+        
+        [field: Header("No Fuel")] [field: SerializeField]
+
+        public bool IsKinematicByDefault { get; private set; } = true;
 
     }
 }
