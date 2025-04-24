@@ -749,7 +749,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3568489725411359063, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 14.799927
+      value: 14.800049
+      objectReference: {fileID: 0}
+    - target: {fileID: 3568489725411359063, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -20.199951
       objectReference: {fileID: 0}
     - target: {fileID: 5733598205320315758, guid: 8df1de1e25308c647b6727f35072d6be, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1207,7 +1211,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60.000004
+  field of view: 60
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -1233,8 +1237,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083560629}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.046372928, y: 0.71611166, z: -0.032723162, w: 0.6956744}
-  m_LocalPosition: {x: -6.39, y: 4.46, z: 23.72}
+  m_LocalRotation: {x: -0.14503896, y: -0.70019394, z: -0.14867444, w: 0.6830725}
+  m_LocalPosition: {x: -135.44421, y: -27.085148, z: 25.070343}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1391,7 +1395,7 @@ Transform:
   m_Children:
   - {fileID: 372060810}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 353.6061, y: 0.134933, z: 359.9922}
+  m_LocalEulerAnglesHint: {x: 353.6061, y: 0.1349524, z: 359.9921}
 --- !u!95 &1335585309
 Animator:
   serializedVersion: 5
@@ -1515,6 +1519,7 @@ Transform:
   m_Children:
   - {fileID: 1632630364}
   - {fileID: 1222764917}
+  - {fileID: 2037537495}
   - {fileID: 147192321}
   - {fileID: 123208476}
   m_Father: {fileID: 0}
@@ -1876,6 +1881,79 @@ Transform:
   - {fileID: 1435503284}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2037537494
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2037537495}
+  - component: {fileID: 2037537497}
+  - component: {fileID: 2037537496}
+  m_Layer: 0
+  m_Name: PuzzleWinCutscene
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2037537495
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037537494}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.710236, z: -0, w: 0.7039637}
+  m_LocalPosition: {x: -100.43475, y: 15.2338505, z: 21.966099}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1503500804}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2037537496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037537494}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66054e91e69540ca9a312f005a254286, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!320 &2037537497
+PlayableDirector:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2037537494}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_PlayableAsset: {fileID: 11400000, guid: 0a231ce680c79174cb79f15344ae3f23, type: 2}
+  m_InitialState: 0
+  m_WrapMode: 2
+  m_DirectorUpdateMode: 1
+  m_InitialTime: 0
+  m_SceneBindings:
+  - key: {fileID: -6759872336799999507, guid: 0a231ce680c79174cb79f15344ae3f23, type: 2}
+    value: {fileID: 1083560631}
+  - key: {fileID: -4854889213913046294, guid: 0a231ce680c79174cb79f15344ae3f23, type: 2}
+    value: {fileID: 1335585309}
+  - key: {fileID: 847123516604437386, guid: 0a231ce680c79174cb79f15344ae3f23, type: 2}
+    value: {fileID: 0}
+  - key: {fileID: 9012691275143098494, guid: 0a231ce680c79174cb79f15344ae3f23, type: 2}
+    value: {fileID: 0}
+  m_ExposedReferences:
+    m_References:
+    - 517a13ef28f34b248ab69566e68622aa: {fileID: 1335585307}
+    - ba59772e7dcc9ca4fa30b5b6e7715ecd: {fileID: 1335585307}
+    - 40659f1bd1db86442bb1e22f1f3e1479: {fileID: 1335585307}
 --- !u!1001 &5983354614326475069
 PrefabInstance:
   m_ObjectHideFlags: 0
