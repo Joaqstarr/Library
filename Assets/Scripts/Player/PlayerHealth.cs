@@ -96,5 +96,7 @@ namespace Player
                 SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             }
         }
+
+        public int CurrentHealth => _health;
     }
 }
