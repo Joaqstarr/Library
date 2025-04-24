@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Systems.CutsceneSystem;
 using Systems.Gamemode;
 using UnityEngine;
@@ -11,7 +12,19 @@ namespace Level.CutsceneTriggers
         private CutsceneData _cutsceneToPlay;
 
 
+
+        
         private bool _fired = false;
+        
+        [Serializable]
+        private struct BindingDataContext
+        {
+            public string TrackName;
+            public UnityEngine.Object BindingObject;
+        }
+        
+        [SerializeField]
+        private List<BindingDataContext> _bindings = new List<BindingDataContext>();
         private void Start()
         {
             //check save data
@@ -28,9 +41,20 @@ namespace Level.CutsceneTriggers
             {
                 if (CutsceneEventManager.Instance)
                 {
-                    CutsceneEventManager.Instance.PlayCutscene(_cutsceneToPlay);
+                    List<BindingData> bindings = new List<BindingData>();
+
+                    if (_bindings != null)
+                    {
+                        foreach (var bindingDataContext in _bindings)
+                        {
+                            bindings.Add(new BindingData(bindingDataContext.TrackName, bindingDataContext.BindingObject));
+                        }
+                    }
+                    CutsceneEventManager.Instance.PlayCutscene(_cutsceneToPlay, bindings);
                     
                 }
+
+
 
                 if (Gamemanager.Instance)
                 {
