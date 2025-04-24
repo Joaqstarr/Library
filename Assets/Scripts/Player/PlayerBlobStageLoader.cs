@@ -8,7 +8,7 @@ namespace Player
     public class PlayerBlobStageLoader : MonoBehaviour
     {
         [SerializeField] private GameObject[] _playerBlobStages;
-        private void Awake()
+        private void Start()
         {
             if (Gamemanager.Instance)
             {
