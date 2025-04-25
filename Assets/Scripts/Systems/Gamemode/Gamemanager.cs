@@ -36,9 +36,11 @@ namespace Systems.Gamemode
         private CinemachineBrain _cinemachineBrain;
         
         [SerializeField] private bool _shouldSave = true;
+        [SerializeField] private bool _shouldLoad = true;
+
         private void Awake()
         {
-            
+            if (!Application.isEditor) _shouldLoad = true;
             if (!Application.isEditor) _shouldSave = true;
             if (Instance == null)
             {
@@ -58,7 +60,11 @@ namespace Systems.Gamemode
 
         private void LoadData()
         {
-            _saveData = _dataSaver.LoadData();
+            if(_shouldLoad)
+                _saveData = _dataSaver.LoadData();
+            else
+                _saveData = new SaveData();
+
             LoadCurrentLevel();
 
             OnLevelLoadedFromSave?.Invoke(_saveData.CurrentLevel);
