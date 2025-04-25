@@ -15,7 +15,7 @@ namespace Level.CutsceneTriggers
 
 
         
-        private bool _fired = false;
+        private bool _fired = true;
         
         
         [SerializeField]
