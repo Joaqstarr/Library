@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using Cinemachine;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
@@ -31,6 +33,8 @@ namespace Systems.CutsceneSystem
             {
                 if (bindings != null)
                 {
+                    CinemachineVirtualCamera cutsceneCamObject = null; // Initialize to null
+
                     foreach (var binding in bindings)
                     {
                         foreach (var output in _playableDirector.playableAsset.outputs)
@@ -40,9 +44,32 @@ namespace Systems.CutsceneSystem
                                 _playableDirector.SetGenericBinding(output.sourceObject, binding.BindingObject);
                             }
                         }
+                        
+                        if (binding.TrackName == "CutsceneCam")
+                        {
+                            cutsceneCamObject = binding.BindingObject.GetComponent<CinemachineVirtualCamera>();
+                        }
+                    }
+
+
+                    if (cutsceneCamObject != null) // Ensure it's assigned before using
+                    {
+                        foreach (var track in _playableDirector.playableAsset.outputs)
+                        {
+                            if (track.sourceObject is CinemachineTrack)
+                            {
+                                var cinemachineTrack = track.sourceObject as CinemachineTrack;
+                                foreach( var clip in cinemachineTrack.GetClips() ){
+
+                                    var cinemachineShot = clip.asset as CinemachineShot;
+                                    _playableDirector.SetReferenceValue(cinemachineShot.VirtualCamera.exposedName, cutsceneCamObject);
+
+                                }
+                            }
+                        }
                     }
                 }
-                
+
                 
                 _playableDirector.Play();
             }
