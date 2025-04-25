@@ -114,7 +114,7 @@ namespace Systems.Gamemode
                     float defaultBlendTime = _cinemachineBrain.m_DefaultBlend.m_Time;
                     _cinemachineBrain.m_DefaultBlend.m_Time = 0f;
                     _player = Instantiate(_playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
-
+                    SceneManager.MoveGameObjectToScene(_player.gameObject, SceneManager.GetSceneByName("CoreGamemode"));
                     PlayerHealth health = _player.GetComponent<PlayerHealth>();
 
                     if (health)
