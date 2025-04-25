@@ -1234,6 +1234,7 @@ GameObject:
   - component: {fileID: 8332721197207195912}
   - component: {fileID: 3582779043025323092}
   - component: {fileID: 3934011267935531015}
+  - component: {fileID: 6359277552157844382}
   m_Layer: 0
   m_Name: Steam Wall
   m_TagString: Untagged
@@ -1572,3 +1573,19 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 5, y: 4.5, z: 0.2}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!208 &6359277552157844382
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7011947111487514789}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 2.5, y: 2.25, z: 0.1}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
