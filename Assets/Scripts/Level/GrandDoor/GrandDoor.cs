@@ -221,5 +221,10 @@ namespace Level.GrandDoor
                     break;
             }
         }
+
+        public SceneReference CurrentGameLevel()
+        {
+            return _gameLevel.Level;
+        }
     }
 }
