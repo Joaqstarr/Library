@@ -36,9 +36,11 @@ namespace Systems.Gamemode
         private CinemachineBrain _cinemachineBrain;
         
         [SerializeField] private bool _shouldSave = true;
+        [SerializeField] private bool _shouldLoad = true;
+
         private void Awake()
         {
-            
+            if (!Application.isEditor) _shouldLoad = true;
             if (!Application.isEditor) _shouldSave = true;
             if (Instance == null)
             {
@@ -58,7 +60,11 @@ namespace Systems.Gamemode
 
         private void LoadData()
         {
-            _saveData = _dataSaver.LoadData();
+            if(_shouldLoad)
+                _saveData = _dataSaver.LoadData();
+            else
+                _saveData = new SaveData();
+
             LoadCurrentLevel();
 
             OnLevelLoadedFromSave?.Invoke(_saveData.CurrentLevel);
@@ -108,7 +114,7 @@ namespace Systems.Gamemode
                     float defaultBlendTime = _cinemachineBrain.m_DefaultBlend.m_Time;
                     _cinemachineBrain.m_DefaultBlend.m_Time = 0f;
                     _player = Instantiate(_playerPrefab, playerStart.transform.position, playerStart.transform.rotation);
-
+                    SceneManager.MoveGameObjectToScene(_player.gameObject, SceneManager.GetSceneByName("CoreGamemode"));
                     PlayerHealth health = _player.GetComponent<PlayerHealth>();
 
                     if (health)

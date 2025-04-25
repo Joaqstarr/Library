@@ -7,6 +7,7 @@ namespace Level.HotAirBalloon
 {
     public class HotAirBalloon : MonoBehaviour
     {
+        private static readonly int FlameStrength = Shader.PropertyToID("_Flame_Strength");
         private SteamResourceHolder _resourceHolder;
         [SerializeField] private float _speed = 5f;
         [SerializeField]
@@ -21,6 +22,8 @@ namespace Level.HotAirBalloon
         private float _targHeight = 0;
 
         private VisualEffect _flame;
+        [SerializeField]
+        private Renderer _hotAirBalloonRenderer;
         private void Awake()
         {
             _flame = GetComponentInChildren<VisualEffect>();
@@ -46,6 +49,11 @@ namespace Level.HotAirBalloon
             Vector3 targPos = transform.position;
             targPos.y = Mathf.Lerp(_minWorldHeight, _maxWorldHeight, _targHeight);
             transform.position = Vector3.MoveTowards(transform.position, targPos, Time.deltaTime * _speed);
+
+            if (_hotAirBalloonRenderer)
+            {
+                _hotAirBalloonRenderer.material.SetFloat(FlameStrength,_resourceHolder.SteamFillPercent);
+            }
         }
 
         private float WorldToInterp(float height)

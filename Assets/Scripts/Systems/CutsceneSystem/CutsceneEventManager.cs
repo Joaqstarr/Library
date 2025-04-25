@@ -11,6 +11,7 @@ using UnityEngine.Timeline;
 namespace Systems.CutsceneSystem
 {
 
+    [Serializable]
     public struct BindingData
     {
         public string TrackName;
@@ -28,7 +29,8 @@ namespace Systems.CutsceneSystem
         public delegate void CutsceneEventDelegate(CutsceneData cutsceneData, ref List<BindingData> bindings);
         public static CutsceneEventDelegate OnCutsceneStart;
         public static CutsceneEventManager Instance;
-
+        [SerializeField]
+        private List<BindingData> _defaultBindings = new List<BindingData>();
 
         private void Awake()
         {
@@ -61,6 +63,10 @@ namespace Systems.CutsceneSystem
                 PlayerStateManager player = Gamemanager.Instance.GetPlayer();
                 if (player)
                 {
+                    foreach (var defaultBinding in _defaultBindings)
+                    {
+                        bindings.Add(defaultBinding);
+                    }
                     bindings.Add(new BindingData("Player", Gamemanager.Instance.GetPlayer().AnimatorInstance));
                     bindings.Add(new BindingData("PlayerSignal",
                         Gamemanager.Instance.GetPlayer().PlayerSignalReceiverInstance));

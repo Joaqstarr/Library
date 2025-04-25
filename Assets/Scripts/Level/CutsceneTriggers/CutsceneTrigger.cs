@@ -17,15 +17,9 @@ namespace Level.CutsceneTriggers
         
         private bool _fired = false;
         
-        [Serializable]
-        private struct BindingDataContext
-        {
-            public string TrackName;
-            public UnityEngine.Object BindingObject;
-        }
         
         [SerializeField]
-        private List<BindingDataContext> _bindings = new List<BindingDataContext>();
+        private List<BindingData> _bindings = new List<BindingData>();
         
         private void Start()
         {
