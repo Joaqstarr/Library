@@ -12,16 +12,20 @@ namespace Level
             if (other.CompareTag("Player"))
             {
                 Player.PlayerSafePoint playerSafePoint = other.GetComponent<Player.PlayerSafePoint>();
-
+                
+                if (playerSafePoint != null)
+                {
+                    playerSafePoint.PlayFallSound();
+                }
                 if (ScreenFader.Instance)
                 {
-                 
                     ScreenFader.Instance.Fade(0.5f, 0.5f, () =>
                     {
                         TeleportToSafety(playerSafePoint);
                     }, null);
                 }else
                 {
+
                     TeleportToSafety(playerSafePoint);
                 }
             }

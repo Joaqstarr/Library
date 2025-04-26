@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using UnityEngine;
 
 namespace Player
@@ -7,6 +8,7 @@ namespace Player
     {
         private Vector3 _safePoint;
         private PlayerMovement _playerMovement;
+        [SerializeField] private RandomClipPlayer _fallSound;
         private void Awake()
         {
             _playerMovement = GetComponent<PlayerMovement>();
@@ -24,7 +26,11 @@ namespace Player
                 }
             }
         }
-        
+
+        public void PlayFallSound()
+        {
+            _fallSound?.PlayRanClip();
+        }
         public void TeleportToSafePoint()
         {
             _playerMovement.ResetVelocity();

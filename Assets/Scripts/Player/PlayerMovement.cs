@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections;
+using Audio;
 using Cinemachine;
 using DG.Tweening;
 using Level.MovingPlatform;
 using Player.Animation;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Player
 {
@@ -19,6 +21,9 @@ namespace Player
         [SerializeField] private float _jumpInputBuffer = 0.2f;
         [SerializeField] private float _coyoteTime = 0.5f;
         [SerializeField] private PlayerAnimationManager _animationManager;
+        [FormerlySerializedAs("_jumpSoundPlayer")] [SerializeField] private RandomClipPlayer _playerJumpSound;
+        [SerializeField] private RandomClipPlayer _playerFallSound;
+
         private float _coyoteTimer = 0;
         private float _turnSmoothVelocity;
         private float _verticalVelocity;
@@ -104,7 +109,7 @@ namespace Player
             {
                 _jumpBufferTimer = 0;
                 _verticalVelocity = Mathf.Sqrt(_jumpHeight * -2f * _gravity);
-                
+                _playerJumpSound.PlayRanClip();
                 _animationManager.SetJumpTrigger();
                 _postJumpTimer = 0.2f;
             }
@@ -188,6 +193,7 @@ namespace Player
                 transform.forward = newForward;
                 _art.localEulerAngles = Vector3.zero;
                 
+                _playerJumpSound.PlayRanClip();
                 _isLaunching = false;
                 _characterController.enabled = true;
                 _rigidbody.isKinematic = true;
@@ -221,6 +227,7 @@ namespace Player
             _rigidbody.isKinematic = false;
             _isLaunching = true;
             _rigidbody.AddForce(launchVector, ForceMode.Impulse);
+            _playerFallSound.PlayRanClip();
         }
 
         public void Teleport(Vector3 position)

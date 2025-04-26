@@ -21,13 +21,16 @@ namespace Utility
             if (Gamemanager.Instance)
             {
                 SaveData data = Gamemanager.Instance.GetSaveData();
-                
-                for(int i = 0; i < _rules.Length; i++)
+
+                if (data != null)
                 {
-                    if (data.IsLevelCompleted[_rules[i].Level] == _rules[i]._isComplete)
+                    for (int i = 0; i < _rules.Length; i++)
                     {
-                        Destroy(gameObject);
-                        return;
+                        if (data.IsLevelCompleted[_rules[i].Level] == _rules[i]._isComplete)
+                        {
+                            Destroy(gameObject);
+                            return;
+                        }
                     }
                 }
             }

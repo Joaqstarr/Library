@@ -21,6 +21,7 @@ namespace Systems.AmbientSound
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
+            _currentLevel = _hubMusicParts[0];
         }
 
         private void Start()
