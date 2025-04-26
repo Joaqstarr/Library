@@ -65,7 +65,6 @@ namespace Level.LevelSwitcher
                     {
                         float delta = (newPercent - _oldFillPercent) / Time.deltaTime;
                         
-                        Debug.Log(delta);
                         if (Mathf.Abs(delta) > 0.1f)
                         {
                             targVolume = 1;
