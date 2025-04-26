@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Cinemachine;
 using Systems.Gamemode;
 using UnityEngine;
@@ -24,6 +25,7 @@ namespace Player
         [SerializeField] private float _healTime = 5;
         private float _healTimer = 0f;
 
+        [SerializeField] private RandomClipPlayer _playerHurtSound;
 
         private CinemachineImpulseSource _cinemachineImpulseSource;
 
@@ -39,7 +41,7 @@ namespace Player
                 return;
             
             _invincibilityTimer = _invincibilityTime;
-            
+            _playerHurtSound.PlayRanClip();
             int oldHealth = _health;
             _health -= damage;
             _cinemachineImpulseSource.GenerateImpulseWithForce(1);
