@@ -36,7 +36,16 @@ namespace Level
             if (playerSafePoint != null)
             {
                 playerSafePoint.TeleportToSafePoint();
+                
+                PlayerHealth playerHealth = playerSafePoint.GetComponent<PlayerHealth>();
+
+                if (playerHealth != null)
+                {
+                    playerHealth.Damage(1);
+                }
             }
+            
+            
         }
     }
 }
