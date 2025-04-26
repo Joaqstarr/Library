@@ -65,6 +65,20 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
+      - time: 0
+        functionName: PlayAudioClip
+        data: 
+        objectReferenceParameter: {fileID: 8300000, guid: d0df3a19e9461a442816869f11919742, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
+      - time: 0.5200525
+        functionName: PlayAudioClip
+        data: 
+        objectReferenceParameter: {fileID: 8300000, guid: 1716b805365339c47944a3e68160621b, type: 3}
+        floatParameter: 0
+        intParameter: 0
+        messageOptions: 0
       - time: 0.7442786
         functionName: GenerateImpulseWithForce
         data: 
