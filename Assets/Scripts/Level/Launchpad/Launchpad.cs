@@ -12,12 +12,12 @@ namespace Level.Launchpad
         [SerializeField] private float _launchForce = 10f;
         [SerializeField] private int _trajectoryResolution = 30;
 
-
-        private void Start()
+        public float LaunchForce
         {
-            // Initialize any necessary components or variables here
+            get => _launchForce;
         }
-        
+
+   
 
         protected override void InteractionTriggered(PlayerStateManager player)
         {
