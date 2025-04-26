@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using Level.Pipe;
+using Player.Audio;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.Splines;
@@ -13,6 +14,8 @@ namespace Player.States
         private float _splinePosition;
         private float _speed;
 
+        private InsidePipeSoundEffect _pipeSoundEffect;
+
         private bool _finishedTransition = false;
         public PipeState(PlayerStateManager playerStateManager) : base(playerStateManager)
         {
@@ -22,6 +25,17 @@ namespace Player.States
         protected override void OnEnterState()
         {
             base.OnEnterState();
+
+            if (_pipeSoundEffect == null)
+            {
+                _pipeSoundEffect = _playerStateManager.GetComponentInChildren<InsidePipeSoundEffect>();
+            }
+
+            if (_pipeSoundEffect)
+            {
+                _pipeSoundEffect.EnterPipe();
+            }
+            
             _playerStateManager.FaceEmotionHandlerInstance.HideFace();
 
             _playerStateManager.PlayerInteractionManagerInstance.enabled = false;
@@ -58,6 +72,11 @@ namespace Player.States
             _spline = null;
             _pipe = null;
             _playerMovement.enabled = true;
+            
+            if (_pipeSoundEffect)
+            {
+                _pipeSoundEffect.ExitPipeSoundEffect();
+            }
         }
 
         public override void OnUpdateState()

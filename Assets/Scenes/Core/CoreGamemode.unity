@@ -1316,7 +1316,7 @@ Camera:
     height: 1
   near clip plane: 0.1
   far clip plane: 5000
-  field of view: 60
+  field of view: 60.000004
   orthographic: 0
   orthographic size: 10
   m_Depth: -1
@@ -1342,8 +1342,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083560629}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.13955477, y: -0.7090046, z: -0.14646292, w: 0.6755632}
-  m_LocalPosition: {x: -150.30826, y: -27.718122, z: 27.685759}
+  m_LocalRotation: {x: -0.00082946906, y: 0.71023554, z: 0.0008368718, w: 0.7039632}
+  m_LocalPosition: {x: -102.98094, y: 5.408268, z: 14.54217}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1706,6 +1706,14 @@ PrefabInstance:
       value: -0.036
       objectReference: {fileID: 0}
     - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: _postTransferRegenCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: <SteamRegenRate>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1934,6 +1942,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: _postTransferRegenCooldown
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
+      propertyPath: <SteamRegenRate>k__BackingField
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -2122,18 +2138,6 @@ PrefabInstance:
     - target: {fileID: 7073350593659874703, guid: 32b14116166f0a849b04632673278e25, type: 3}
       propertyPath: m_Name
       value: Door
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087736784258455022, guid: 32b14116166f0a849b04632673278e25, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087736784258455022, guid: 32b14116166f0a849b04632673278e25, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8087736784258455022, guid: 32b14116166f0a849b04632673278e25, type: 3}
-      propertyPath: m_Color.r
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
