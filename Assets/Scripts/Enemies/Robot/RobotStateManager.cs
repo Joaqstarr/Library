@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Player;
 using Systems.Steam;
 using UnityEngine;
@@ -22,6 +23,8 @@ namespace Enemies.Robot
         public Rigidbody Rigidbody { get; private set; }
 
         [field: SerializeField]public Transform RightFoot { get; private set; }
+        
+        [field: SerializeField] public RandomClipPlayer RobotShutdownSound { get; private set; }
         #region States
         private HierarchalStateMachine _stateMachine;
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using Audio;
 using Cinemachine;
 using Level.Pipe;
 using Player.Attack;
@@ -33,6 +34,8 @@ namespace Player
         [field: SerializeField] public CinemachineVirtualCameraBase ThirdPersonCamera { get; private set; }
         [field: SerializeField] public CinemachineVirtualCameraBase AimCamera { get; private set; }
         [field: SerializeField] public Transform AimTransform { get; private set; }
+        
+        [field:SerializeField] public RandomClipPlayer EnterExitPipeSound { get; private set; }
         #region States
         
         private LocomotionState _locomotionState;

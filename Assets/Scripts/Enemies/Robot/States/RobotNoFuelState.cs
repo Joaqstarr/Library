@@ -30,6 +30,8 @@ namespace Enemies.Robot
             {
                 _robotStateManager.Rigidbody.isKinematic = false;
             }
+            
+            _robotStateManager.RobotShutdownSound.PlayRanClip();
         }
 
 
