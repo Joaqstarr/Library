@@ -4,11 +4,12 @@ using Systems.Gamemode;
 using TMPro;
 using UnityEngine;
 
-namespace UI
+namespace UI.Health
 {
     public class PlayerHealthDisplay : MonoBehaviour
     {
 
+        [SerializeField] private HealthIcon[] _healthIcons;
         private TMP_Text _text;
 
         private void Awake()
@@ -37,6 +38,18 @@ namespace UI
         private void OnHealthChanged(int newhealth, int oldhealth)
         {
             _text.text = newhealth.ToString();
+            
+            for (int i = 0; i < _healthIcons.Length; i++)
+            {
+                if (i < newhealth)
+                {
+                    _healthIcons[i].Show();
+                }
+                else
+                {
+                    _healthIcons[i].Hide();
+                }
+            }
         }
     }
 }
