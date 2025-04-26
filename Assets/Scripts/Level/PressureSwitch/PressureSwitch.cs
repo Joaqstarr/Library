@@ -8,6 +8,7 @@ public class PressureSwitch : MonoBehaviour
 {
     private MeshCollider _collider;
     public bool isSwitchActive = false;
+    private Animator _animator;
     
     
 
@@ -26,6 +27,7 @@ public class PressureSwitch : MonoBehaviour
     void Awake()
     {
         _collider = GetComponent<MeshCollider>();
+        _animator = GetComponent<Animator>();
     }
 
     public int objsInTrigger { get; private set; } = 0;
@@ -37,7 +39,8 @@ public class PressureSwitch : MonoBehaviour
         if (!isSwitchActive && objsInTrigger == 1)
         {
             if (syncedSwitches == false) SingleObjectActivate();
-            else MultiObjectActivate();
+            else {MultiObjectActivate();}
+            _animator.SetTrigger("Pressed");
         }
     }
 
@@ -50,7 +53,8 @@ public class PressureSwitch : MonoBehaviour
         {
             Debug.Log("MultiSwitchAttemptingToDeactivate");
             if (syncedSwitches == false) SingleObjectDeactivate();
-            else MultiObjectDeactivate();
+            else {MultiObjectDeactivate();}
+            _animator.SetTrigger("Unpressed");
         }
     }
 
