@@ -14,7 +14,7 @@ namespace Systems.AmbientSound
         private AudioSource[] _audioSources;
 
         private Collider _collider;
-
+        PlayerStateManager _player;
         private void Awake()
         {
             if (_postProcessVolume)
@@ -23,17 +23,33 @@ namespace Systems.AmbientSound
             }
         }
 
+        private void Start()
+        {
+            if (Gamemanager.Instance)
+            {
+                _player = Gamemanager.Instance.GetPlayer();
+            }
+            else
+            {
+                _player = FindObjectOfType<PlayerStateManager>();
+            }
+        }
+
         private void Update()
         {
             if(!_postProcessVolume || _audioSources == null || _audioSources.Length == 0)
                 return;
-            
-            PlayerStateManager player = Gamemanager.Instance.GetPlayer();
 
-            if (player )
+
+            if (Gamemanager.Instance && !_player)
+            {
+                _player = Gamemanager.Instance.GetPlayer();
+            }
+            
+            if (_player )
             {
              
-                float weight = GetBlendWeight(player.transform);
+                float weight = GetBlendWeight(_player.transform);
 
                 foreach (var source in _audioSources)
                 {

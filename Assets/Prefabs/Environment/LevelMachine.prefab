@@ -105,6 +105,134 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 2.7, y: 1.6349571, z: 2.484497}
   m_Center: {x: 0, y: 0, z: -0.29662275}
+--- !u!1 &1257899570685510290
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 524273538519268331}
+  - component: {fileID: 6518434359196581709}
+  m_Layer: 0
+  m_Name: LevelSwitchingSound
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &524273538519268331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257899570685510290}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2454735657959484020}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!82 &6518434359196581709
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1257899570685510290}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 7586312788103996330, guid: 9a34621c55b362b46bef204370c95cc9, type: 2}
+  m_audioClip: {fileID: 8300000, guid: a75c1b31e3bceb546a0397da006b1670, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1550347262832340398
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +273,7 @@ Transform:
   - {fileID: 4611106607594378688}
   - {fileID: 6345875523828134075}
   - {fileID: 6958063171943231729}
+  - {fileID: 524273538519268331}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 90}
 --- !u!114 &2309687436371148968
@@ -199,6 +328,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _levelSwitcherRotatorTransform: {fileID: 5982080683789908713}
   _rotSpeed: 5
+  _rotPunchTime: 1
+  _rotPunch: 10
+  _steamResourceHolder: {fileID: 9153164766600501347}
+  _grindAudioSource: {fileID: 6518434359196581709}
 --- !u!320 &3490450179925148163
 PlayableDirector:
   m_ObjectHideFlags: 0
@@ -231,7 +364,7 @@ AudioSource:
   m_GameObject: {fileID: 1550347262832340398}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6690809089363175216, guid: 9a34621c55b362b46bef204370c95cc9, type: 2}
+  OutputAudioMixerGroup: {fileID: 831987555368044486, guid: 9a34621c55b362b46bef204370c95cc9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
@@ -710,7 +843,7 @@ AudioSource:
   m_GameObject: {fileID: 4852748084247928970}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: -6690809089363175216, guid: 9a34621c55b362b46bef204370c95cc9, type: 2}
+  OutputAudioMixerGroup: {fileID: 831987555368044486, guid: 9a34621c55b362b46bef204370c95cc9, type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -1555,8 +1688,12 @@ PrefabInstance:
       value: SteamActivator
       objectReference: {fileID: 0}
     - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+      propertyPath: <MaxSteamAmount>k__BackingField
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: <SteamRegenRate>k__BackingField
-      value: -1
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.size
@@ -1598,3 +1735,14 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 399288918268049593, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
   m_PrefabInstance: {fileID: 4212974655537114489}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9153164766600501347 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5004041230961308954, guid: 14462ccaa16dd8b44a25958279774cd4, type: 3}
+  m_PrefabInstance: {fileID: 4212974655537114489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1456fef465b440578e4f9adba676ea43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

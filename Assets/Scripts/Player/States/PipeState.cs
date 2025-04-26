@@ -56,6 +56,7 @@ namespace Player.States
                 _finishedTransition = true;
             }
             _pipe.EnablePipeLump();
+            _playerStateManager.EnterExitPipeSound.PlayRanClip();
         }
 
         protected override void OnExitState()
@@ -77,6 +78,8 @@ namespace Player.States
             {
                 _pipeSoundEffect.ExitPipeSoundEffect();
             }
+            _playerStateManager.EnterExitPipeSound.PlayRanClip();
+
         }
 
         public override void OnUpdateState()
