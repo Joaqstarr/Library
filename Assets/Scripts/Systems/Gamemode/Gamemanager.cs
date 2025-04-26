@@ -56,14 +56,16 @@ namespace Systems.Gamemode
             _dataSaver = new DataSaver("save.boogers");
 
             _cinemachineBrain = _mainCamera.GetComponent<CinemachineBrain>();
-        }
-
-        private void LoadData()
-        {
+            
             if(_shouldLoad)
                 _saveData = _dataSaver.LoadData();
             else
                 _saveData = new SaveData();
+        }
+
+        private void LoadData()
+        {
+
 
             LoadCurrentLevel();
 
