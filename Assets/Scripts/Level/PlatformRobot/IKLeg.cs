@@ -1,4 +1,5 @@
-﻿using Cinemachine;
+﻿using Audio;
+using Cinemachine;
 using UnityEngine;
 
 namespace Level.PlatformRobot
@@ -18,6 +19,7 @@ namespace Level.PlatformRobot
         [SerializeField]
         private LayerMask _groundLayer; // Layer mask for ground detection
 
+        [SerializeField] private RandomClipPlayer _randomClipPlayer;
         private Vector3 _currentTargetPosition; // Current target position
         private bool _isStepping = false;
 
@@ -88,6 +90,10 @@ namespace Level.PlatformRobot
 
             _ikTarget.position = newTargetPosition;
             _currentTargetPosition = newTargetPosition;
+            if (_randomClipPlayer)
+            {
+                _randomClipPlayer.PlayRanClip();
+            }
             if(_cinemachineImpulse)
                 _cinemachineImpulse.GenerateImpulseAtPositionWithVelocity(_ikTarget.position, _cinemachineImpulse.m_DefaultVelocity);
             yield return new WaitForSeconds(_postStepWait);
