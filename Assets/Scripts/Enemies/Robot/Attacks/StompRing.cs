@@ -2,6 +2,7 @@
 using DG.Tweening;
 using Player;
 using UnityEngine;
+using UnityEngine.VFX;
 
 namespace Enemies.Robot.Attacks
 {
@@ -23,6 +24,9 @@ namespace Enemies.Robot.Attacks
         private Transform _startingParent = null;
         
         private Tweener _tweener = null;
+
+
+        [SerializeField] private VisualEffect _visualEffect;
 
         private void Awake()
         {
@@ -48,12 +52,14 @@ namespace Enemies.Robot.Attacks
             
             _dealingDamage = true;
             transform.localScale = _startSize; //new Vector3(0.01f, 1f, 0.01f);
+            
             _tweener = transform.DOScale(_endSize, _growTime).SetEase(_growEase);
             _tweener.onComplete += () =>
             {
                 _dealingDamage = false;
                 Vector3 fizzleSize = _endSize;
                 fizzleSize.y = 0.01f;
+                _visualEffect.Stop();
                 transform.DOScale(fizzleSize, 0.5f).onComplete += () =>
                 {
                     DisableRing();
