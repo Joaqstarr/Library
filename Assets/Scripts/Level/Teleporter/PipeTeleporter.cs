@@ -8,10 +8,15 @@ namespace Level.Teleporter
     public class PipeTeleporter : MonoBehaviour
     {
         [SerializeField]
-        private Vector3 _endLocation;
+        private Transform _endLocation;
         
         public void Teleport(PlayerStateManager player)
         {
+            if (!_endLocation)
+            {
+                Debug.LogError("No location set in pipe teleporter", gameObject);
+                return;
+            }
             player.SwitchToCinematicState();
 
             if (ScreenFader.Instance)
@@ -30,13 +35,17 @@ namespace Level.Teleporter
         private void TeleportToEndLocation(PlayerStateManager player)
         {
             player.SwitchToCinematicState();
-            player.PlayerMovementInstance.Teleport(_endLocation);
+            player.PlayerMovementInstance.Teleport(_endLocation.position);
         }
 
         private void OnDrawGizmosSelected()
         {
             Gizmos.color = Color.yellow;
-            Gizmos.DrawSphere(_endLocation, 0.5f);
+            if (_endLocation)
+            {
+                Gizmos.DrawSphere(_endLocation.position, 0.5f);
+
+            }
         }
     }
 }
