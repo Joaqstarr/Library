@@ -29,7 +29,7 @@ namespace Enemies.Robot
                 _robotStateManager.SwitchToIdleState();
                 return;
             }
-            if (_attackTimer > 3)
+            if (_attackTimer > Data.AttackTime)
             {
                 _aggroState.StartStompAttack();
                 return;

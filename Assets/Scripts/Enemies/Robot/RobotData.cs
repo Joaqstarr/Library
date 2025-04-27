@@ -13,6 +13,7 @@ namespace Enemies.Robot
 
         [field: Header("Aggro")] [field: SerializeField]
         public float StrafeDistance { get; private set; }= 5;
+        public float AttackTime { get; private set; }= 1.5f;
 
         
         [field: Header("Stomp Attack")]
