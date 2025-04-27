@@ -73,6 +73,7 @@ MonoBehaviour:
   _endSize: {x: 5.4, y: 1.84, z: 5.4}
   _growTime: 1.8
   _growEase: 8
+  _visualEffect: {fileID: 5008512248581588051}
 --- !u!1 &5680599976935492701
 GameObject:
   m_ObjectHideFlags: 0
@@ -85,13 +86,15 @@ GameObject:
   - component: {fileID: 5008512248581588051}
   - component: {fileID: 4464545991347133539}
   - component: {fileID: 185528373663136143}
+  - component: {fileID: 1863007482464678412}
+  - component: {fileID: 7474234298668160025}
   m_Layer: 9
   m_Name: Effect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &888508674835380488
 Transform:
   m_ObjectHideFlags: 0
@@ -114,7 +117,7 @@ VisualEffect:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5680599976935492701}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Asset: {fileID: 8926484042661614526, guid: 373f0359b5601d74282b0ae88f399228, type: 3}
   m_InitialEventName: OnPlay
   m_InitialEventNameOverriden: 0
@@ -128,7 +131,7 @@ VisualEffect:
       - m_Value: 100
         m_Name: Rate
         m_Overridden: 1
-      - m_Value: 1.87
+      - m_Value: 4
         m_Name: ParticleSize
         m_Overridden: 1
     m_Vector2f:
@@ -140,6 +143,9 @@ VisualEffect:
         m_Overridden: 1
       - m_Value: {x: 1, y: 1, z: 1}
         m_Name: NormalScale
+        m_Overridden: 1
+      - m_Value: {x: 0, y: 0, z: 0}
+        m_Name: ObjectVelocity
         m_Overridden: 1
     m_Vector4f:
       m_Array: []
@@ -210,6 +216,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _propertyName: Scale
+--- !u!114 &1863007482464678412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680599976935492701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdafc37f32b176349b1684c4455b98e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ExecuteInEditor: 1
+  m_Bindings:
+  - {fileID: 7474234298668160025}
+  m_VisualEffect: {fileID: 5008512248581588051}
+--- !u!114 &7474234298668160025
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5680599976935492701}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d80994697e576624b97a67538d27ddcd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Property:
+    m_Name: ObjectVelocity
+  Target: {fileID: 8193619025194433733}
 --- !u!1001 &4441160610271553030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -268,7 +305,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 9d9db52ad0c4c8c42b94dc62bbd8731b, type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -7511558181221131132, guid: 9d9db52ad0c4c8c42b94dc62bbd8731b, type: 3}
       propertyPath: m_Materials.Array.data[0]
