@@ -9,8 +9,8 @@ public class PressureSwitch : MonoBehaviour
     private MeshCollider _collider;
     public bool isSwitchActive = false;
     private Animator _animator;
-    
-    
+
+    private bool deactivateSwitch = false; //For if you want to have the switch get pressed but not unpress.
 
     [SerializeField]
     private UnityEvent OnSwitchActivated;
@@ -33,10 +33,10 @@ public class PressureSwitch : MonoBehaviour
     public int objsInTrigger { get; private set; } = 0;
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Objs in " + gameObject.name + " is " + objsInTrigger);
+        //Debug.Log("Objs in " + gameObject.name + " is " + objsInTrigger);
         objsInTrigger++;
         
-        if (!isSwitchActive && objsInTrigger == 1)
+        if (!isSwitchActive && objsInTrigger == 1 && !deactivateSwitch)
         {
             if (syncedSwitches == false) SingleObjectActivate();
             else {MultiObjectActivate();}
@@ -46,12 +46,12 @@ public class PressureSwitch : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("SwitchAttemptingToDeactivate" + isSwitchActive + objsInTrigger + gameObject.name);
+        //Debug.Log("SwitchAttemptingToDeactivate" + isSwitchActive + objsInTrigger + gameObject.name);
         objsInTrigger--;
         //If there's no entitys in the collider and the switch is currently active
-        if (isSwitchActive && objsInTrigger <= 0)
+        if (isSwitchActive && objsInTrigger <= 0 && !deactivateSwitch)
         {
-            Debug.Log("MultiSwitchAttemptingToDeactivate");
+            //Debug.Log("MultiSwitchAttemptingToDeactivate");
             if (syncedSwitches == false) SingleObjectDeactivate();
             else {MultiObjectDeactivate();}
             _animator.SetTrigger("Unpressed");
@@ -107,5 +107,10 @@ public class PressureSwitch : MonoBehaviour
         {
             SwitchGroup[i].gameObject.GetComponent<PressureSwitch>().isSwitchActive = state;
         }
+    }
+
+    public void SetDeactivateSwitch(bool state)
+    {
+        deactivateSwitch = state;
     }
 }
