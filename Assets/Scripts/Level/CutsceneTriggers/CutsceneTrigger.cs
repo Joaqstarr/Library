@@ -16,7 +16,8 @@ namespace Level.CutsceneTriggers
 
         
         private bool _fired = true;
-        
+        [SerializeField]
+        private bool _shouldSaveData = true;
         
         [SerializeField]
         private List<BindingData> _bindings = new List<BindingData>();
@@ -31,39 +32,49 @@ namespace Level.CutsceneTriggers
         {
             yield return new WaitForSeconds(0.01f);
             //check save data
-            if (Gamemanager.Instance)
+            if (_shouldSaveData && Gamemanager.Instance)
             {
                 Gamemanager.Instance.GetSaveData().CutsceneFlags.TryGetValue(_cutsceneToPlay.Cutscene.name, out bool cutscenePlayed);
                 _fired = cutscenePlayed;
+            }
+
+            if (!_shouldSaveData)
+            {
+                _fired = false;
             }
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_fired && other.CompareTag("Player"))
+            if (other.CompareTag("Player"))
             {
-                if (CutsceneEventManager.Instance)
-                {
-                    List<BindingData> bindings = new List<BindingData>();
+                TriggerCutscene();
+            }
+        }
 
-                    if (_bindings != null)
+        public void TriggerCutscene()
+        {
+            if (_fired) return;
+            if (CutsceneEventManager.Instance)
+            {
+                List<BindingData> bindings = new List<BindingData>();
+
+                if (_bindings != null)
+                {
+                    foreach (var bindingDataContext in _bindings)
                     {
-                        foreach (var bindingDataContext in _bindings)
-                        {
-                            bindings.Add(new BindingData(bindingDataContext.TrackName, bindingDataContext.BindingObject));
-                        }
+                        bindings.Add(new BindingData(bindingDataContext.TrackName, bindingDataContext.BindingObject));
                     }
-                    CutsceneEventManager.Instance.PlayCutscene(_cutsceneToPlay, bindings);
+                }
+                CutsceneEventManager.Instance.PlayCutscene(_cutsceneToPlay, bindings);
                     
-                }
+            }
 
 
-
-                if (Gamemanager.Instance)
-                {
-                    Gamemanager.Instance.GetSaveData().CutsceneFlags[_cutsceneToPlay.Cutscene.name] = true;
-                    _fired = true;
-                }
+            if (_shouldSaveData && Gamemanager.Instance)
+            {
+                Gamemanager.Instance.GetSaveData().CutsceneFlags[_cutsceneToPlay.Cutscene.name] = true;
+                _fired = true;
             }
         }
     }
