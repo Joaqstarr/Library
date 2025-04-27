@@ -1,6 +1,7 @@
 ﻿using System;
 using Audio;
 using Cinemachine;
+using DG.Tweening;
 using Systems.Gamemode;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -91,6 +92,12 @@ namespace Player
         private void Respawn()
         {
             // Handle player death
+            if (TryGetComponent<Player.PlayerMovement>(out PlayerMovement movement))
+            {
+                movement.enabled = false;
+            }
+
+            transform.DOScale(0.1f, 1).SetEase(Ease.InBack);
             
             //reload scene if game manager is not present
             if (!Gamemanager.Instance)

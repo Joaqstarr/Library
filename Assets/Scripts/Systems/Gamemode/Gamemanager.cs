@@ -5,6 +5,7 @@ using Player;
 using Player.Attack;
 using UnityEngine;
 using Systems.SaveSystem;
+using UI;
 using UnityEngine.SceneManagement;
 using Utility.SceneManagement;
 
@@ -51,7 +52,7 @@ namespace Systems.Gamemode
                 Destroy(gameObject);
             }
 
-            Application.backgroundLoadingPriority = ThreadPriority.Low;
+            Application.backgroundLoadingPriority = ThreadPriority.Normal;
 
             _dataSaver = new DataSaver("save.boogers");
 
@@ -168,9 +169,16 @@ namespace Systems.Gamemode
 
         public void OnDead(int currentHealth, int oldHealth)
         {
-            Destroy(_player.gameObject);
-            _player = null;
-            LoadCurrentLevel(true);
+            if (ScreenFader.Instance)
+            {
+                ScreenFader.Instance.Fade(1, 2, () =>
+                {
+                    Destroy(_player.gameObject);
+                    _player = null;
+                    LoadCurrentLevel(true);
+                }, null);
+            }
+            
         }
 
         public SaveData GetSaveData()
