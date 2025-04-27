@@ -6,7 +6,16 @@ namespace NPC.Grandma
 {
     public class DestroySelfIfAllLevelsComplete : MonoBehaviour
     {
+
         private void Start()
+        {
+            Invoke(nameof(CheckIfLevelsComplete), 0.01f);
+
+            CheckIfLevelsComplete();
+
+        }
+
+        private void CheckIfLevelsComplete()
         {
             if (Gamemanager.Instance)
             {
@@ -23,7 +32,7 @@ namespace NPC.Grandma
             else
             {
                 Destroy(gameObject);
-            }
+            }        
         }
     }
 }

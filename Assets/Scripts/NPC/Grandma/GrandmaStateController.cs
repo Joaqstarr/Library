@@ -18,12 +18,14 @@ namespace NPC.Grandma
         {
             _agent = GetComponent<NavMeshAgent>();
 
-            _currentPointIndex = Random.Range(0, _points.Length);
-            
-            transform.position = _points[_currentPointIndex].position;
-            _currentPointIndex = Random.Range(0, _points.Length);
+            if (_points.Length > 0)
+            {
+                _currentPointIndex = Random.Range(0, _points.Length);
 
-            
+                transform.position = _points[_currentPointIndex].position;
+                _currentPointIndex = Random.Range(0, _points.Length);
+
+            }
         }
 
         private void Start()

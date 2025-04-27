@@ -8,6 +8,13 @@ namespace NPC.Grandma
     {
         private void Start()
         {
+            Invoke(nameof(CheckIfLevelsComplete), 0.01f);
+
+            CheckIfLevelsComplete();
+        }
+
+        private void CheckIfLevelsComplete()
+        {
             if (Gamemanager.Instance)
             {
                 SaveData data = Gamemanager.Instance.GetSaveData();
