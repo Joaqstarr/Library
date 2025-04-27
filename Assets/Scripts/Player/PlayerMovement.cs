@@ -73,7 +73,7 @@ namespace Player
                 _cameraTransform = Camera.main.transform;
 
             }
-            _animationManager.Grounded = _isGrounded;
+            SetAnimatorGroundedCheck();
             
             CheckIfLaunchEnded();
 
@@ -85,6 +85,11 @@ namespace Player
             HandleJumping();
 
             HandleGravity();
+        }
+
+        public void SetAnimatorGroundedCheck()
+        {
+            _animationManager.Grounded = _isGrounded;
         }
 
         private void ApplyGroundedGravity()
@@ -162,11 +167,11 @@ namespace Player
                     }
 
                     _characterController.Move(moveVector * Time.deltaTime);
-                    _animationManager.MoveSpeed = moveVector.magnitude;
+                    SetAnimatorMovementSpeed(moveVector.magnitude);
                 }
                 else
                 {
-                    _animationManager.MoveSpeed = 0;
+                    SetAnimatorMovementSpeed(0);
                 }
             }
         }
@@ -253,6 +258,11 @@ namespace Player
         public bool GroundedRaycast(out RaycastHit hit)
         {
             return Physics.Raycast(transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 0.6f, _groundLayers);
+        }
+        
+        public void SetAnimatorMovementSpeed(float speed)
+        {
+            _animationManager.MoveSpeed = speed;
         }
     }
 }
