@@ -45,6 +45,8 @@ namespace Level.GrandDoor
         private bool _doorOpen = false;
         private bool _awaitingPlayerEnter;
 
+        public bool Isloading { get; private set; } = false;
+
         private void Awake()
         {
             _animator = GetComponent<Animator>();
@@ -63,6 +65,7 @@ namespace Level.GrandDoor
                 _gameLevel.Level.LoadScene(false);
             }
 
+            Isloading = true;
             _previousLevelLoadedState = _currentLevelLoadedState;
             _currentLevelLoadedState = LevelState.Both;
 
@@ -79,6 +82,8 @@ namespace Level.GrandDoor
             
             if (arg0.name == _hubLevel.Level.ScenePath || arg0.name == _gameLevel.Level.ScenePath)
             {
+                Isloading = false;
+
                 _animator.SetBool(IsDoorOpen, true);
                 _doorOpen = true;
                 _awaitingPlayerEnter = true;

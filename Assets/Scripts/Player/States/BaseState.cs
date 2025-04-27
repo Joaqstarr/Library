@@ -1,4 +1,5 @@
-﻿using Utility.StateMachine;
+﻿using UnityEngine;
+using Utility.StateMachine;
 
 namespace Player.States
 {
@@ -7,7 +8,6 @@ namespace Player.States
         protected PlayerStateManager _playerStateManager;
         protected PlayerControls _playerControls;
         protected PlayerMovement _playerMovement;
-
         public BaseState(PlayerStateManager playerStateManager)
         {
             _playerStateManager = playerStateManager;
