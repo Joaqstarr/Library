@@ -1279,85 +1279,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1083560629}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.046372928, y: 0.71611166, z: -0.032723162, w: 0.6956744}
-  m_LocalPosition: {x: -6.39, y: 4.46, z: 23.72}
+  m_LocalRotation: {x: 0.16061042, y: -0.69475436, z: 0.16368371, w: 0.6817098}
+  m_LocalPosition: {x: -53.804222, y: 11.566776, z: 22.113153}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1222764916
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1222764917}
-  - component: {fileID: 1222764919}
-  - component: {fileID: 1222764918}
-  m_Layer: 0
-  m_Name: GreenhouseWinCutscene
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1222764917
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222764916}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.710236, z: -0, w: 0.7039637}
-  m_LocalPosition: {x: -100.43475, y: 15.2338505, z: 21.966099}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1503500804}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1222764918
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222764916}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 66054e91e69540ca9a312f005a254286, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!320 &1222764919
-PlayableDirector:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1222764916}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_PlayableAsset: {fileID: 11400000, guid: 3a9673b4c7171c44aaf4515858d085e0, type: 2}
-  m_InitialState: 0
-  m_WrapMode: 2
-  m_DirectorUpdateMode: 1
-  m_InitialTime: 0
-  m_SceneBindings:
-  - key: {fileID: 7824379764898816531, guid: 3a9673b4c7171c44aaf4515858d085e0, type: 2}
-    value: {fileID: 1083560631}
-  - key: {fileID: -6239625456076307201, guid: 3a9673b4c7171c44aaf4515858d085e0, type: 2}
-    value: {fileID: 1335585309}
-  - key: {fileID: 771066802678113525, guid: 3a9673b4c7171c44aaf4515858d085e0, type: 2}
-    value: {fileID: 0}
-  - key: {fileID: -5298739767580457949, guid: 3a9673b4c7171c44aaf4515858d085e0, type: 2}
-    value: {fileID: 0}
-  m_ExposedReferences:
-    m_References:
-    - ba59772e7dcc9ca4fa30b5b6e7715ecd: {fileID: 1335585307}
-    - 40659f1bd1db86442bb1e22f1f3e1479: {fileID: 1335585307}
 --- !u!1 &1335585306
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,7 +1488,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1632630364}
-  - {fileID: 1222764917}
   - {fileID: 2037537495}
   - {fileID: 147192321}
   m_Father: {fileID: 0}
