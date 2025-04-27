@@ -4084,6 +4084,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9000939348901349522, guid: 8c4550d2e30d91f48aaf24fe22796737, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -52749,15 +52753,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8072088370637727718, guid: 7cb00de0ffe0a6b42ba4de5c5ae978a7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.028326
+      value: 7.0291386
       objectReference: {fileID: 0}
     - target: {fileID: 8072088370637727718, guid: 7cb00de0ffe0a6b42ba4de5c5ae978a7, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 6.586862
+      value: 6.5867877
       objectReference: {fileID: 0}
     - target: {fileID: 8072088370637727718, guid: 7cb00de0ffe0a6b42ba4de5c5ae978a7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 22.113142
+      value: 22.113153
       objectReference: {fileID: 0}
     - target: {fileID: 8072088370637727718, guid: 7cb00de0ffe0a6b42ba4de5c5ae978a7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -52857,7 +52861,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8624900203685287610, guid: 7cb00de0ffe0a6b42ba4de5c5ae978a7, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.y
-      value: 22.18633
+      value: 19.724106
       objectReference: {fileID: 0}
     - target: {fileID: 8624900203685287610, guid: 7cb00de0ffe0a6b42ba4de5c5ae978a7, type: 3}
       propertyPath: m_Waypoints.Array.data[6].position.z
@@ -57838,6 +57842,14 @@ PrefabInstance:
       propertyPath: _linkedLegs.Array.data[0]
       value: 
       objectReference: {fileID: 616704002}
+    - target: {fileID: 7633193003664857111, guid: c08beef8dc6eda84caa766845ada1710, type: 3}
+      propertyPath: _maxEnemies
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7633193003664857111, guid: c08beef8dc6eda84caa766845ada1710, type: 3}
+      propertyPath: _spawnDelay
+      value: 4.5
+      objectReference: {fileID: 0}
     - target: {fileID: 7650645326007795217, guid: c08beef8dc6eda84caa766845ada1710, type: 3}
       propertyPath: _postStepWait
       value: 1
