@@ -22,6 +22,12 @@ namespace Systems.SaveSystem
                 {
                     string json = File.ReadAllText(_path);
                     SaveSystem.SaveData data = JsonUtility.FromJson<SaveData>(json);
+                    
+                    if (data == null)
+                    {
+                        Debug.LogWarning("Save data is null. Returning default SaveData.");
+                        return new SaveData();
+                    }
                     data.RestoreAfterLoad();
                     return data;
                 }
@@ -56,6 +62,32 @@ namespace Systems.SaveSystem
                     using (StreamWriter writer = new StreamWriter(stream))
                     {
                         writer.Write(json);
+                    }
+                }
+
+            }catch (IOException e)
+            {
+                Debug.LogError($"Failed to save data: {e.Message}");
+            }
+        }
+
+        public void ClearData()
+        {
+            try
+            {
+
+                if (_path == null || _path == "")
+                {
+                    throw new Exception("Save path not set");
+                }
+                Directory.CreateDirectory(Path.GetDirectoryName(_path));
+
+
+                using (FileStream stream = new FileStream(_path, FileMode.Create))
+                {
+                    using (StreamWriter writer = new StreamWriter(stream))
+                    {
+                        writer.Write("");
                     }
                 }
 

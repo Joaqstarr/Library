@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using DG.Tweening;
+using Player;
+using Systems.Gamemode;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +13,8 @@ namespace UI
         private Image _fadeImage;
 
         public static ScreenFader Instance;
+        
+        private bool _initialUnfade = false;
         private void Awake()
         {
             if (!Instance)
@@ -21,7 +25,33 @@ namespace UI
             {
                 return;
             }
+            
             _fadeImage = GetComponent<Image>();
+            _fadeImage.DOFade(1, 0.01f);
+
+        }
+
+        private void Start()
+        {
+            if (!Gamemanager.Instance)
+            {
+                InitialUnfade();
+            }
+        }
+
+        private void InitialUnfade()
+        {
+            if(_initialUnfade)return;
+            _fadeImage.DOFade(0, 1f);
+            _initialUnfade = true;
+        }
+
+        private void OnEnable()
+        {
+            Gamemanager.OnPlayerSpawned += (PlayerStateManager player) =>
+            {
+                InitialUnfade();
+            };
         }
 
 
