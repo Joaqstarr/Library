@@ -5,7 +5,7 @@ namespace Enemies.Robot
 {
     public class SpawnState : RobotBaseState
     {
-        private float _height = 20f;
+        private float _height = 35f;
         public SpawnState(RobotStateManager robotStateManager) : base(robotStateManager)
         {
         }

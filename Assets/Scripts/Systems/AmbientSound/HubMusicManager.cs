@@ -18,6 +18,8 @@ namespace Systems.AmbientSound
         private AudioSource _audioSource;
 
         private HubMusicParts _currentLevel;
+
+        [SerializeField] private float _timeToSwitchClip = 0.95f;
         private void Awake()
         {
             _audioSource = GetComponent<AudioSource>();
@@ -49,7 +51,7 @@ namespace Systems.AmbientSound
             }
             else
             {
-                if(!_audioSource.loop && _audioSource.time / _audioSource.clip.length > 0.95f)
+                if(!_audioSource.loop && ((_audioSource.time / _audioSource.clip.length > _timeToSwitchClip) || !_audioSource.isPlaying))
                 {
                     _audioSource.clip = _currentLevel._loop;
                     _audioSource.loop = true;

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 9031228518781258268}
   - component: {fileID: 7305107678948377879}
   - component: {fileID: 1027751907468849236}
+  - component: {fileID: 1037552492842931091}
   m_Layer: 0
   m_Name: LevelEnder
   m_TagString: Untagged
@@ -73,6 +74,25 @@ MonoBehaviour:
   OnInteractedEvent:
     m_PersistentCalls:
       m_Calls: []
+  OnInteractedEventWithPlayer:
+    m_PersistentCalls:
+      m_Calls: []
+  InteractVerb: Collect the
   InteractableName: Magic Book
   _levelIndex: 0
   _cutsceneToPlay: {fileID: 0}
+--- !u!114 &1037552492842931091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2592003424240554818}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da5b8fe6e20446188fbdac4f979ac5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rules:
+  - Level: 0
+    _isComplete: 1

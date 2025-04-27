@@ -52,8 +52,16 @@ namespace Player
             Interactable closest = null;
             float closestDistance = float.MaxValue;
 
+            for(int i = _interactablesInRange.Count-1; i >= 0; i--)
+            {
+                if (_interactablesInRange[i] == null)
+                {
+                    _interactablesInRange.RemoveAt(i);
+                }
+            }
             foreach (var interactable in _interactablesInRange)
             {
+                if (!interactable) continue;
                 if(!interactable.IsInteractable)continue;
                 Vector3 directionToInteractable = interactable.transform.position - transform.position;
                 float distance = directionToInteractable.magnitude;

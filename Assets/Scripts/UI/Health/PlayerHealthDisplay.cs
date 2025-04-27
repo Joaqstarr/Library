@@ -10,12 +10,6 @@ namespace UI.Health
     {
 
         [SerializeField] private HealthIcon[] _healthIcons;
-        private TMP_Text _text;
-
-        private void Awake()
-        {
-            _text = GetComponent<TMP_Text>();
-        }
 
         private void OnEnable()
         {
@@ -30,14 +24,14 @@ namespace UI.Health
         private void OnPlayerSpawned(PlayerStateManager player)
         {
             PlayerHealth health = player.GetComponent<PlayerHealth>();
-            _text.text = health.CurrentHealth.ToString();
 
             health.OnHealthChanged += OnHealthChanged;
+            
+            OnHealthChanged(health.CurrentHealth, health.CurrentHealth);
         }
 
         private void OnHealthChanged(int newhealth, int oldhealth)
         {
-            _text.text = newhealth.ToString();
             
             for (int i = 0; i < _healthIcons.Length; i++)
             {

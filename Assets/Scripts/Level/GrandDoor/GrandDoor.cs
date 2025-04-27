@@ -32,6 +32,9 @@ namespace Level.GrandDoor
         
         private bool _awaitingSceneLoad = false;
 
+        [SerializeField]
+        private SceneReference _tutorialLevel;
+
         private enum LevelState
         {
             Hub,
@@ -129,7 +132,7 @@ namespace Level.GrandDoor
         }
         private void OnLevelLoadedFromSave(SceneReference scene)
         {
-            if (scene && scene != _hubLevel.Level)
+            if (scene && scene != _hubLevel.Level && scene != _tutorialLevel)
             {
                 _gameLevel.Level = scene;
                 _currentLevelLoadedState = LevelState.Game;

@@ -63,6 +63,10 @@ namespace Systems.Steam
             
         }
 
+        [SerializeField] private AudioClip _onActivatedSound;
+        [SerializeField] private AudioClip _onDectivatedSound;
+        [SerializeField] private AudioSource _audioSource;
+
         //if less than 0, defaults to max
         [field: SerializeField] public float SteamAmount { get; private set; } = -1;
         [field: SerializeField] public float MaxSteamAmount { get; private set; } = 10;
@@ -134,7 +138,14 @@ namespace Systems.Steam
             
             if (Mathf.Approximately(SteamAmount, 0) && oldSteam > 0)
             {
-                OnSteamEmpty?.Invoke();
+                if(OnSteamEmpty != null)
+                {
+                    if (_audioSource)
+                    {
+                        _audioSource.PlayOneShot(_onDectivatedSound);
+                    }
+                    OnSteamEmpty.Invoke();
+                }
             }
 
             return amountTransferred;
@@ -157,7 +168,14 @@ namespace Systems.Steam
 
             if (Mathf.Approximately(SteamAmount, MaxSteamAmount) && oldSteam < MaxSteamAmount)
             {
-                OnSteamFull?.Invoke();
+                if(OnSteamFull != null)
+                {
+                    if (_audioSource)
+                    {
+                        _audioSource.PlayOneShot(_onActivatedSound);
+                    }
+                    OnSteamFull.Invoke();
+                }
             }
 
             return amountTransferred;

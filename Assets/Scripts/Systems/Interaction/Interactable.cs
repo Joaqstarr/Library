@@ -23,6 +23,8 @@ namespace Systems.Interaction
         [SerializeField]
         protected UnityEvent<PlayerStateManager> OnInteractedEventWithPlayer;
         [SerializeField]
+        public string InteractVerb = "Interact with";
+        [SerializeField]
         public string InteractableName = "Interactable";
         public Vector3 GetCloudAttractorPoint()
         {
