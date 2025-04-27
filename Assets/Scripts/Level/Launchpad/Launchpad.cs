@@ -17,7 +17,10 @@ namespace Level.Launchpad
             get => _launchForce;
         }
 
-   
+        public void SetIsInteractable(bool isInteractable)
+        {
+            IsInteractable = isInteractable;
+        }
 
         protected override void InteractionTriggered(PlayerStateManager player)
         {
