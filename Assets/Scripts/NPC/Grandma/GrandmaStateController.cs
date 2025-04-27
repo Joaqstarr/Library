@@ -18,6 +18,12 @@ namespace NPC.Grandma
         {
             _agent = GetComponent<NavMeshAgent>();
 
+            _currentPointIndex = Random.Range(0, _points.Length);
+            
+            transform.position = _points[_currentPointIndex].position;
+            _currentPointIndex = Random.Range(0, _points.Length);
+
+            
         }
 
         private void Start()
@@ -44,7 +50,8 @@ namespace NPC.Grandma
                 float waitTime = Random.Range(1f, 5f);
                 yield return new WaitForSeconds(waitTime);
 
-                _currentPointIndex = (_currentPointIndex + 1) % _points.Length;
+                _currentPointIndex = Random.Range(0, _points.Length);
+
             }
         }
 
