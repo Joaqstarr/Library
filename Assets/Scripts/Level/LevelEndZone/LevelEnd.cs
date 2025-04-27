@@ -34,6 +34,8 @@ namespace Level.LevelEndZone
             {
                 CutsceneEventManager.Instance.PlayCutscene(_cutsceneToPlay);
             }
+            
+            Destroy(gameObject);
         }
     }
 }
