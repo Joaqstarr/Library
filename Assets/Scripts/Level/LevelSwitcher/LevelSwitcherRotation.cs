@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections;
+using Audio;
 using DG.Tweening;
 using Systems.Steam;
 using UnityEngine;
@@ -18,6 +19,8 @@ namespace Level.LevelSwitcher
         [SerializeField] private float _rotPunch = 10;
         [SerializeField] private SteamResourceHolder _steamResourceHolder;
         [SerializeField] private AudioSource _grindAudioSource;
+        [SerializeField] private RandomClipPlayer _clickIntoPlace;
+
         private float _currentRotation;
         private float _targetRotation;
         
@@ -94,6 +97,7 @@ namespace Level.LevelSwitcher
             _levelSwitcherRotatorTransform.DOPunchScale(new Vector3(0.2f, 0.2f, 0.2f), _rotPunchTime);
 
             _levelSwitcherRotatorTransform.DOPunchRotation(new Vector3(0, _rotPunch, 0), _rotPunchTime);
+            _clickIntoPlace.PlayRanClip();
             StartCoroutine(WaitToFinish());
             IEnumerator WaitToFinish()
             {
