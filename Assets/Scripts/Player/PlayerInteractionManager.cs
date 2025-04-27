@@ -25,7 +25,7 @@ namespace Player
             if (!enabled) return;
             
             Interactable interactable = other.GetComponent<Interactable>();
-            if (interactable != null && interactable.IsInteractable)
+            if (interactable != null)
             {
                 _interactablesInRange.Add(interactable);
                 UpdateClosestInteractable();
@@ -54,6 +54,7 @@ namespace Player
 
             foreach (var interactable in _interactablesInRange)
             {
+                if(!interactable.IsInteractable)continue;
                 Vector3 directionToInteractable = interactable.transform.position - transform.position;
                 float distance = directionToInteractable.magnitude;
                // float angle = Vector3.Angle(transform.forward, directionToInteractable);
