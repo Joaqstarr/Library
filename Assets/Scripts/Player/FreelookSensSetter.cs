@@ -29,8 +29,8 @@ namespace Player
                 {
                     _cam.enabled = true;
                 }
-                _cam.m_XAxis.m_MaxSpeed = Sens * 2;
-                _cam.m_YAxis.m_MaxSpeed = Sens * 0.02f;
+                _cam.m_XAxis.m_MaxSpeed = Sens/2;
+                _cam.m_YAxis.m_MaxSpeed = Sens * 0.005f;
             }
         }
     }
