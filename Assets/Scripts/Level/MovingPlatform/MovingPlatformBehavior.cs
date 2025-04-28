@@ -14,29 +14,29 @@ namespace Level.MovingPlatform
         [HideInInspector] public bool editMode = false; 
 #endif
 
-        private int targetIndex = 0;
+        protected int targetIndex = 0;
         private bool forward = true;
 
-        private Vector3 CurrentTarget => transform.parent.TransformPoint(localWaypoints[targetIndex]);
+        protected Vector3 CurrentTarget => transform.parent.TransformPoint(localWaypoints[targetIndex]);
 
         
 
         [SerializeField]
         private bool _playOnStart = true;
 
-        private bool _isPlaying = false;
+        protected bool _isPlaying = false;
         
         
         [SerializeField]
         private bool _shouldLoop = true;
 
-        private bool _hasStarted = false;
+        protected bool _hasStarted = false;
         private void Start()
         {
             _isPlaying = _playOnStart;
         }
 
-        void Update()
+        protected virtual void Update()
         {
 
             if (localWaypoints.Length == 0 || !_isPlaying) return;
@@ -82,7 +82,7 @@ namespace Level.MovingPlatform
             }
         }
 
-        public void StartMovement()
+        public virtual void StartMovement()
         {
             _isPlaying = true;
             _hasStarted = false;

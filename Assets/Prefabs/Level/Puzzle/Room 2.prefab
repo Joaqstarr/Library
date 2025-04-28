@@ -5737,13 +5737,17 @@ PrefabInstance:
       propertyPath: localWaypoints.Array.data[1].z
       value: 0.5718017
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6349610635915024442, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 3163457928831777248, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4242770135921681402}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 2354552014934467418, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
+      insertIndex: 5
+      addedObject: {fileID: 5436319301910225244}
   m_SourcePrefab: {fileID: 100100000, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
 --- !u!4 &1128797221787130401 stripped
 Transform:
@@ -5755,17 +5759,31 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3163457928831777248, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
   m_PrefabInstance: {fileID: 585184641372957208}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5764791622425211426 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6349610635915024442, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
+--- !u!1 &2932954695546030402 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2354552014934467418, guid: 3dba7ad252ac3e54a89683e89e5bef8c, type: 3}
   m_PrefabInstance: {fileID: 585184641372957208}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &5436319301910225244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2932954695546030402}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de42f5c0dded4fa4bca33f894ec5157b, type: 3}
+  m_Script: {fileID: 11500000, guid: dca2d92298634203927b883ddf595cee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  localWaypoints:
+  - {x: -3.417466, y: 4.19758, z: 0.7259395}
+  - {x: -8.887352, y: 7.834353, z: 0.5718017}
+  speed: 2
+  editMode: 0
+  _playOnStart: 0
+  _shouldLoop: 1
+  _resetTime: 5
 --- !u!1001 &791696463411734745
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11622,7 +11640,7 @@ PrefabInstance:
     - target: {fileID: 4292466854769387384, guid: 55e3e394d3e385346859507db67d9c21, type: 3}
       propertyPath: OnSwitchActivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5764791622425211426}
+      objectReference: {fileID: 5436319301910225244}
     - target: {fileID: 4292466854769387384, guid: 55e3e394d3e385346859507db67d9c21, type: 3}
       propertyPath: OnSwitchDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
       value: 1
@@ -11630,7 +11648,7 @@ PrefabInstance:
     - target: {fileID: 4292466854769387384, guid: 55e3e394d3e385346859507db67d9c21, type: 3}
       propertyPath: OnSwitchDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5764791622425211426}
+      objectReference: {fileID: 5436319301910225244}
     - target: {fileID: 4292466854769387384, guid: 55e3e394d3e385346859507db67d9c21, type: 3}
       propertyPath: OnSwitchActivated.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -11649,7 +11667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4292466854769387384, guid: 55e3e394d3e385346859507db67d9c21, type: 3}
       propertyPath: OnSwitchActivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: Level.MovingPlatform.MovingPlatformBehavior, Assembly-CSharp
+      value: Level.MovingPlatform.PuzzleMovingPlatform, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4292466854769387384, guid: 55e3e394d3e385346859507db67d9c21, type: 3}
       propertyPath: OnSwitchDeactivated.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
