@@ -88,6 +88,8 @@ namespace Level.MovingPlatform
             _hasStarted = false;
         }
         
+
+        
         public void StopMovement()
         {
             _isPlaying = false;
