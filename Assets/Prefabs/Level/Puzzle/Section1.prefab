@@ -8040,7 +8040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3862357154783917021, guid: a401df20be9dd8a4580020f8d1701d6f, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3862357154783917021, guid: a401df20be9dd8a4580020f8d1701d6f, type: 3}
       propertyPath: _launchForce
@@ -8151,7 +8151,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 490948953322603957}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a766a22c3c734978adbd7118a57f77fd, type: 3}
   m_Name: 
@@ -10681,7 +10681,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: set_enabled
+      value: SetIsInteractable
       objectReference: {fileID: 0}
     - target: {fileID: 7433672727913097390, guid: b97d6232e3e87344c9a21716dcc4a4d7, type: 3}
       propertyPath: OnSteamFull.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
