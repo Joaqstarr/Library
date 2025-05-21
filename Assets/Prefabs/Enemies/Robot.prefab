@@ -359,6 +359,9 @@ MonoBehaviour:
   OnSteamEmpty:
     m_PersistentCalls:
       m_Calls: []
+  _onActivatedSound: {fileID: 0}
+  _onDectivatedSound: {fileID: 0}
+  _audioSource: {fileID: 0}
   <SteamAmount>k__BackingField: 2.5
   <MaxSteamAmount>k__BackingField: 5
   <SteamRegenRate>k__BackingField: 0
@@ -543,7 +546,7 @@ Transform:
   m_GameObject: {fileID: 7693719369254699110}
   serializedVersion: 2
   m_LocalRotation: {x: 0.015393261, y: -0.3836744, z: 0.03701521, w: -0.9225979}
-  m_LocalPosition: {x: 0.015, y: 2.115, z: -0.498}
+  m_LocalPosition: {x: 0.002, y: 1.882, z: -0.485}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -561,7 +564,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 79577.47
+  m_Intensity: 71619.72
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
@@ -604,7 +607,7 @@ Light:
   m_LightShadowCasterMode: 2
   m_AreaSize: {x: 0.5, y: 0.5}
   m_BounceIntensity: 1
-  m_ColorTemperature: 6570
+  m_ColorTemperature: 4728
   m_UseColorTemperature: 1
   m_BoundingSphereOverride: {x: 0, y: 136, z: 0, w: 145}
   m_UseBoundingSphereOverride: 0
@@ -623,7 +626,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a68c43fe1f2a47cfa234b5eeaa98012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Intensity: 1000000
+  m_Intensity: 900000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 0
@@ -747,15 +750,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.x
-      value: -15.143247
+      value: 82.63331
       objectReference: {fileID: 0}
     - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.y
-      value: 1.9305778
+      value: -44.127457
       objectReference: {fileID: 0}
     - target: {fileID: 4165617778948818454, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_PropertySheet.m_Vector3f.m_Array.Array.data[0].m_Value.z
-      value: -4.9281836
+      value: -7.4859467
       objectReference: {fileID: 0}
     - target: {fileID: 4756818907982433730, guid: 874785832ddc3af4b9dc1e562b8e126a, type: 3}
       propertyPath: m_LocalScale.x
